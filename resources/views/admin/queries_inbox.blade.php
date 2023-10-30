@@ -123,7 +123,7 @@
  </div>
  <div class="w-full p-4 ">
 
-    <p class="toggleColour text-gray-900 text-2xl  font-bold underline py-2"> Blogs Waiting For Approvals</p>
+    <p class="toggleColour text-gray-900 text-2xl  font-bold underline py-2"> Queries Waiting For Approvals</p>
     <div class="relative overflow-auto shadow-md sm:rounded-lg">
        <table class="w-full text-sm text-left text-gray-500 ">
            <thead class="text-xs text-gray-100 uppercase bg-gray-700 ">
@@ -131,20 +131,27 @@
                    <th scope="col" class="px-3 py-3">
                       Index
                    </th>
-                   <th scope="col" class="px-3 py-3">
-                      Id
-                   </th>
+
                    <th scope="col" class="px-3 py-3">
                       Status
                     </th>
 
                    <th scope="col" class="px-3 py-3">
-                     Category
+                     Service Name
                    </th>
                    <th scope="col" class="px-3 py-3">
-                    Description
+                    First Name
                     </th>
+                    <th scope="col" class="px-3 py-3">
+                        Last Name
+                        </th>
+                        <th scope="col" class="px-3 py-3">
+                            Email
+                            </th>
 
+                            <th scope="col" class="px-3 py-3">
+                                Phone
+                                </th>
 
 
             <th scope="col" class="px-3 py-3">
@@ -154,17 +161,15 @@
            </thead>
            <tbody>
 
-             @foreach ($un_services as $i=> $d_tata)
+             @foreach ($queries_data as $i=> $d_tata)
 
              <tr class=" border-b bg-gray-900 border-gray-700 text-white font-semibold">
                 <th scope="row" class="px-3 py-4 font-medium  whitespace-nowrap text-white">
                    {{$i}}
                 </th>
-                <th scope="row" class="px-3 py-4 font-medium  whitespace-nowrap text-white">
-                   {{$d_tata->id}}
-                </th>
+
                 <td class="px-3 py-4">
-                  @if(  $d_tata->status == 1)
+                  @if(  $d_tata->q_status == 1)
                   <p class="text-green-500">Approved</p>
                  @else
                  <p class="text-red-500">Not Approved</p>
@@ -177,12 +182,21 @@
                    {{$d_tata->service_name}}
                 </td>
                 <td class="px-3 py-4">
-                    {{$d_tata->description}}
+                    {{$d_tata->fname}}
+                 </td>
+                 <td class="px-3 py-4">
+                    {{$d_tata->lname}}
+                 </td>
+                 <td class="px-3 py-4">
+                    {{$d_tata->email}}
+                 </td>
+                 <td class="px-3 py-4">
+                    {{$d_tata->phone}}
                  </td>
                 <td class="px-1 py-4 text-center">
-                    <a href="{{url('delete_service/'.$d_tata->id)}}" class="font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</a><br>
+                    <a href="{{url('delete_querie/'.$d_tata->q_id)}}" class="font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</a><br>
 
-                    <a href="{{url('change_service_status/'.$d_tata->id)}}" class="font-medium text-orange-400 dark:text-orange-500 hover:underline">Change Status</a><br>
+                    <a href="{{url('change_q_status/'.$d_tata->q_id)}}" class="font-medium text-orange-400 dark:text-orange-500 hover:underline">Activate/Deactivate</a><br>
 
 
 
@@ -210,9 +224,7 @@
                    <th scope="col" class="px-3 py-3">
                       Index
                    </th>
-                   <th scope="col" class="px-3 py-3">
-                      Id
-                   </th>
+
                    <th scope="col" class="px-3 py-3">
                       Status
                     </th>
@@ -221,10 +233,18 @@
                    Service Name
                    </th>
                    <th scope="col" class="px-3 py-3">
-                    Description
+                    First Name
                     </th>
+                    <th scope="col" class="px-3 py-3">
+                        Last Name
+                        </th>
+                        <th scope="col" class="px-3 py-3">
+                            Email
+                            </th>
 
-
+                            <th scope="col" class="px-3 py-3">
+                                Phone
+                                </th>
 
             <th scope="col" class="px-3 py-3">
             Action
@@ -233,17 +253,15 @@
            </thead>
            <tbody>
 
-             @foreach ($service_data as $i=> $data)
+             @foreach ($queries_d as $i=> $data)
 
              <tr class=" border-b bg-gray-900 border-gray-700 text-white font-semibold">
                 <th scope="row" class="px-3 py-4 font-medium  whitespace-nowrap text-white">
                    {{$i}}
                 </th>
-                <th scope="row" class="px-3 py-4 font-medium  whitespace-nowrap text-white">
-                   {{$data->id}}
-                </th>
+
                 <td class="px-3 py-4">
-                  @if(  $data->status == 1)
+                  @if(  $data->q_status == 1)
                   <p class="text-green-500">Approved</p>
                  @else
                  <p class="text-red-500">Not Approved</p>
@@ -256,13 +274,21 @@
                    {{$data->service_name}}
                 </td>
                 <td class="px-3 py-4">
-                    {{$data->description}}
+                    {{$data->fname}}
                  </td>
-
+                 <td class="px-3 py-4">
+                    {{$data->lname}}
+                 </td>
+                 <td class="px-3 py-4">
+                    {{$data->email}}
+                 </td>
+                 <td class="px-3 py-4">
+                    {{$data->phone}}
+                 </td>
                 <td class="px-1 py-4 text-center">
-                   <a href="{{url('delete_service/'.$data->id)}}" class="font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</a><br>
+                   <a href="{{url('delete_querie/'.$data->q_id)}}" class="font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</a><br>
 
-                   <a href="{{url('change_service_status/'.$data->id)}}" class="font-medium text-orange-400 dark:text-orange-500 hover:underline">Change Status</a><br>
+                   <a href="{{url('change_q_status/'.$data->q_id)}}" class="font-medium text-orange-400 dark:text-orange-500 hover:underline">Activate/Deactivate</a><br>
 
 
 

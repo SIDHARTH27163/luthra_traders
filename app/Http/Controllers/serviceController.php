@@ -20,7 +20,7 @@ class serviceController extends Controller
         }catch(\Exception $e){
             dd($e);
      }
-        
+
     }
     public function add_service(Request $request){
         try{
@@ -36,12 +36,12 @@ class serviceController extends Controller
         }else{
             $service=Service::create([
                 'service_name'=>$request->service_name,
-               
-                
+
+
                 'description'=>$request->description,
-              
-               
-               
+
+
+
             ]);
             return redirect()->back()->with('success', 'Service Added Successfully');
         }
@@ -60,14 +60,14 @@ class serviceController extends Controller
             if($data->status=="0"){
                 $data->status="1";
                 $data->save();
-              
-                return redirect()->back()->with('success', 'Service Activated');
+
+                return redirect()->back()->with('success', 'Service Marked Activated');
               }else{
                 $data->status="0";
                 $data->save();
-                return redirect()->back()->with('message', 'Service Rejected');
+                return redirect()->back()->with('message', 'Service Marked Rejected');
               }
-                
+
         }catch(\Exception $e){
             dd($e);
      }
@@ -77,7 +77,7 @@ class serviceController extends Controller
             DB::table('services')->where('id', $id)->delete();
 
             return redirect()->back()->with('message', 'Service Deleted');
-                
+
                 // return redirect()->back()->with('message', 'Tourist Place Status Apprved');
         }catch(\Exception $e){
             dd($e);
