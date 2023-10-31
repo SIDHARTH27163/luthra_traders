@@ -60,7 +60,7 @@ Route::post("add_facility_cat" , [adminController::class,'add_facility_cat']);
 Route::get("delete_cats/{id}" , [adminController::class,'delete_cats']);
 Route::get("delete_cats_facility/{id}" , [adminController::class,'delete_cats_facility']);
 Route::get("change_f_status/{id}" , [adminController::class,'change_f_status']);
-Route::get("add_room" , [adminController::class,'add_room']);
+Route::get("manage_rooms" , [adminController::class,'add_room']);
 Route::post("add_rooms" , [adminController::class,'add_rooms']);
 Route::get("delete_r/{id}" , [adminController::class,'delete_r']);
 Route::get("change_r_status/{id}" , [adminController::class,'change_r_status']);

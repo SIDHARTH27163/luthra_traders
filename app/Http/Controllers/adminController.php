@@ -20,12 +20,12 @@ class adminController extends Controller
     public function change_u_status($id , Request  $req){
         try{
             $data=User::find($id);
-        
+
             if ($data) {
                 if ($data->status == 0) {
                     $data->status = 1;
                     $data->save();
-            
+
                     return redirect()->back()->with('success', 'User Activated');
                 } else {
                     $data->status = 0;
@@ -42,9 +42,9 @@ class adminController extends Controller
             public function delete_u($id , Request $request){
                 try{
                     DB::table('users')->where('id', $id)->delete();
-        
+
                     return redirect()->back()->with('message', 'User Deleted');
-                        
+
                         // return redirect()->back()->with('message', 'Tourist Place Status Apprved');
                 }catch(\Exception $e){
                     dd($e);
@@ -57,29 +57,29 @@ class adminController extends Controller
     ->select('services.id as service_id' , 'queries.id as q_id', 'service_name' , 'fname' , 'lname' , 'email' , 'phone' ,'queries.status as q_status',)
     ->where('queries.status', 0)
     ->orderBy('queries.id', 'desc')
-    ->paginate(5);
+    ->get();
             $queries_d=  DB::table('queries')
             ->join('services', 'queries.service_id', '=', 'services.id')
             ->select('services.id as service_id' , 'queries.id as q_id', 'service_name' , 'fname' , 'lname' , 'email' , 'phone' ,'queries.status as q_status',)
             ->where('queries.status', 1)
             ->orderBy('queries.id', 'desc')
-            ->paginate(5);
-                 
+            ->get();
+
             // foreach to increase response time
             $data = [];
             foreach($queries_data as $queries_data_data) {
                 $data[] = $queries_data_data;
-    
+
             }
             $data1 = [];
             foreach($queries_d as $queries_d_data) {
                 $data1[] = $queries_d_data;
-    
+
             }
                 //
-            // resppinse time ends 
+            // resppinse time ends
              return view('admin.queries_inbox' , ['queries_data'=>$data , 'queries_d'=>$data1]);
-           
+
         }catch(\Exception $e){
             dd($e);
         }
@@ -94,7 +94,7 @@ try{
         if ($data->status == 0) {
             $data->status = 1;
             $data->save();
-    
+
             return redirect()->back()->with('success', 'Querie Activated');
         } else {
             $data->status = 0;
@@ -113,7 +113,7 @@ try{
             DB::table('queries')->where('id', $id)->delete();
 
             return redirect()->back()->with('message', 'Query Deleted');
-                
+
                 // return redirect()->back()->with('message', 'Tourist Place Status Apprved');
         }catch(\Exception $e){
             dd($e);
@@ -179,12 +179,12 @@ if ($data) {
                     $data = [];
                     foreach($u_users_data as $un_users_data) {
                         $data[] = $un_users_data;
-            
+
                     }
                     $data1 = [];
                     foreach($a_users_data as $ap_users_data) {
                         $data1[] = $ap_users_data;
-            
+
                     }
                     return view('admin.users' , ['users_data'=>$data, 'users_d'=>$data1]);
                 }catch(\Exception $e){
@@ -197,33 +197,37 @@ if ($data) {
             public function services(){
                 try{
                     $service_data=  DB::table('services')->where('status' , 1)->orderBy('service_name')->paginate(4);
-                 
-        
+
+
                     return view("admin.index" ,  [ 'service_data'=>$service_data ]);
-        
+
                 }catch(\Exception $e){
                     dd($e);
              }
-                
+
             }
 
 
             public function add_facilities(){
                 try{
                     $cat=  DB::table('categories')->orderBy('category')->get();
-                 
+
                     $f_data = DB::table('facilitycategories')
                     ->join('categories', 'facilitycategories.category_id', '=', 'categories.id')
                     ->select('categories.id as cat_id' , 'facilitycategories.id as f_id', 'facility' , 'category' ,'svg' ,'status'  )
                     ->orderBy('facilitycategories.facility')
-                   
-                    ->paginate(10);
-                    
-                    return view("admin.facilities" ,  [ 'cat'=>$cat , 'facility'=>$f_data ]);
-        
+
+                    ->get();
+                    $data = [];
+                    foreach( $f_data as $un_users_data) {
+                        $data[] = $un_users_data;
+
+                    }
+                    return view("admin.facilities" ,  [ 'cats'=>$cat , 'facility'=>$data ]);
+
                 }catch(\Exception $e){
                     dd($e);
-             }  
+             }
             }
 
 
@@ -233,18 +237,18 @@ if ($data) {
                 try{
                     $data = $request->only('category');
             $validator = Validator::make($data, [
-                
+
                 'category' => 'required|string|unique:categories',
-               
-               
+
+
             ]);
-    
+
             //Send failed response if request is not valid
             if ($validator->fails()) {
-    
+
                 // get the error messages from the validator
                 $messages = $validator->messages();
-        
+
                 // redirect our user back to the form with the errors from the validator
                 // return Redirect::to('signup')
                 //     ->withErrors($messages);
@@ -253,19 +257,19 @@ if ($data) {
             }else{
                 Category::create([
                     'category'=>$request->category,
-                  
-                    
-    
-    
+
+
+
+
                 ]);
-                
-                
+
+
                 return redirect()->back()->with('success', 'Category Added');
             }
-        
+
                 }catch(\Exception $e){
                     dd($e);
-             }  
+             }
             }
 
             public function add_facility_cat(Request $request){
@@ -275,15 +279,15 @@ if ($data) {
                 'svg_icon' => 'required|string',
                 'category_name' => 'required|string',
                 'facility' => 'required|string|unique:facilitycategories',
-               
+
             ]);
-    
+
             //Send failed response if request is not valid
             if ($validator->fails()) {
-    
+
                 // get the error messages from the validator
                 $messages = $validator->messages();
-        
+
                 // redirect our user back to the form with the errors from the validator
                 // return Redirect::to('signup')
                 //     ->withErrors($messages);
@@ -293,18 +297,18 @@ if ($data) {
                 Facilitycategory::create([
                     'category_id'=>$request->category_name,
                     'facility'=>$request->facility,
-                    
+
                     'svg'=>$request->svg_icon,
-    
+
                 ]);
-                
-                
+
+
                 return redirect()->back()->with('success', 'Facility Added to category');
             }
-        
+
                 }catch(\Exception $e){
                     dd($e);
-             }  
+             }
             }
 
             public function delete_cats($id , Request $request){
@@ -312,7 +316,7 @@ if ($data) {
                     DB::table('categories')->where('id', $id)->delete();
                     DB::table('facilitycategories')->where('category_id', $id)->delete();
                     return redirect()->back()->with('message', 'Category And Facilties  Deleted');
-                        
+
                         // return redirect()->back()->with('message', 'Tourist Place Status Apprved');
                 }catch(\Exception $e){
                     dd($e);
@@ -321,9 +325,9 @@ if ($data) {
             public function delete_cats_facility($id , Request $request){
                 try{
                     DB::table('facilitycategories')->where('id', $id)->delete();
-        
+
                     return redirect()->back()->with('message', 'Facility Deleted');
-                        
+
                         // return redirect()->back()->with('message', 'Tourist Place Status Apprved');
                 }catch(\Exception $e){
                     dd($e);
@@ -333,17 +337,17 @@ if ($data) {
             public function change_f_status($id , Request  $req){
                 try{
                     $data=Facilitycategory::find($id);
-                
+
                     if ($data) {
                         if ($data->status == 0) {
                             $data->status = 1;
                             $data->save();
-                    
-                            return redirect()->back()->with('success', 'Facilitycategory Activated');
+
+                            return redirect()->back()->with('success', 'Facilitycategory Marked Available');
                         } else {
                             $data->status = 0;
                             $data->save();
-                            return redirect()->back()->with('message', 'Facilitycategory Rejected');
+                            return redirect()->back()->with('message', 'Facilitycategory Marked Un-Available');
                         }
                     } else {
                         return redirect()->back()->with('message', 'Facilitycategory not found');
@@ -358,12 +362,12 @@ public function add_room(Request $request){
         $r_data = DB::table('rooms')
         // ->where('status' , 0)
         ->orderBy('category')
-       
+
         ->paginate(10);
-        
+
         // return view("admin.facilities" ,  [ 'cat'=>$cat , 'facility'=>$f_data ]);
 
-        return view("admin.add_room" ,  [ 'data'=>$r_data ]);
+        return view("admin.manage_rooms" ,  [ 'data'=>$r_data ]);
      }catch(\Exception $e){
                             dd($e);
                         }
@@ -371,10 +375,10 @@ public function add_room(Request $request){
 
 public function add_rooms(Request $request){
     try{
-  
+
 
         $data = $request->only('category','available_for' ,'food_availability' ,
-         'parking' , 'tenants_types' ,'total_beds' , 
+         'parking' , 'tenants_types' ,'total_beds' ,
          'notice_period', 'maintenance_charges', 'electricity_charges' , 'deposite_amount' ,'description' );
         $validator = Validator::make($data, [
             'available_for' => 'required|string',
@@ -406,9 +410,9 @@ public function add_rooms(Request $request){
                            'electrcity'=>$request->electricity_charges,
                           'amount'=>$request->deposite_amount,
                 'desc'=>$request->description,
-              
-               
-               
+
+
+
             ]);
             return redirect()->back()->with('success', 'Room Added Successfully');
         }
@@ -419,17 +423,17 @@ public function add_rooms(Request $request){
 public function change_r_status($id , Request  $req){
     try{
         $data=Room::find($id);
-    
+
         if ($data) {
             if ($data->status == 0) {
                 $data->status = 1;
                 $data->save();
-        
-                return redirect()->back()->with('success', 'Room Activated');
+
+                return redirect()->back()->with('success', 'Room Marked Available');
             } else {
                 $data->status = 0;
                 $data->save();
-                return redirect()->back()->with('message', 'Room Rejected');
+                return redirect()->back()->with('message', 'Room Marked Not Available');
             }
         } else {
             return redirect()->back()->with('message', 'Room not found');
@@ -441,9 +445,9 @@ public function change_r_status($id , Request  $req){
         public function delete_r($id , Request $request){
             try{
                 DB::table('rooms')->where('id', $id)->delete();
-    
+
                 return redirect()->back()->with('message', 'room Deleted');
-                    
+
                     // return redirect()->back()->with('message', 'Tourist Place Status Apprved');
             }catch(\Exception $e){
                 dd($e);
@@ -452,13 +456,13 @@ public function change_r_status($id , Request  $req){
         public function get_pg_data(){
             try{
                 $data = DB::table('users')
-              
+
                 ->where('service', 6)
                 ->orderBy('id', 'desc')
                 ->get();
 
-               
-                
+
+
                 return view('admin.pg_users' , ['users_data'=>$data]);
             }catch(\Exception $e){
                 dd($e);
@@ -475,7 +479,7 @@ public function change_r_status($id , Request  $req){
                     'files' => 'required|array|max:6',
                     'files.*' => 'required|image|mimes:jpeg,png,jpg',  // Add allowed mime types and max size as per your requirements
                 ]);
-        
+
                 // Send a failed response if the request is not valid
                 if ($validator->fails()) {
                     $messages = $validator->messages();
@@ -490,10 +494,10 @@ public function change_r_status($id , Request  $req){
                             $img->resize(500, 400, function ($constraint) {
                                 $constraint->aspectRatio();
                             })->save($destinationPath . '/' . $name);
-        
+
                             // Check if the image already exists in the database
                             $existingImage = Gallery_room::where('image', $name)->where('room_id', $id)->first();
-        
+
                             if (!$existingImage) {
                                 Gallery_room::create([
                                     'image' => $name,
@@ -502,10 +506,10 @@ public function change_r_status($id , Request  $req){
                             }
                         }
                     }
-        
-                 
+
+
                     return Redirect::to('add_room')->with('success', 'Gallery Uploaded Successfully');
-               
+
                 }
             } catch (\Exception $e) {
                 dd($e);
