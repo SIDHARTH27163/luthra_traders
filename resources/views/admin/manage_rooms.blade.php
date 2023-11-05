@@ -92,7 +92,7 @@
 
 
 {{-- add roooms starts here --}}
-<div class="w-full border-2 border-black p-2">
+<div class="w-full  p-2">
     {{-- form starts  --}}
     <form action="add_rooms" method="post" class="">
         @csrf
@@ -100,7 +100,7 @@
         <div class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-2">
             <div class="mb-2">
                 <label for="countries" class="block mb-2 text-lg font-medium text-gray-900 ">Select a Room Category</label>
-                <select id="countries" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="countries" name="category" class="bg-blue-100 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option selected value="">Choose a category</option>
                  
                   <option >Single Shared </option>
@@ -114,7 +114,7 @@
      
               <div class="mb-2">
                  <label for="countries" class="block mb-2 text-lg font-medium text-gray-900 ">Room Available For</label>
-                 <select id="countries" name="available_for" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                 <select id="countries" name="available_for" class="bg-blue-100 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                    <option selected value="">Choose </option>
                   
                    <option >Boys</option>
@@ -127,7 +127,7 @@
                </div>
                <div class="mb-2">
                 <label for="countries" class="block mb-2 text-lg font-medium text-gray-900 ">Parking</label>
-                <select id="countries" name="parking" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="countries" name="parking" class="bg-blue-100 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option selected value="">Choose </option>
                  
                   <option >Available</option>
@@ -140,7 +140,7 @@
               </div>
               <div class="mb-2">
                 <label for="countries" class="block mb-2 text-lg font-medium text-gray-900 ">Food Availability</label>
-                <select id="countries" name="food_availability" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="countries" name="food_availability" class="bg-blue-100 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option selected value="">Choose </option>
                  
                   <option >Available</option>
@@ -153,7 +153,7 @@
               </div>
               <div class="mb-2">
                 <label for="countries" class="block mb-2 text-lg font-medium text-gray-900 ">Tenants Type</label>
-                <select id="countries" name="tenants_types" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="countries" name="tenants_types" class="bg-blue-100 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option selected value="">Choose </option>
                  
                   <option >Students</option>
@@ -166,7 +166,7 @@
               </div>
               <div class="mb-2">
                 <label for="countries" class="block mb-2 text-lg font-medium text-gray-900 ">No Of Beds Available</label>
-                <select id="countries" name="total_beds" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="countries" name="total_beds" class="bg-blue-100 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option selected value="">Choose Beds </option>
                  
                   <option >1 Bed</option>
@@ -181,7 +181,7 @@
               </div>
               <div class="mb-2">
                 <label for="countries" class="block mb-2 text-lg font-medium text-gray-900 ">Notice Period</label>
-                <select id="countries" name="notice_period" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="countries" name="notice_period" class="bg-blue-100 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option selected value="">Choose Notice Period </option>
                  
                   <option >1 week</option>
@@ -196,7 +196,7 @@
               </div>
               <div class="mb-2">
                 <label for="countries" class="block mb-2 text-lg font-medium text-gray-900 ">maintenance charges</label>
-                <select id="countries" name="maintenance_charges" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="countries" name="maintenance_charges" class="bg-blue-100 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option selected value="">Choose one</option>
                  
                   <option >Available</option>
@@ -210,7 +210,7 @@
               </div>
               <div class="mb-2">
                 <label for="countries" class="block mb-2 text-lg font-medium text-gray-900 ">electercity charges</label>
-                <select id="countries" name="electricity_charges" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="countries" name="electricity_charges" class="bg-blue-100 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option selected value="">Choose one</option>
                  
                   <option >Available</option>
@@ -224,7 +224,7 @@
               </div>
               <div class="mb-2">
                 <label for="countries" class="block mb-2 text-lg font-medium text-gray-900 ">Deposite Amount</label>
-                <select id="countries" name="deposite_amount" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="countries" name="deposite_amount" class="bg-blue-100 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option selected value="">Choose one</option>
                  
                   <option >required</option>
@@ -253,7 +253,7 @@
                                 hover:rounded-full rounded-xl focus:outline-none focus:shadow-outline
                                 hover:scale-105 duration-500 ease-in-out
                                ">
-                          Submit
+                          Add Room
                        </button>
         </div>
     </form>
@@ -360,6 +360,8 @@
                     <a href="{{url('delete_r/'.$data->id)}}" class="font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</a><br>
 
                     <a href="{{url('change_r_status/'.$data->id)}}" class="font-medium text-orange-400 dark:text-orange-500 hover:underline">Activate/Deactivate</a><br>
+                    
+                    <a href="{{url('upload_gallery/'.$data->id)}}" class="font-medium text-blue-400 dark:text-blue-500 hover:underline">Upload galllery</a><br>
                     
 
 

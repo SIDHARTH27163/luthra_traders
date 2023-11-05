@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Querie;
+use App\Models\Cable_request;
 class homepageController extends Controller
 {
     //
@@ -110,6 +111,51 @@ return view('pg' ,  ['data'=>$data]);
                 $c_data=  DB::table('facilitycategories')->where('category_id' , '5')->get();
                 $d_data=  DB::table('facilitycategories')->where('category_id' , '6')->get();
             return view('pg_detail' , ['data'=>$data, 'gallery'=>$g_data , 'a'=>$a_data , 'b'=>$b_data , 'c'=>$c_data , 'd'=>$d_data]);
+        }catch(\Exception $e){
+            dd($e);
+        }
+
+    }
+    public function send_request(Request $request){
+        try{
+
+            $data = $request->only('first_name','last_name',  'email' , 'mobile_number','address' );
+            $validator = Validator::make($data, [
+                
+                'first_name' => 'required|string',
+                'last_name'=>'required|string',
+               
+                'email' => 'required|email',
+              
+                'mobile_number'=>'required',
+                
+                 'address' => 'required'
+            ]);
+    
+    
+            // Send a failed response if the request is not valid
+            if ($validator->fails()) {
+                $messages = $validator->messages();
+                return redirect()->back()->withErrors($messages);
+            }else{
+                Cable_request::create([
+                    'fname'=>$request->first_name,
+                    'lname'=>$request->last_name,
+                    'mobile'=>$request->mobile_number,
+                    'email'=>$request->email,
+                    'address'=>$request->address,1
+                    
+                    
+                  
+                  
+                   
+                ]);
+                
+    
+              
+               //dd($lid);
+               return redirect()->back()->with('success', 'Query Sent Successfully');
+            }
         }catch(\Exception $e){
             dd($e);
         }

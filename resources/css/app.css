@@ -1,18 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&family=Roboto:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.light-mode {
-    --bg-primary: bg-white;
-    --text-primary: text-black;
-    --bg-secondary: bg-gray-200;
-    --text-secondary: text-gray-700;
+@layer utilities{
+    .scrollbar-thin::-webkit-scrollbar-thumb{
+        @apply bg-[#06202a];
+       border-radius:100vh;
+      
+       
+    }
+    .scrollbar-thin::-webkit-scrollbar-button{
+        min-height:11rem;
+    }
+    .scrollbar-thin::-webkit-scrollbar-track{
+        @apply bg-[#a7dbf0];
+        min-height:1rem;
+    }
+    .table_list{
+        @apply bg-[#0d3341];
+    }
+ 
 }
+::-webkit-scrollbar {
+    width: 0.7rem;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: #a7dbf0; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #06202a; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #06202a; 
+  }
 
-/* Dark mode classes */
-.dark-mode {
-    --bg-primary: bg-gray-900;
-    --text-primary: text-white;
-    --bg-secondary: bg-gray-800;
-    --text-secondary: text-gray-400;
+  .image-3d {
+    --f: .1; /* parallax factor (the smaller, the better) */
+
+  --_f: calc(100 * var(--f) / (1 + var(--f)));
+
+  
+
+  clip-path: inset(0 var(--_f) 0 0);
+  transition: .5s;
+}
+.image-3d:hover{
+    clip-path: inset(0 0 0 var(--_f));
+    transform: translateX(calc(-1 * var(--_f)))
 }

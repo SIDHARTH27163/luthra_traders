@@ -24,8 +24,13 @@ Route::get('/' , [homepageController::class,'index']);
 Route::get('/luthra_pg' , [homepageController::class,'get_pg']);
 Route::get("luthra_pg/{id}" , [homepageController::class,'room_detail']);
 
-
-
+Route::get('/luthra_cabletv', function () {
+    return view('cable_tv');
+});
+Route::get('/shop', function () {
+    return view('luthra_shop');
+});
+Route::post("/send_request" , [homepageController::class ,'send_request']);
 
 Route::get('/signup', function () {
     return view('auth.signup');
@@ -65,8 +70,12 @@ Route::post("add_rooms" , [adminController::class,'add_rooms']);
 Route::get("delete_r/{id}" , [adminController::class,'delete_r']);
 Route::get("change_r_status/{id}" , [adminController::class,'change_r_status']);
 Route::get("get_pg_data" , [adminController::class,'get_pg_data']);
+Route::get('/import_data', function () {
+    return view('admin.import_data');
+});
 Route::get("upload_gallery/{id}" , [adminController::class,'upload_gallery']);
 Route::post("upload_room_gallery/{id}" , [adminController::class,'upload_room_gallery']);
+Route::post("import_users" , [adminController::class,'uploadUsers']);
 // adminn routes for pg ends
 // admin routes
 // authentication

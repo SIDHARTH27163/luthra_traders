@@ -13,7 +13,11 @@ use App\Models\Category;
 use App\Models\Facilitycategory;
 use App\Models\Room;
 use App\Models\Gallery_Room;
+use App\Imports\UsersImport;
 use Image;
+use Excel;
+
+
 class adminController extends Controller
 {
     //
@@ -54,13 +58,13 @@ class adminController extends Controller
         try{
             $queries_data = DB::table('queries')
     ->join('services', 'queries.service_id', '=', 'services.id')
-    ->select('services.id as service_id' , 'queries.id as q_id', 'service_name' , 'fname' , 'lname' , 'email' , 'phone' ,'queries.status as q_status',)
+    ->select('services.id as service_id' , 'queries.id as q_id', 'service_name' , 'fname' , 'lname' , 'email' , 'queries.description as desc' , 'phone' ,'queries.status as q_status',)
     ->where('queries.status', 0)
     ->orderBy('queries.id', 'desc')
     ->get();
             $queries_d=  DB::table('queries')
             ->join('services', 'queries.service_id', '=', 'services.id')
-            ->select('services.id as service_id' , 'queries.id as q_id', 'service_name' , 'fname' , 'lname' , 'email' , 'phone' ,'queries.status as q_status',)
+            ->select('services.id as service_id' , 'queries.id as q_id', 'service_name' , 'fname' , 'lname' , 'email' , 'phone' , 'queries.description as desc' ,'queries.status as q_status',)
             ->where('queries.status', 1)
             ->orderBy('queries.id', 'desc')
             ->get();
@@ -508,11 +512,19 @@ public function change_r_status($id , Request  $req){
                     }
 
 
-                    return Redirect::to('add_room')->with('success', 'Gallery Uploaded Successfully');
+                    return Redirect::to('manage_rooms')->with('success', 'Gallery Uploaded Successfully');
 
                 }
             } catch (\Exception $e) {
                 dd($e);
             }
         }
+        public function uploadUsers(Request $request)
+{
+    $file = $request->file('file');
+    
+    Excel::import(new UsersImport, $file);
+
+    return Redirect::to('get_pg_data')->with('success', 'Users Data Exported Successfully');
+}
 }

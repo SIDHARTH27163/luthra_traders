@@ -164,8 +164,7 @@
                     <a href="{{url('delete_u/'.$d_tata->u_id)}}" class="font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</a><br>
 
                     <a href="{{url('change_u_status/'.$d_tata->u_id)}}" class="font-medium text-orange-400 dark:text-orange-500 hover:underline">Activate/Deactivate</a><br>
-                    <a href="{{url('create_user/'.$d_tata->u_id)}}" class="font-medium text-blue-400 dark:text-blue-500 hover:underline">Create user</a><br>
-
+                    
 
 
 
@@ -254,10 +253,7 @@
 
                    <a href="{{url('change_u_status/'.$data->u_id)}}" class="font-medium text-orange-400 dark:text-orange-500 hover:underline">Activate/Deactivate</a><br>
 
-                   <a href="{{url('create_user/'.$data->u_id)}}" class="font-medium text-blue-400 dark:text-blue-500 hover:underline">Create user</a><br>
-
-
-
+                 
 
                 </td>
             </tr>

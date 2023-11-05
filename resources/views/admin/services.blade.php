@@ -120,10 +120,10 @@
 
    {{-- form ends --}}
 
- </div>
+
  <div class="w-full p-4 ">
 
-    <p class="toggleColour text-gray-900 text-2xl  font-bold underline py-2"> Blogs Waiting For Approvals</p>
+    <p class="toggleColour text-gray-900 text-2xl  font-bold underline py-2"> Services Waiting For Approvals</p>
     <div class="relative overflow-auto shadow-md sm:rounded-lg">
        <table class="w-full text-sm text-left text-gray-500 ">
            <thead class="text-xs text-gray-100 uppercase bg-gray-700 ">
@@ -276,6 +276,7 @@
        <div class="p-2 ">
 
           {{-- {!! $udata->links() !!} --}}
+         </div>
        </div>
     </div>
 </div>
