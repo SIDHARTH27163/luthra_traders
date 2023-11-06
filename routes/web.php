@@ -76,6 +76,16 @@ Route::get('/import_data', function () {
 Route::get("upload_gallery/{id}" , [adminController::class,'upload_gallery']);
 Route::post("upload_room_gallery/{id}" , [adminController::class,'upload_room_gallery']);
 Route::post("import_users" , [adminController::class,'uploadUsers']);
+Route::get("/manage_shop_cat" , [adminController::class ,'manage_shop_cat']);
+Route::post("/add_shop_cat" , [adminController::class ,'add_shop_cat']);
+Route::get('change_shop_cats/{id}', [adminController::class, 'change_shop_cats']);
+Route::get("delete_shop_cats/{id}" , [adminController::class,'delete_shop_cats']);
+Route::get('/manage_shop_products' , [adminController::class , 'manage_shop_products']);
+Route::post("/add_product" , [adminController::class ,'add_products']);
+Route::get('change_pr_status/{id}', [adminController::class, 'change_pr_status']);
+Route::get("delete_pr/{id}" , [adminController::class,'delete_pr']);
+Route::get("upload_pr_gallery/{id}" , [adminController::class,'upload_pr_gallery']);
+Route::post("upload_gallery_pr/{id}" , [adminController::class,'upload_gallery_pr']);
 // adminn routes for pg ends
 // admin routes
 // authentication

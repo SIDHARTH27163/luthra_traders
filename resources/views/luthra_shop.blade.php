@@ -7,7 +7,8 @@
   @vite('resources/css/app.css')
   
 
-  
+    
+  @vite('resources/css/main.css')
   @vite('resources/js/app.js')
 </head>
 <body class="overflow-x-hidden">
@@ -185,74 +186,96 @@
           </div>
       </div>
   </section>
+
+{{-- crousel --}}
+<section class="">
+    <div class="slider max-w-7xl mx-auto">
+        <input type="radio" name="toggle" id="btn-1" checked>
+        <input type="radio" name="toggle" id="btn-2">
+        <input type="radio" name="toggle" id="btn-3">
+      
+        <div class="slider-controls">
+          <label for="btn-1"></label>
+          <label for="btn-2"></label>
+          <label for="btn-3"></label>
+        </div>
+      
+        <ul class="slides">
+          <li class="slide ">
+            <div class="slide-content p-4">
+              <h2 class="slide-title">Slide #1</h2>
+              <p class="slide-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat dignissimos commodi eos totam perferendis possimus dolorem, deleniti vitae harum? Enim.</p>
+              <a href="#" class="slide-link">Learn more</a>
+            </div>
+            <p class="slide-image py-2">
+              <img src="{{ asset('images/gallery2.jpg') }} " alt="stuff" width="320" height="240">
+            </p>
+          </li>
+          <li class="slide ">
+            <div class="slide-content p-4">
+              <h2 class="slide-title">Slide #2</h2>
+              <p class="slide-text">Nisi ratione magni ea quis animi incidunt velit voluptate dolorem enim possimus, nam provident excepturi ipsam nihil molestiae minus delectus!</p>
+              <a href="#" class="slide-link">Amazing deal</a>
+            </div>
+            <p class="slide-image py-2">
+              <img src="{{ asset('images/gallery2.jpg') }}" alt="stuff" width="320" height="240">
+            </p>
+          </li>
+          <li class="slide ">
+            <div class="slide-content p-4">
+              <h2 class="slide-title">Slide #3</h2>
+              <p class="slide-text">Quisquam quod ut quasi, vero obcaecati laudantium asperiores corporis ad atque. Expedita fugit dicta maxime vel doloribus sequi, facilis dignissimos.</p>
+              <a href="#" class="slide-link">Get started</a>
+            </div>
+            <p class="slide-image py-2">
+              <img src="{{ asset('images/gallery2.jpg') }} " alt="stuff" width="320" height="240">
+            </p>
+          </li>
+        </ul>
+      </div>
+</section>
+{{-- crousel ends --}}
+
   {{-- product categories --}}
 
 
-  <section class="flex items-center py-24 font-Raleway bg-slate-950 bg-cover bg-transparent "  style="background-image: url('{{ asset('images/bg.jpg') }}');">
-    <div class="justify-center max-w-6xl px-4  mx-auto ">
-      <h1 class="relative mb-4 text-3xl font-black leading-tight text-black sm:text-6xl xl:mb-8">Explore The Next Great Categories Of Luthra Traders</h1>
-            <p class="pr-0 mb-8 text-base text-gray-800 sm:text-lg xl:text-xl lg:pr-20">Are you ready to start your
-                your journey with luthra traders</p>
-        <div class="grid grid-cols-3 justify-center gap-5">
-            <div class="w-full">
-                <div class="p-5 bg-white rounded-b shadow dark:bg-gray-700">
-                    <a href="#"
-                        class="px-4 py-1 text-sm text-green-600 rounded-full dark:text-gray-400 dark:bg-gray-600 bg-green-50">13
-                        march,2022</a>
-                    <h2 class="my-3 text-2xl font-bold dark:text-gray-300">Lorem ipsum dor amet</h2>
-                    <p class="mb-3 leading-loose text-gray-500 dark:text-gray-400">Lorem ipsum dor amet oides
-                        ispisciousas amet
-                    </p>
-                    <a href="#"
-                        class="inline-flex items-center text-lg font-semibold text-green-600 dark:hover:text-gray-300 dark:text-gray-400 hover:text-green-800">
-                        Learn more
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
-                            class="ml-2 bi bi-arrow-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                        </svg>
-                    </a>
-                </div>
+  <section class="flex items-center py-7 font-Raleway bg-slate-950 bg-cover bg-transparent "  >
+    <div class="container mx-auto max-w-7xl">
+        <h1 class="relative mb-4 text-3xl font-black leading-tight text-black sm:text-6xl xl:mb-8">Explore The Next Great Products For Luthra Traders</h1>
+        <p class="pr-0 mb-8 text-base text-gray-800 sm:text-lg xl:text-xl lg:pr-20">Are you ready to start your
+            your journey with luthra traders</p>
+        <div class="grid grid-cols-3 gap-3">
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="{{ asset('images/gallery2.jpg') }}" alt="category 1" class="w-full">
+                <a href="#"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Bedroom</a>
             </div>
-            <div class="w-full">
-                <div class="p-5 bg-white rounded-b shadow dark:bg-gray-700">
-                    <a href="#"
-                        class="px-4 py-1 text-sm text-green-600 rounded-full dark:text-gray-400 dark:bg-gray-600 bg-green-50">
-                        14 march,2022</a>
-                    <h2 class="my-3 text-2xl font-bold dark:text-gray-300">Lorem ipsum dor amet</h2>
-                    <p class="mb-3 leading-loose text-gray-500 dark:text-gray-400">Lorem ipsum dor amet oides
-                        ispisciousas amet
-                    </p>
-                    <a href="#"
-                        class="inline-flex items-center text-lg font-semibold text-green-600 dark:hover:text-gray-300 dark:text-gray-400 hover:text-green-800">
-                        Learn more
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
-                            class="ml-2 bi bi-arrow-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                        </svg>
-                    </a>
-                </div>
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="{{ asset('images/gallery2.jpg') }}" alt="category 1" class="w-full">
+                <a href="#"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Mattrass</a>
             </div>
-            <div class="w-full">
-                <div class="p-5 bg-white rounded-b shadow dark:bg-gray-700">
-                    <a href="#"
-                        class="px-4 py-1 text-sm text-green-600 rounded-full dark:text-gray-400 dark:bg-gray-600 bg-green-50">
-                        15 march,2022</a>
-                    <h2 class="my-3 text-2xl font-bold dark:text-gray-300">Lorem ipsum dor amet</h2>
-                    <p class="mb-3 leading-loose text-gray-500 dark:text-gray-400">Lorem ipsum dor amet oides
-                        ispisciousas amet
-                    </p>
-                    <a href="#"
-                        class="inline-flex items-center text-lg font-semibold text-green-600 dark:hover:text-gray-300 dark:text-gray-400 hover:text-green-800">
-                        Learn more
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
-                            class="ml-2 bi bi-arrow-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                        </svg>
-                    </a>
-                </div>
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="{{ asset('images/gallery2.jpg') }}" alt="category 1" class="w-full">
+                <a href="#"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Outdoor
+                </a>
+            </div>
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="{{ asset('images/gallery2.jpg') }}" alt="category 1" class="w-full">
+                <a href="#"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Sofa</a>
+            </div>
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="{{ asset('images/gallery2.jpg') }}" alt="category 1" class="w-full">
+                <a href="#"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Living
+                    Room</a>
+            </div>
+            <div class="relative rounded-sm overflow-hidden group">
+                <img src="{{ asset('images/gallery2.jpg') }}" alt="category 1" class="w-full">
+                <a href="#"
+                    class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition">Kitchen</a>
             </div>
         </div>
     </div>

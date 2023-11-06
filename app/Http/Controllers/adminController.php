@@ -13,6 +13,9 @@ use App\Models\Category;
 use App\Models\Facilitycategory;
 use App\Models\Room;
 use App\Models\Gallery_Room;
+use App\Models\Shop_category;
+use App\Models\Product;
+use App\Models\Gallery_product;
 use App\Imports\UsersImport;
 use Image;
 use Excel;
@@ -527,4 +530,280 @@ public function change_r_status($id , Request  $req){
 
     return Redirect::to('get_pg_data')->with('success', 'Users Data Exported Successfully');
 }
+
+
+
+public function manage_shop_cat(){
+    try{
+        $data = DB::table('shop_categories')
+
+      
+        ->orderBy('id', 'desc')
+        ->get();
+
+        // , ['users_data'=>$data]
+        return view('admin.manage_shop_cat' , ['data'=>$data] );
+    } catch (\Exception $e) {
+                dd($e);
+            }
+}
+
+
+
+public function add_shop_cat(Request $request){
+    try{
+        $data = $request->only('category' , 'image');
+        $validator = Validator::make($data, [
+
+            'category' => 'required|string|unique:shop_categories',
+
+            'image' => 'required|image|mimes:png,jpg,jpeg|max:3000'
+        ]);
+
+        //Send failed response if request is not valid
+        if ($validator->fails()) {
+
+            // get the error messages from the validator
+            $messages = $validator->messages();
+
+            // redirect our user back to the form with the errors from the validator
+            // return Redirect::to('signup')
+            //     ->withErrors($messages);
+            return redirect()->back()->withErrors($messages);
+            //return ($messages);
+        }else{
+            $image = $request->file('image');
+            $input = time().'.'.$image->getClientOriginalExtension();
+            //your directory to upload
+            $destinationPath = public_path('/shop_images');
+            //save and resize image
+            $img = Image::make($image->getRealPath());
+            $img->resize(600,600, function ($constraint) {
+              $constraint->aspectRatio();
+              })->save($destinationPath.'/'.$input);
+
+
+
+              $blog=Shop_category::create([
+                'category'=>$request->category,
+                'image'=>$input,
+               
+                
+            ]);
+           
+            return redirect()->back()->with('success', 'Category Added Successfully');
+        }
+
+        
+    }catch(\Exception $e){
+        dd($e);
+    }
+}
+
+
+public function change_shop_cats(Request $request , $id){
+
+try{
+        $data=Shop_category::find($id);
+
+        if ($data) {
+            if ($data->status == 0) {
+                $data->status = 1;
+                $data->save();
+
+                return redirect()->back()->with('success', 'Shop Category Marked Available');
+            } else {
+                $data->status = 0;
+                $data->save();
+                return redirect()->back()->with('message', 'Shop Category Marked Not Available');
+            }
+        } else {
+            return redirect()->back()->with('message', 'Shop Category not found');
+        }
+     }catch(\Exception $e){
+                dd($e);
+            }
+}
+
+public function delete_shop_cats(Request $request , $id){
+
+    try{
+        DB::table('shop_categories')->where('id', $id)->delete();
+
+        return redirect()->back()->with('message', 'Category Deleted');
+
+            // return redirect()->back()->with('message', 'Tourist Place Status Apprved');
+    }catch(\Exception $e){
+        dd($e);
+    }
+    }
+public function manage_shop_products(){
+    try{
+        $data = DB::table('shop_categories')
+
+      
+        ->orderBy('id', 'desc')
+        ->get();
+        $data1 = DB::table('products')
+
+      
+        ->orderBy('p_name')
+        ->paginate(10);
+
+        // , ['users_data'=>$data]
+        return view('admin.manage_products' , ['data'=>$data , 'p_data' =>$data1] );
+    } catch (\Exception $e) {
+                dd($e);
+            }
+}
+
+public function add_products(Request $request ){
+try{
+    $data = $request->only('category' , 'product_name' , 'brand_name' ,
+     'model_name' , 'original_price' , 'discount' , 'emi_cost' , 'replacement_time' , 'warranty_policy' , 'description');
+    $validator = Validator::make($data, [
+
+        'category' => 'required|string',
+        'product_name' => 'required|string',
+        'brand_name'=>'required|string',
+        'model_name'=>'required|string',
+        // 'network_provider'=>'required|string',
+        // 'operating_system'=>'required|string',
+        // 'cellular_technology'=>'required|string',
+        'original_price'=>'required|string',
+        'discount'=>'required|string',
+        'emi_cost'=>'required|string',
+        'replacement_time'=>'required|string',
+        'warranty_policy'=>'required|string',
+        'description'=>'required|string'
+
+        
+    ]);
+
+    //Send failed response if request is not valid
+    if ($validator->fails()) {
+
+        // get the error messages from the validator
+        $messages = $validator->messages();
+
+        // redirect our user back to the form with the errors from the validator
+        // return Redirect::to('signup')
+        //     ->withErrors($messages);
+        return redirect()->back()->withErrors($messages);
+        //return ($messages);
+    }else{
+        Product::create([
+            'category'=>$request->category,
+            'p_name'=>$request->product_name,
+            'b_name'=>$request->brand_name,
+            'm_name'=>$request->model_name,
+            // 'network'=>$request->network_provider,
+            // 'os'=>$request->operating_system,
+            // 'cellular'=>$request->cellular_technology,
+            'price'=>$request->original_price,
+            'discount'=>$request->discount,
+            'emi_cost'=>$request->emi_cost,
+            'r_time'=>$request->replacement_time,
+            'w_policy'=>$request->warranty_policy,
+            'desc'=>$request->description
+           
+            
+        ]);
+       
+        return redirect()->back()->with('success', 'Product Added Successfully');
+
+    }
+} catch (\Exception $e) {
+    dd($e);
+}
+}
+
+public function delete_pr($id , Request $request){
+    try{
+        DB::table('products')->where('id', $id)->delete();
+
+        return redirect()->back()->with('message', 'Product Deleted');
+
+            // return redirect()->back()->with('message', 'Tourist Place Status Apprved');
+    }catch(\Exception $e){
+        dd($e);
+    }
+}
+
+public function change_pr_status($id , Request  $req){
+    try{
+        $data=Product::find($id);
+
+        if ($data) {
+            if ($data->status == 0) {
+                $data->status = 1;
+                $data->save();
+
+                return redirect()->back()->with('success', 'Product Marked Available');
+            } else {
+                $data->status = 0;
+                $data->save();
+                return redirect()->back()->with('message', 'Facilitycategory Marked Un-Available');
+            }
+        } else {
+            return redirect()->back()->with('message', 'Facilitycategory not found');
+        }
+     }catch(\Exception $e){
+                dd($e);
+            }
+        }
+
+
+
+        public function upload_pr_gallery($id , Request $request){
+            return view('admin.upload_pr_gallery' , ['id'=>$id]);
+        }
+        public function upload_gallery_pr($id , Request $request){
+            try {
+                $data = $request->only('files');
+                $validator = Validator::make($data, [
+                    'files' => 'required|array|max:6',
+                    'files.*' => 'required|image|mimes:jpeg,png,jpg',  // Add allowed mime types and max size as per your requirements
+                ]);
+
+                // Send a failed response if the request is not valid
+                if ($validator->fails()) {
+                    $messages = $validator->messages();
+                    return redirect()->back()->withErrors($messages);
+                } else {
+                    if ($request->hasFile('files')) {
+                        foreach ($request->file('files') as $file) {
+                            // Generate a unique name for each image
+                            $name = uniqid() . '.' . $file->getClientOriginalExtension();
+                            $destinationPath = public_path('/p_gallery');
+                            $img = Image::make($file->getRealPath());
+                            $img->resize(500, 500, function ($constraint) {
+                                $constraint->aspectRatio();
+                            })->save($destinationPath . '/' . $name);
+
+                            // Check if the image already exists in the database
+                            $existingImage = Gallery_product::where('image', $name)->where('p_id', $id)->first();
+
+                            if (!$existingImage) {
+                                Gallery_product::create([
+                                    'image' => $name,
+                                    'p_id' => $id
+                                ]);
+                            }
+                        }
+                    }
+
+                    DB::table('products')
+                    ->where('id', $id)
+                    ->update(['gallery' => "1"]);
+                    return Redirect::to('manage_shop_products')->with('success', 'Gallery Uploaded Successfully');
+
+                }
+            } catch (\Exception $e) {
+                dd($e);
+            }
+        }
+
+
+
 }

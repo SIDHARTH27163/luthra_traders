@@ -229,7 +229,7 @@
                  
                   <option >required</option>
                   <option >Not required</option>
-                f
+                
                 
                 </select>
                 @if($errors->has('deposite_amount'))
