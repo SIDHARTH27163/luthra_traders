@@ -71,7 +71,7 @@
         </div>
     </div>
 </div>
-<section class="bg-gray-50 dark:bg-gray-800">
+<section class="bg-white dark:bg-gray-800">
   <div class="max-w-screen-xl px-4 py-6 mx-auto space-y-2 lg:space-y-20 lg:py-12 lg:px-6">
       <!-- Row -->
       <div class="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
@@ -98,7 +98,7 @@
               </ul>
               <p class="mb-8 font-light lg:text-xl font-Roboto">Sustainability and Social Responsibility</p>
           </div>
-          <img class="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex" src="{{ asset('images/logo.png') }}" alt="dashboard feature image">
+          <img class="hidden w-full mb-4 rounded-lg lg:mb-0  shadow-xl lg:flex" src="{{ asset('images/lbg1.png') }}" alt="Luthra rounded feature image">
       </div>
       
   </div>
@@ -131,8 +131,7 @@
                   What We Offer
                </h2>
                <p class="text-base text-body-color">
-                  There are many variations of passages of Lorem Ipsum available
-                  but the majority have suffered alteration in some form.
+                We offer a wide range of products and services to cater to your diverse needs. Our commitment is to provide you with top-notch quality and exceptional value. Whether you're looking for cutting-edge technology solutions, personalized consulting, or innovative products
                </p>
             </div>
          </div>
@@ -176,8 +175,8 @@
 </section>
 <!-- ====== Services Section End -->
 <section class="py-6">
-    <div class="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
-        <img class="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex" src="{{ asset('images/bg.png') }}" alt="feature image 2">
+    <div class="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16 max-w-7xl mx-auto">
+        <img class="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex shadow-lg" src="{{ asset('images/lbg2.png') }}" alt="feature image 2">
         <div class="text-gray-500 sm:text-lg dark:text-gray-400">
             <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">What features we provide with our services</h2>
             <p class="mb-8 font-light lg:text-xl font-Raleway">We take pride in offering a comprehensive range of features and benefits with our services, all designed to enhance your experience and meet your specific needs. </p>

@@ -1,36 +1,7 @@
 @extends('admin.layouts.master')
 @section('content')
 <div class="p-4  rounded-lg  border-2 border-slate-900 border-dashed h-auto">
-    <div class="grid grid-cols-3 gap-4 mb-4">
-       <div class="flex items-center justify-center h-24 rounded  bg-rose-600">
-          <p class="text-2xl text-gray-400 ">
-             <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-             </svg>
-          </p>
-       </div>
-       <div class="flex items-center justify-center h-24 rounded  bg-orange-600">
-          <p class="text-2xl text-gray-400 ">
-             <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-             </svg>
-          </p>
-       </div>
-       <div class="flex items-center justify-center h-24 rounded  bg-green-600">
-          <p class="text-2xl text-gray-400 ">
-             <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-             </svg>
-          </p>
-       </div>
-
-
-
-
-
-
-
-    </div>
+    
 
    {{-- form starts --}}
 
@@ -84,7 +55,7 @@
         </div>
        {{-- message Block ends --}}
        {{-- form for add location starts --}}
-       <form action="add_product" method="post" class="w-full font-Roboto">
+       <form action="add_product" enctype="multipart/form-data" method="post" class="w-full font-Roboto">
         @csrf
         @method('post')
         <div class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-2">
@@ -177,6 +148,13 @@
     @endif
               </div>
               <div class="mb-2">
+                <label for="name" class="block mb-2 text-lg font-semibold text-gray-900 dark:text-white">Product Image</label>
+                <input type="file" name="image" id="text" class="bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="eg:1Month ,  1 week">
+                @if($errors->has('image'))
+                <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('image') }}</p>
+    @endif
+              </div>
+              <div class="mb-2">
                 <label for="name" class="block mb-2 text-lg font-semibold text-gray-900 dark:text-white">Warranty Policy</label>
                 <select id="countries" name="warranty_policy" class="bg-blue-100 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected value="">Choose one</option>
@@ -235,8 +213,12 @@
                    <th scope="col" class="px-3 py-3">
                     Status
                  </th>
-
-                
+                 <th scope="col" class="px-3 py-3">
+                  Catalog
+                </th>
+                 <th scope="col" class="px-3 py-3">
+                 Gallery Status
+               </th>
 
 
 
@@ -246,7 +228,9 @@
           <th scope="col" class="px-3 py-3">
             Product Name
          </th>
-
+<th scope="col" class="px-3 py-2">
+  Image
+</th>
           <th scope="col" class="px-3 py-3">
             Price
           </th>
@@ -275,6 +259,24 @@
 
                  @endif
                </td>
+               <td class="px-3 py-4">
+                @if(  $data->catalog == 1)
+                <p class="text-green-500">Added</p>
+               @else
+               <p class="text-red-500"> Not Added</p>
+
+
+                @endif
+              </td>
+               <td class="px-3 py-4">
+               @if(  $data->gallery == 1)
+               <p class="text-green-500">Uploaded</p>
+              @else
+              <p class="text-red-500">Not Uploaded</p>
+
+
+               @endif
+             </td>
 
                <td class="px-3 py-4">
                   {{$data->category}}
@@ -286,6 +288,10 @@
                 <td class="px-3 py-4">
                    {{$data->p_name}}
                 </td>
+                <td>
+                  <img src="{{ asset('shop_images/'.$data->image) }}" style="height: 50px;width:50px;">
+                                       
+                 </td>
                 <td class="px-3 py-4">
                     {{$data->price}}
                  </td>
@@ -300,6 +306,8 @@
                    
                    <a href="{{url('upload_pr_gallery/'.$data->id)}}" class="font-medium text-blue-400 dark:text-blue-500 hover:underline">Upload galllery</a><br>
                    
+                   <a href="{{url('change_c_status/'.$data->id)}}" class="font-medium text-green-400 dark:text-green-500 hover:underline">Change Catalog Status</a><br>
+                   
 
 
 
@@ -309,10 +317,7 @@
             
            </tbody>
        </table>
-       <div class="p-2 ">
-
-          {{-- {!! $udata->links() !!} --}}
-       </div>
+     
     </div>
 </div>
 {{-- table ends --}}

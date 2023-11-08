@@ -1,10 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\authController;
 use App\Http\Controllers\serviceController;
 use App\Http\Controllers\homepageController;
 use App\Http\Controllers\adminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,25 +29,35 @@ Route::get("luthra_pg/{id}" , [homepageController::class,'room_detail']);
 Route::get('/luthra_cabletv', function () {
     return view('cable_tv');
 });
-Route::get('/shop', function () {
-    return view('luthra_shop');
-});
-Route::post("/send_request" , [homepageController::class ,'send_request']);
 
+Route::post("/send_request" , [homepageController::class ,'send_request']);
+Route::get("view_product/{id}" , [homepageController::class,'view_product']);
+Route::get("view_category/{text}" , [homepageController::class,'view_category']);
 Route::get('/signup', function () {
     return view('auth.signup');
 });
-Route::get('/signin', function () {
-    return view('auth.signin');
+Route::get('signin', function () {
+    // $user=Auth::user();
+
+if(!Auth::check()){
+return view('auth.signin');
+}
+
+
+    return redirect( '/admin'
+);
+
+
 });
+Route::get("/logout" , [authController::class,'logout']);
 Route::post("signup" , [authController::class,'signup']);
-Route::post("signin" , [authController::class,'signin']);
+Route::post("/signin" , [authController::class,'signin']);
 
 // admin routes
 // Route::get('/admin', function () {
 //     return view('admin.index');
 // });
-Route::get("admin" , [adminController::class,'services']);
+Route::get("admin" , [adminController::class,'admin'])->name('admin')->middleware('admin');
 Route::get("manage_services" , [serviceController::class,'services']);
 Route::post("add_service" , [serviceController::class,'add_service']);
 Route::get("change_service_status/{id}" , [serviceController::class,'change_service_status']);
@@ -86,6 +98,15 @@ Route::get('change_pr_status/{id}', [adminController::class, 'change_pr_status']
 Route::get("delete_pr/{id}" , [adminController::class,'delete_pr']);
 Route::get("upload_pr_gallery/{id}" , [adminController::class,'upload_pr_gallery']);
 Route::post("upload_gallery_pr/{id}" , [adminController::class,'upload_gallery_pr']);
+Route::get("change_c_status/{id}" , [adminController::class,'change_c_status']);
+Route::get('/manage_shop_banner' , [adminController::class , 'manage_shop_banner']);
+Route::post("/add_banner" , [adminController::class ,'add_banner']);
+Route::get('change_banner_status/{id}', [adminController::class, 'change_banner_status']);
+Route::get("delete_banner/{id}" , [adminController::class,'delete_banner']);
+
+Route::get("cabletv_req" , [adminController::class,'cabletv_req']);
+Route::get('change_cable_req_status/{id}', [adminController::class, 'change_cable_req_status']);
+Route::get("delete_cable_req/{id}" , [adminController::class,'delete_c_req']);
 // adminn routes for pg ends
 // admin routes
 // authentication
@@ -94,5 +115,11 @@ Route::post("upload_gallery_pr/{id}" , [adminController::class,'upload_gallery_p
 Route::get("enquire_service/{id}" , [homepageController::class ,'enquire']);
 
 Route::post("send_enquiry/{id}" , [homepageController::class ,'send_enquiry']);
+// Route::get('/shop', function () {
+//     return view('luthra_shop');
+// });
 
+Route::get("/shop" , [homepageController::class ,'shop']);
+Route::get("/products" , [homepageController::class ,'products']);
 // user routes ends
+Route::any("search" , [HomepageController::class,'search']);

@@ -10,19 +10,18 @@
 </head>
 <body class="overflow-x-hidden">
     @include('components/header')
-    <section class="flex items-center h-screen bg-gray-50 font-poppins ">
-        <div class="justify-center flex-1 max-w-6xl px-4 py-4 mx-auto lg:py-10 md:px-7">
-        <div class="relative  py-24 bg-gradient-to-r from-purple-900 via-rose-900 to-sky-900 rounded-3xl">
+    <section class="flex items-center pt-12 bg-gray-50 font-poppins ">
+        <div class="justify-center flex-1 max-w-6xl px-4 py-5 mx-auto lg:py-16 md:px-7">
+        <div class="relative  py-16 bg-gradient-to-r from-purple-900 via-rose-900 to-sky-900 rounded-3xl">
         <div class="max-w-lg px-4 mx-auto text-left">
-        <h2 class="flex flex-wrap items-center justify-center text-4xl font-bold tracking-wide text-gray-100 my-7 dark:text-gray-300 md:text-6xl">
+        <h2 class="flex flex-wrap items-center justify-center text-4xl font-bold tracking-wide text-gray-100 my-2 dark:text-gray-300 md:text-6xl">
         Join us Today
         </h2>
-        <p class="mb-8 text-center font-medium text-gray-300 dark:text-gray-400 md:text-lg">
-        Lorem ipsum dor amet set ispisucs ipsum amet dor lorem isodispusLorem ipsum dor amet set
-        ispisucs ipsum amet dor lorem isodispus
+        <p class="mb-3 text-cent font-medium text-gray-300 dark:text-gray-400 md:text-lg text-justify">
+            Join us today and embark on a journey of discovery and growth. We offer a unique opportunity to be part of a vibrant community that values your contributions and encourages your development. Whether you're a seasoned professional or just starting your career, there's a place for you here
         </p>
         <div class="flex flex-wrap items-center justify-center">
-        <button class="inline-flex items-center px-4 py-2 my-4 font-semibold text-gray-100 bg-transparent border border-white rounded-3xl hover:bg-white hover:text-black">
+        <button class="inline-flex items-center px-4 py-2 my-1 font-semibold text-gray-100 bg-transparent border border-white rounded-3xl hover:bg-white hover:text-black">
         <span>Find out more</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 ml-3 bi bi-arrow-right" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z">
@@ -32,7 +31,7 @@
         </div>
         </div>
         <div class="absolute left-0 items-center justify-center hidden px-4 transform -translate-y-1/2 xl:-translate-x-1/2 lg:inline-flex top-1/2 ">
-        <img src="{{ asset('images/cabletv.png') }}" class="object-cover  w-52 h-52sss xl:w-80 xl:h-80 rounded-3xl ">
+        <img src="{{ asset('images/cabletv.png') }}" class="object-cover  w-52 h-52 xl:w-80 xl:h-80 rounded-3xl ">
         </div>
         <div class="absolute top-0 right-0 items-center justify-center hidden lg:inline-flex">
         <svg width="290" height="166" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -95,9 +94,10 @@
                             <h2 class="max-w-xl mt-2 mb-6 text-2xl font-bold  md:text-4xl">
                                 Cable Tv Service</h2>
                             
-                            <p class="max-w-md mb-8 text-gray-800 font-semibold font-Raleway text-lg">
-                                Lorem ispum dor amet Lorem ispum dor amet Lorem ispum dor amet Lorem ispum dor amet
-                                Lorem ispum dor amet Lorem ispum dor amet Lorem ispum dor amet Lorem ispum dor amet
+                            <p class="max-w-md mb-8 text-gray-800 font-semibold font-Raleway text-lg text-justify">
+                                We provide a supportive environment where you can thrive, learn, and collaborate. Your ideas and creativity are not just welcome; they're celebrated. We understand that diversity and inclusion are fundamental to success, and we're committed to fostering an inclusive culture where everyone has a voice.
+
+
                             </p>
                             <p class="inline-block mb-8 text-4xl font-bold text-gray-700 dark:text-gray-400 ">
                                 <span>$1000.99</span>

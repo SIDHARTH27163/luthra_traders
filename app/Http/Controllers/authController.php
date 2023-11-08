@@ -84,9 +84,9 @@ class authController extends Controller
 
                     switch($user_role){
                 case 0:
-                    return('admin_dashboard');
+                    return redirect('/admin');
                     case 1:
-                        return('seller');
+                        return redirect('/admin');
                 case 2:
                     return redirect('/');
                 //     break;
@@ -105,5 +105,16 @@ class authController extends Controller
            dd($e);
     }
 
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+     
+        $request->session()->invalidate();
+     
+        $request->session()->regenerateToken();
+        $request->session()->forget('user');
+        return redirect('/');
     }
 }

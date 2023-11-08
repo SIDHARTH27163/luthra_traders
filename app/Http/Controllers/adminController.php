@@ -15,6 +15,8 @@ use App\Models\Room;
 use App\Models\Gallery_Room;
 use App\Models\Shop_category;
 use App\Models\Product;
+use App\Models\Product_banner;
+use App\Models\Cable_request;
 use App\Models\Gallery_product;
 use App\Imports\UsersImport;
 use Image;
@@ -23,6 +25,45 @@ use Excel;
 
 class adminController extends Controller
 {
+
+    public function admin(){
+        try{
+            $queries_data = DB::table('queries')
+    ->join('services', 'queries.service_id', '=', 'services.id')
+    ->select('services.id as service_id' , 'queries.id as q_id', 'service_name' , 'fname' , 'lname' , 'email' , 'queries.description as desc' , 'phone' ,'queries.status as q_status',)
+    ->where('queries.status', 0)
+    ->orderBy('queries.id', 'desc')
+    ->get();
+           
+            // foreach to increase response time
+            $data = [];
+            foreach($queries_data as $queries_data_data) {
+                $data[] = $queries_data_data;
+
+            }
+
+
+            $data1 = DB::table('product_banners')
+
+      
+            ->orderBy('id', 'desc')
+            ->limit(3)
+            ->get();
+            $data2 = DB::table('products')
+
+      
+            ->orderBy('id' , 'asc')
+            ->limit(5)
+            ->get();
+    
+                //
+            // resppinse time ends
+             return view('admin.index' , ['queries_data'=>$data , 'data'=>$data1 , 'p_data'=>$data2]);
+
+        }catch(\Exception $e){
+            dd($e);
+        }
+    }
     //
     public function change_u_status($id , Request  $req){
         try{
@@ -460,6 +501,64 @@ public function change_r_status($id , Request  $req){
                 dd($e);
             }
         }
+
+
+      public function cabletv_req(){
+        try{
+            $data = DB::table('cable_requests')
+            ->where('status', 0)
+            ->orderBy('id', 'desc')
+            ->get();
+
+            $data1 = DB::table('cable_requests')
+            ->where('status', 1)
+            ->orderBy('id', 'desc')
+            ->get();
+
+            return view('admin.cabletv' , ['data'=>$data , 'data1'=>$data1]);
+        }catch(\Exception $e){
+            dd($e);
+        }
+      }
+
+
+
+      public function change_cable_req_status($id , Request  $req){
+        try{
+            $data=Cable_request::find($id);
+    
+            if ($data) {
+                if ($data->status == 0) {
+                    $data->status = 1;
+                    $data->save();
+    
+                    return redirect()->back()->with('success', 'Cable Request Marked Available');
+                } else {
+                    $data->status = 0;
+                    $data->save();
+                    return redirect()->back()->with('message', 'Cable Request Marked Not Available');
+                }
+            } else {
+                return redirect()->back()->with('message', 'Cable Request not found');
+            }
+         }catch(\Exception $e){
+                    dd($e);
+                }
+            }
+            public function delete_cable_req($id , Request $request){
+                try{
+                    DB::table('cable_requests')->where('id', $id)->delete();
+    
+                    return redirect()->back()->with('message', 'Cable Reques6 Deleted');
+    
+                        // return redirect()->back()->with('message', 'Tourist Place Status Apprved');
+                }catch(\Exception $e){
+                    dd($e);
+                }
+            }
+
+
+
         public function get_pg_data(){
             try{
                 $data = DB::table('users')
@@ -578,7 +677,7 @@ public function add_shop_cat(Request $request){
             $destinationPath = public_path('/shop_images');
             //save and resize image
             $img = Image::make($image->getRealPath());
-            $img->resize(600,600, function ($constraint) {
+            $img->resize(400,400, function ($constraint) {
               $constraint->aspectRatio();
               })->save($destinationPath.'/'.$input);
 
@@ -647,8 +746,8 @@ public function manage_shop_products(){
         $data1 = DB::table('products')
 
       
-        ->orderBy('p_name')
-        ->paginate(10);
+        ->orderBy('id' , 'desc')
+        ->get();
 
         // , ['users_data'=>$data]
         return view('admin.manage_products' , ['data'=>$data , 'p_data' =>$data1] );
@@ -660,7 +759,7 @@ public function manage_shop_products(){
 public function add_products(Request $request ){
 try{
     $data = $request->only('category' , 'product_name' , 'brand_name' ,
-     'model_name' , 'original_price' , 'discount' , 'emi_cost' , 'replacement_time' , 'warranty_policy' , 'description');
+     'model_name' , 'original_price' , 'discount' , 'emi_cost' , 'replacement_time' , 'warranty_policy' , 'description' , 'image');
     $validator = Validator::make($data, [
 
         'category' => 'required|string',
@@ -671,11 +770,12 @@ try{
         // 'operating_system'=>'required|string',
         // 'cellular_technology'=>'required|string',
         'original_price'=>'required|string',
-        'discount'=>'required|string',
+        'discount'=>['required', 'regex:/^\d+(\.\d{1,2})?%$/'],
         'emi_cost'=>'required|string',
         'replacement_time'=>'required|string',
         'warranty_policy'=>'required|string',
-        'description'=>'required|string'
+        'description'=>'required|string',
+        'image' => 'required|image|mimes:png,jpg,jpeg|max:5000'
 
         
     ]);
@@ -692,12 +792,21 @@ try{
         return redirect()->back()->withErrors($messages);
         //return ($messages);
     }else{
+        $image = $request->file('image');
+        $input = time().'.'.$image->getClientOriginalExtension();
+        //your directory to upload
+        $destinationPath = public_path('/shop_images');
+        //save and resize image
+        $img = Image::make($image->getRealPath());
+        $img->resize(600,600, function ($constraint) {
+          $constraint->aspectRatio();
+          })->save($destinationPath.'/'.$input);
         Product::create([
             'category'=>$request->category,
             'p_name'=>$request->product_name,
             'b_name'=>$request->brand_name,
             'm_name'=>$request->model_name,
-            // 'network'=>$request->network_provider,
+            'image'=>$input,
             // 'os'=>$request->operating_system,
             // 'cellular'=>$request->cellular_technology,
             'price'=>$request->original_price,
@@ -803,6 +912,147 @@ public function change_pr_status($id , Request  $req){
                 dd($e);
             }
         }
+
+        public function change_c_status($id , Request  $req){
+            try{
+                $data=Product::find($id);
+        
+                if ($data) {
+                    if ($data->status == 0) {
+
+                        return redirect()->back()->with('message', 'Product Must Be Avaiable First');
+                    } else{
+                        if ($data->catalog == 0) {
+                            $data->catalog = 1;
+                            $data->save();
+            
+                            return redirect()->back()->with('success', 'Product Added To Catalog');
+                        } else {
+                            $data->catalog = 0;
+                            $data->save();
+                            return redirect()->back()->with('message', 'Product Removed From Catalog');
+                        }
+                    }
+                } else {
+                    return redirect()->back()->with('message', 'Product not found');
+                }
+             }catch(\Exception $e){
+                        dd($e);
+                    }
+                }
+public function manage_shop_banner(Request $request ){
+
+try{
+    $data = DB::table('product_banners')
+
+      
+    ->orderBy('id', 'desc')
+    ->get();
+    // , ['data'=>$data , 'p_data' =>$data1]
+    return view('admin.manage_banner', ['data'=>$data]  );
+}catch(\Exception $e){
+    dd($e);
+}
+
+
+}
+public function add_banner(Request $request ){
+
+    try{
+        // , ['data'=>$data , 'p_data' =>$data1]
+        $data = $request->only('product_discount' , 'product_name'  ,
+        'image');
+       $validator = Validator::make($data, [
+   
+           'product_discount' => ['required', 'regex:/^\d+(\.\d{1,2})?%$/'],
+           'product_name' => 'required|string',
+           
+           // 'network_provider'=>'required|string',
+           // 'operating_system'=>'required|string',
+           // 'cellular_technology'=>'required|string',
+        
+           'image' => 'required|image|mimes:png,jpg,jpeg|max:5000'
+   
+           
+       ]);
+   
+       //Send failed response if request is not valid
+       if ($validator->fails()) {
+   
+           // get the error messages from the validator
+           $messages = $validator->messages();
+   
+           // redirect our user back to the form with the errors from the validator
+           // return Redirect::to('signup')
+           //     ->withErrors($messages);
+           return redirect()->back()->withErrors($messages);
+           //return ($messages);
+       }else{
+        $image = $request->file('image');
+        $input = time().'.'.$image->getClientOriginalExtension();
+        //your directory to upload
+        $destinationPath = public_path('/banner_images');
+        //save and resize image
+        $img = Image::make($image->getRealPath());
+        $img->resize(300,300, function ($constraint) {
+          $constraint->aspectRatio();
+          })->save($destinationPath.'/'.$input);
+
+
+
+          Product_banner::create([
+            'p_name'=>$request->product_name,
+            'discount'=>$request->product_discount,
+            'image'=>$input,
+           
+            
+        ]);
+       
+        return redirect()->back()->with('success', 'Product Added Successfully');
+       }
+    }catch(\Exception $e){
+        dd($e);
+    }
+    
+    
+    }
+
+    public function delete_banner($id , Request $request){
+        try{
+            DB::table('product_banners')->where('id', $id)->delete();
+    
+            return redirect()->back()->with('message', 'Product Deleted');
+    
+                // return redirect()->back()->with('message', 'Tourist Place Status Apprved');
+        }catch(\Exception $e){
+            dd($e);
+        }
+    }
+    
+    public function change_banner_status($id , Request  $req){
+        try{
+            $data=Product_banner::find($id);
+    
+            if ($data) {
+                if ($data->status == 0) {
+                    $data->status = 1;
+                    $data->save();
+    
+                    return redirect()->back()->with('success', 'Product Banner Marked Active');
+                } else {
+                    $data->status = 0;
+                    $data->save();
+                    return redirect()->back()->with('message', 'Product Banner Marked Un-Active');
+                }
+            } else {
+                return redirect()->back()->with('message', 'Product Banner not found');
+            }
+         }catch(\Exception $e){
+                    dd($e);
+                }
+            }
+    
+
 
 
 
