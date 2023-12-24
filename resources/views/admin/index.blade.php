@@ -26,9 +26,7 @@
 
     </div>
 
-   {{-- form starts --}}
-
-   <div class="w-full p-4 ">
+    <div class="w-full p-4 ">
 
    
       <div class="h-full  w-full  flex flex-col  items-center justify-center ">
@@ -85,6 +83,177 @@
       </div>
   </div>
 
+
+
+  <div class="w-full p-4 ">
+
+   <p class="toggleColour text-gray-900 text-2xl  font-bold underline py-2"> Review Request Waiting For Approvals</p>
+   <div class="relative overflow-auto shadow-md sm:rounded-lg">
+      <table class="w-full text-sm text-left text-gray-500 ">
+          <thead class="text-xs text-gray-100 uppercase bg-gray-700 ">
+              <tr>
+                  <th scope="col" class="px-3 py-3">
+                     Index
+                  </th>
+
+                  <th scope="col" class="px-3 py-3">
+                     Status
+                   </th>
+
+           
+                  <th scope="col" class="px-3 py-3">
+                    Name
+                   </th>
+                  
+                    
+                      
+
+                          
+                               <th scope="col" class="px-3 py-3">
+                               Review
+                                </th>
+
+
+           <th scope="col" class="px-3 py-3">
+           Action
+         </th>
+              </tr>
+          </thead>
+          <tbody>
+
+            @foreach ($r_data as $i=> $r_tata)
+
+            <tr class=" border-b bg-gray-900 border-gray-700 text-white font-semibold">
+               <th scope="row" class="px-3 py-4 font-medium  whitespace-nowrap text-white">
+                  {{$i}}
+               </th>
+
+               <td class="px-3 py-4">
+                 @if(  $r_tata->status == 1)
+                 <p class="text-green-500">Approved</p>
+                @else
+                <p class="text-red-500">Not Approved</p>
+
+
+                 @endif
+               </td>
+
+              
+               <td class="px-3 py-4">
+                   {{$r_tata->name}}
+                </td>
+               
+               
+                <td class="px-3 py-4">
+                 {{$r_tata->review}}
+              </td>
+               <td class="px-1 py-4 text-center">
+                   <a href="{{url('delete_review/'.$r_tata->id)}}" class="font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</a><br>
+
+                   <a href="{{url('change_review_status/'.$r_tata->id)}}" class="font-medium text-orange-400 dark:text-orange-500 hover:underline">Activate/Deactivate</a><br>
+
+              
+               </td>
+           </tr>
+            @endforeach
+
+          </tbody>
+      </table>
+      <div class="p-2 ">
+
+         {{-- {!! $udata->links() !!} --}}
+      </div>
+   </div>
+</div>
+   <div class="w-full p-4 ">
+
+      <p class="toggleColour text-gray-900 text-2xl  font-bold underline py-2"> New Contact Requests</p>
+      <div class="relative overflow-auto shadow-md sm:rounded-lg">
+         <table class="w-full text-sm text-left text-gray-500 ">
+             <thead class="text-xs text-gray-100 uppercase bg-gray-700 ">
+                 <tr>
+                     <th scope="col" class="px-3 py-3">
+                        Index
+                     </th>
+  
+                     <th scope="col" class="px-3 py-3">
+                        Status
+                      </th>
+  
+                    
+                     <th scope="col" class="px-3 py-3">
+                      First Name
+                      </th>
+                      <th scope="col" class="px-3 py-3">
+                          Last Name
+                          </th>
+                          <th scope="col" class="px-3 py-3">
+                              Email
+                              </th>
+  
+                          
+                                  <th scope="col" class="px-3 py-3">
+                               message
+                                   </th>
+  
+              <th scope="col" class="px-3 py-3">
+              Action
+            </th>
+                 </tr>
+             </thead>
+             <tbody>
+  
+               @foreach ($c_data as $i=> $c_data)
+  
+               <tr class=" border-b bg-gray-900 border-gray-700 text-white font-semibold">
+                  <th scope="row" class="px-3 py-4 font-medium  whitespace-nowrap text-white">
+                     {{$i}}
+                  </th>
+  
+                  <td class="px-3 py-4">
+                    @if(  $c_data->status == 1)
+                    <p class="text-green-500">Approved</p>
+                   @else
+                   <p class="text-red-500">Not Approved</p>
+  
+  
+                    @endif
+                  </td>
+  
+                
+                  <td class="px-3 py-4">
+                      {{$c_data->fname}}
+                   </td>
+                   <td class="px-3 py-4">
+                      {{$c_data->lname}}
+                   </td>
+                   <td class="px-3 py-4">
+                      {{$c_data->email}}
+                   </td>
+                  
+                   <td class="px-3 py-4">
+                    {{$c_data->message}}
+                 </td>
+                  <td class="px-1 py-4 text-center">
+                     <a href="{{url('delete_contact_req/'.$c_data->id)}}" class="font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</a><br>
+  
+                     <a href="{{url('change_contact_req_status/'.$c_data->id)}}" class="font-medium text-orange-400 dark:text-orange-500 hover:underline">Activate/Deactivate</a><br>
+  
+                    
+  
+                  </td>
+              </tr>
+               @endforeach
+  
+             </tbody>
+         </table>
+         <div class="p-2 ">
+  
+            {{-- {!! $udata->links() !!} --}}
+         </div>
+      </div>
+     </div>
+  
 
    {{-- form ends --}}
 

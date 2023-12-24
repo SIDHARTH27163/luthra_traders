@@ -10,7 +10,7 @@
 <body class="overflow-x-hidden">
   @include('components/header')
   <div class="bg-cover bg-white" style="background-image: url('{{ asset('images/bg2.jpg') }}');">
-  
+
     <div class="py-28 dark:bg-gray-700 ">
         <div class="max-w-6xl px-4 mx-auto md:px-0 font-poppins">
             <div class="flex flex-wrap items-center px-4">
@@ -21,7 +21,7 @@
                     </span>
                     <h2
                         class="mb-6 text-3xl font-semibold leading-tight tracking-tight text-gray-900 dark:text-gray-300 md:text-5xl lg:text-6xl">
-                        Luthra Pg For 
+                        Luthra Pg
                     </h2>
                     <p class="mb-6 font-medium tracking-wide text-gray-600  md:text-lg">
                         Success is most important part of life and it is determination of having achieved and
@@ -36,7 +36,7 @@
                 </div>
                 <div class="w-full px-4 md:w-1/2">
                     <div class="relative mx-auto md:mr-0 max-w-max">
-                       
+
                         <div class="relative overflow-hidden rounded-7xl">
                             <img src="{{ asset('images/main_pg.jpg') }}" alt=""
                                 class="relative h-96 object-cover w-full  rounded-md">
@@ -96,7 +96,7 @@
         <div>
         <h1 class="px-4 mb-8 text-2xl font-semibold tracking-wide text-gray-700 dark:text-gray-300 ">
         Luthra Pg {{ $data->category }} </h1>
-        
+
         <div class="grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cools-3 grid-cols-2 mb-10 border-b border-gray-200 dark:border-gray-700">
         <div class="w-full px-4 mb-4 ">
         <p class="mb-2 text-sm leading-5 text-gray-600 font-Roboto font-bold dark:text-gray-400 ">
@@ -157,18 +157,18 @@
                 <p class="text-base leading-4 text-rose-600  font-Roboto font-semibold">{{ $data->food }}</p>
                 </div>
         </div>
-       
+
         </div>
         <div class="flex flex-col w-full px-2 space-y-4 md:px-8 ">
         <h2 class="mb-2 text-xl font-semibold text-gray-700 dark:text-gray-400">Room Description</h2>
         <div class="flex items-start justify-between w-full">
-        
+
         <p class="text-md font-popin font-semibold leading-6 text-gray-800 text-justify">{{ $data->desc }}</p>
         </div>
         </div>
         </div>
         </div>
-       
+
         </div>
         <div class="w-full  p-1 flex  items-start justify-center">
             <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="block text-white bg-rose-700 font-Roboto font-bold hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
@@ -198,18 +198,18 @@
             </div>
             <!-- Modal body -->
             <div class="p-6 space-y-6">
-                <form action="/send_enquiry/6" method="post" class="w-full shadow-lg rounded-lg shadow-sky-200 p-2">
+                <form action="/send_enquiry/2" method="post" class="w-full shadow-lg rounded-lg shadow-sky-200 p-2">
                     @csrf
                     @method('post')
                     <div class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-2">
-                       
-                        
-                        
-                        
-                         
-                         
-                        
-                          
+
+
+
+
+
+
+
+
                         <div class="mb-4">
                             <label for="name" class="block mb-2 text-lg  text-gray-900 dark:text-white font-Roboto font-bold">Add First Name </label>
                             <input type="text" name="first_name" id="text" class="bg-blue-100 border border-blue-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="eg:john">
@@ -224,7 +224,7 @@
                         <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('last_name') }}</p>
                 @endif
                 </div>
-            
+
                 <div class="mb-4">
                     <label for="name" class="block mb-2 text-lg  text-gray-900 dark:text-white font-Roboto font-bold">Enter Email </label>
                     <input type="email" name="email" id="text" class="bg-blue-100 border border-blue-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="eg:johdoe@gmail.com">
@@ -239,12 +239,12 @@
                 <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('phone') }}</p>
             @endif
             </div>
-            
+
                     </div>
-            
-                  
+
+
                     <div class="mb-4">
-              
+
                        <label for="message" class="block mb-2 text-lg  text-gray-900 ">Add  Description </label>
                        <textarea id="message" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-blue-100 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  " placeholder="Write your thoughts here..."></textarea>
                        @if($errors->has('description'))
@@ -262,7 +262,7 @@
                 </form>
             </div>
             <!-- Modal footer -->
-      
+
         </div>
     </div>
 </div>
@@ -280,14 +280,14 @@
              <div class="relative rounded-md shadow-sm overflow-hidden group">
                 <img src="{{ asset('rooms_gallery/'.$gallery->image) }}"
                     class="group-hover:origin-center group-hover:scale-110 group-hover:rotate-3 h-[350px] w-full transition duration-500"
-                    alt="">
+                    alt="luhtra pg's">
                 <div class="absolute inset-0 h-[350px] group-hover:bg-black opacity-50 transition duration-500 z-0">
                 </div>
-                
+
             </div>
              @endforeach
-               
-               
+
+
             </div>
         </div>
     </section>
@@ -297,12 +297,11 @@
            <div class=" bg-white shadow-lg rounded-md">
             <h1 class="px-4 mb-8 text-2xl font-semibold tracking-wide text-gray-700 dark:text-gray-300 ">
                 Common Area and Amenities </h1>
-                
+
                 <div class="grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cools-3 grid-cols-2 mb-10 border-b border-gray-200 dark:border-gray-700">
                @foreach ($d as $d )
                <div class="w-full px-4 mb-4  flex  items-center justify-center flex-col p-1 gap-1">
-                <div class="mb-2 text-lg leading-5 text-blue-600 font-Roboto font-bold ">
-                    {!! $d->svg !!} </div>
+
                 <p class="text-sm font-semibold leading-4 font-Roboto text-red-600 text-center">
                {{ $d->facility }}</p>
             <div class="text-base font-Raleway font-bold">
@@ -310,17 +309,17 @@
                 <p class="text-green-500"> Available</p>
                @else
                <p class="text-red-500"> Un-Available</p>
- 
- 
+
+
                 @endif
             </div>
                 </div>
                @endforeach
-                   
-              
-               
-                
-               
+
+
+
+
+
                 </div>
            </div>
         </div>
@@ -329,12 +328,11 @@
             <div class=" bg-white shadow-lg rounded-md">
              <h1 class="px-4 mb-8 text-2xl font-semibold tracking-wide text-gray-700 dark:text-gray-300 ">
                 Food and Kitchen</h1>
-                 
+
                  <div class="grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cools-3 grid-cols-2 mb-10 border-b border-gray-200 dark:border-gray-700">
                 @foreach ($a as $d )
                 <div class="w-full px-4 mb-4  flex  items-center justify-center flex-col p-1 gap-1">
-                 <div class="mb-2 text-lg leading-5 text-blue-600 font-Roboto font-bold ">
-                     {!! $d->svg !!} </div>
+
                  <p class="text-sm font-semibold leading-4 font-Roboto text-red-600 text-center">
                 {{ $d->facility }}</p>
              <div class="text-base font-Raleway font-bold">
@@ -342,17 +340,17 @@
                  <p class="text-green-500"> Available</p>
                 @else
                 <p class="text-red-500"> Un-Available</p>
-  
-  
+
+
                  @endif
              </div>
                  </div>
                 @endforeach
-                    
-               
-                
-                 
-                
+
+
+
+
+
                  </div>
             </div>
          </div>
@@ -360,12 +358,11 @@
             <div class=" bg-white shadow-lg rounded-md">
              <h1 class="px-4 mb-8 text-2xl font-semibold tracking-wide text-gray-700 dark:text-gray-300 ">
                 Other Charges</h1>
-                 
+
                  <div class="grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cools-3 grid-cols-2 mb-10 border-b border-gray-200 dark:border-gray-700">
                 @foreach ($c as $d )
                 <div class="w-full px-4 mb-4  flex  items-center justify-center flex-col p-1 gap-1">
-                 <div class="mb-2 text-lg leading-5 text-blue-600 font-Roboto font-bold ">
-                     {!! $d->svg !!} </div>
+
                  <p class="text-sm font-semibold leading-4 font-Roboto text-red-600 text-center">
                 {{ $d->facility }}</p>
              <div class="text-base font-Raleway font-bold">
@@ -373,17 +370,17 @@
                  <p class="text-green-500"> Available</p>
                 @else
                 <p class="text-red-500"> Un-Available</p>
-  
-  
+
+
                  @endif
              </div>
                  </div>
                 @endforeach
-                    
-               
-                
-                 
-                
+
+
+
+
+
                  </div>
             </div>
          </div>
@@ -391,12 +388,11 @@
             <div class=" bg-white shadow-lg rounded-md">
              <h1 class="px-4 mb-8 text-2xl font-semibold tracking-wide text-gray-700 dark:text-gray-300 ">
                 House Rules</h1>
-                 
+
                  <div class="grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cools-3 grid-cols-2 mb-10 border-b border-gray-200 dark:border-gray-700">
                 @foreach ($b as $d )
                 <div class="w-full px-4 mb-4  flex  items-center justify-center flex-col p-1 gap-1">
-                 <div class="mb-2 text-lg leading-5 text-blue-600 font-Roboto font-bold ">
-                     {!! $d->svg !!} </div>
+
                  <p class="text-sm font-semibold leading-4 font-Roboto text-red-600 text-center">
                 {{ $d->facility }}</p>
              <div class="text-base font-Raleway font-bold">
@@ -404,26 +400,26 @@
                  <p class="text-green-500"> Available</p>
                 @else
                 <p class="text-red-500"> Un-Available</p>
-  
-  
+
+
                  @endif
              </div>
                  </div>
                 @endforeach
-                    
-               
-                
-                 
-                
+
+
+
+
+
                  </div>
             </div>
          </div>
 
-      
+
     </section>
 @include('components/footer')
 </body>
 
-  
+
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </html>

@@ -289,7 +289,7 @@
                    {{$data->p_name}}
                 </td>
                 <td>
-                  <img src="{{ asset('shop_images/'.$data->image) }}" style="height: 50px;width:50px;">
+                  <img src="{{ asset('shop_images/'.$data->image) }}" style="height: 50px;width:40px;">
                                        
                  </td>
                 <td class="px-3 py-4">
@@ -307,6 +307,8 @@
                    <a href="{{url('upload_pr_gallery/'.$data->id)}}" class="font-medium text-blue-400 dark:text-blue-500 hover:underline">Upload galllery</a><br>
                    
                    <a href="{{url('change_c_status/'.$data->id)}}" class="font-medium text-green-400 dark:text-green-500 hover:underline">Change Catalog Status</a><br>
+                   
+                   <a href="{{url('edit_pr/'.$data->id)}}" class="font-medium text-yellow-400 dark:text-yellow-500 hover:underline">Edit Product</a><br>
                    
 
 

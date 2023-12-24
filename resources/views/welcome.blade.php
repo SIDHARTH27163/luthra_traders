@@ -7,6 +7,11 @@
   @vite('resources/css/app.css')
   @vite('resources/js/app.js')
 </head>
+<style>
+     .filled-star {
+            fill: gold; /* Change the color of the filled star here */
+        }
+</style>
 <body class="overflow-x-hidden">
   @include('components/header')
   {{-- <section class="bg-white dark:bg-gray-900 ">
@@ -15,14 +20,14 @@
             <h1 class="font-Roboto max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">Building digital <br>products & brands.</h1>
             <p class="max-w-2xl mb-6 font-semibold font-popin text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">This free and open-source landing page template was built using the utility classes from <a href="https://tailwindcss.com" class="hover:underline">Tailwind CSS</a> and based on the components from the <a href="https://flowbite.com/docs/getting-started/introduction/" class="hover:underline">Flowbite Library</a> and the <a href="https://flowbite.com/blocks/" class="hover:underline">Blocks System</a>.</p>
             <div class="space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-              
+
             </div>
         </div>
         <div class=" lg:mt-0 lg:col-span-5 lg:flex">
             <div class="relative">
                 <img id="rotating-image" src="{{ asset('images/bg.png') }}" alt="hero image" class="image-3d transform rotate-3 scale-105 oval-image">
             </div>
-        </div>                
+        </div>
     </div>
 </section> --}}
 <div class="relative items-center justify-center w-full overflow-x-hidden lg:pt-40 xl:pt-40 xl:pb-56 overflow-hidden">
@@ -30,13 +35,13 @@
         class="container flex flex-col items-center justify-between h-full max-w-6xl  mx-auto -mt-16 lg:flex-row xl:px-0">
         <div
             class="z-0 flex flex-col items-center w-full max-w-xl pt-40 text-center lg:items-start lg:w-1/2 lg:pt-16 xl:pt-16 lg:text-left">
-            <h1 class="relative mb-4 text-3xl font-black leading-tight text-gray-900 sm:text-6xl xl:mb-8">Explore The Next Great Things With Luthra Traders</h1>
-            <p class="pr-0 mb-8 text-base text-gray-600 sm:text-lg xl:text-xl lg:pr-20">Are you ready to start your
+            <h1 class="relative mb-1 text-3xl font-black leading-tight text-gray-900 sm:text-6xl xl:mb-8">Explore The Next Great Things With Luthra Traders</h1>
+            <p class="pr-0 mb-8 text-base text-gray-600 sm:text-lg xl:text-xl lg:pr-20 z-10">Are you ready to start your
                 your journey with luthra traders</p>
             <a href="#explore"
-                class="relative z-0 self-start inline-block w-auto px-8 py-4 mx-auto mt-0 text-base font-bold text-white bg-indigo-600 border-t border-gray-200 rounded-md shadow-xl sm:mt-1 fold-bold lg:mx-0">Start Exploring</a>
-          
-            <svg class="absolute left-0 max-w-md mt-24 -ml-64 left-svg" viewBox="0 0 423 423"
+                class="relative z-10 self-start inline-block w-auto px-8 py-4 mx-auto mt-0 text-base font-bold text-white bg-sky-600 border-t border-gray-200 rounded-md shadow-xl sm:mt-1 fold-bold lg:mx-0">Start Exploring</a>
+
+            <svg class="absolute left-0 max-w-md mt-24 -ml-64 left-svg z-0" viewBox="0 0 423 423"
                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <defs>
                     <linearGradient x1="100%" y1="0%" x2="4.48%" y2="0%" id="linearGradient-1">
@@ -100,7 +105,7 @@
           </div>
           <img class="hidden w-full mb-4 rounded-lg lg:mb-0  shadow-xl lg:flex" src="{{ asset('images/lbg1.png') }}" alt="Luthra rounded feature image">
       </div>
-      
+
   </div>
 </section>
 
@@ -113,7 +118,7 @@
 <section class="p-1" id="explore">
    <div class="container mx-auto max-w-7xl">
       <div class="flex flex-wrap -mx-4">
-         <div class="w-full px-4">
+         <div class="w-full px-2">
             <div class="text-center mx-auto mb-4 max-w-[510px]">
                <span class="font-semibold text-lg text-primary mb-2 block">
                Our Services
@@ -125,7 +130,7 @@
                   sm:text-4xl
                   md:text-[40px]
                   text-dark
-                  
+
                   "
                   >
                   What We Offer
@@ -136,45 +141,45 @@
             </div>
          </div>
       </div>
-      <div class="flex flex-wrap -mx-4">
+      <div class="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 grid-cols-1  ">
         @foreach ($services as $services)
-          
-       
-         <a href="{{'enquire_service/'.$services->id}}" class="w-full md:w-1/2 lg:w-1/3 px-4 ">
+
+
+         <a href="{{'enquire_service/'.$services->id}}" class="w-full px-5 ">
             <div
                class=" cursor-pointer
-               p-10 md:px-7 xl:px-10 rounded-[20px]
+               p-5 md:px-7 xl:px-10 rounded-[20px]
                bg-purple-600
                shadow-lg
                shadow-sky-100
                hover:shadow-xl
-               hover:bg-rose-100
+               hover:bg-indigo-400
                text-white
-               hover:text-gray-700
+
                hover:scale-105
                transition duration-500
                mb-8
                "
                >
-            
+
                <h4 class="font-semibold text-2xl  text-dark mb-1 font-Raleway">
                   {{ $services->service_name }}
                </h4>
-               <p class="text-base font-semibold text-justify leading-normal font-Roboto ">
-                
-                {{ Str::limit($services->description,150) }}
+               <p class="text-xl  text-justify leading-normal font-Roboto ">
+
+                {{ $services->description }}
                </p>
             </div>
          </a>
          @endforeach
-        
-         
-         
+
+
+
       </div>
    </div>
 </section>
 <!-- ====== Services Section End -->
-<section class="py-6">
+<section class="py-6 px-2">
     <div class="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16 max-w-7xl mx-auto">
         <img class="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex shadow-lg" src="{{ asset('images/lbg2.png') }}" alt="feature image 2">
         <div class="text-gray-500 sm:text-lg dark:text-gray-400">
@@ -215,12 +220,12 @@
 {{-- our services --}}
 
 <section class="bg-white dark:bg-gray-900">
-  <div class="items-center max-w-screen-xl px-4 py-8 mx-auto lg:grid lg:grid-cols-4 lg:gap-16 xl:gap-24 lg:py-24 lg:px-6">
+  <div class="items-center max-w-screen-xl px-4 py-8 mx-auto lg:grid lg:grid-cols-4 lg:gap-16 xl:gap-24 lg:py-16 lg:px-6">
       <div class="col-span-2 mb-8">
           <p class="text-lg font-medium text-purple-600 dark:text-purple-500">Trusted by people</p>
           <h2 class="mt-3 mb-4 text-3xl font-extrabold tracking-tight text-gray-900 md:text-3xl dark:text-white">Trusted by People for Our Services</h2>
           <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400 font-Raleway">we take immense pride in the trust and confidence our valued customers place in our services. With years of dedicated experience and a commitment to excellence, we have become the go-to choice for countless individuals and businesses alike.</p>
-         
+
       </div>
       <div class="col-span-2 space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0">
           <div>
@@ -246,8 +251,214 @@
       </div>
   </div>
 </section>
+{{-- reviews starts --}}
+<section class=" bg-gray-50 py-5 font-poppins dark:bg-gray-800">
+    <div class="max-w-6xl px-4 py-2 mx-auto lg:py-2 md:px-6">
+        <div class="max-w-xl mx-auto">
+            <div class="text-center ">
+                <div class="relative flex flex-col items-center">
+                    <h1 class="text-5xl font-bold dark:text-gray-200"> Customer <span class="text-blue-500"> Reviews
+                        </span> </h1>
+                    <div class="flex w-40 mt-2 mb-6 overflow-hidden rounded">
+                        <div class="flex-1 h-2 bg-blue-200">
+                        </div>
+                        <div class="flex-1 h-2 bg-blue-400">
+                        </div>
+                        <div class="flex-1 h-2 bg-blue-600">
+                        </div>
+                    </div>
+                </div>
+                <p class="mb-6 text-base text-center text-gray-500">
+                    What users says about us
+                </p>
+            </div>
+        </div>
+        <div class="w-full flex items-center justify-center p-1 ">
+            <form action="/review" method="post" class="lg:w-3/4 md:w-3/4 sm:w-full w-full pb-5">
+                @csrf
+                @method('post')
+                  <div class="mb-6">
+                    @if(session()->has('success'))
+<div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
+<svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+</svg>
+<span class="sr-only">Info</span>
+<div class="ml-3 text-sm font-medium">
+    {{ session()->get('success') }}
+</div>
+  <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-blue-50 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 p-1.5 hover:bg-blue-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-blue-400 dark:hover:bg-gray-700" data-dismiss-target="#alert-1" aria-label="Close">
+    <span class="sr-only">Close</span>
+    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+    </svg>
+</button>
+</div>
+
+
+
+@endif
+                      <h2 class="text-xl font-bold text-gray-700 dark:text-gray-400">
+                          Please add your valuable review here </h2>
+                  </div>
+                  <div class="flex flex-wrap mb-4 -mx-2">
+                      <div class="w-full px-2 mb-4 lg:mb-0 lg:w-1/2">
+                          <input
+                              class="w-full px-3 py-2 leading-loose bg-gray-100 border rounded-md dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700"
+                             name="first_name" type="text" placeholder="First Name.." >
+                             @if($errors->has('first_name'))
+                             <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('first_name') }}</p>
+                    @endif
+                      </div>
+                      <div class="w-full px-2 lg:w-1/2">
+                          <input
+                              class="w-full px-3 py-2 leading-loose bg-gray-100 border rounded-md dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700"
+                             name="last_name" type="text" placeholder="Last Name.." >
+                             @if($errors->has('last_name'))
+                             <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('last_name') }}</p>
+                    @endif
+                      </div>
+                  </div>
+                  <div class="px-2 mb-6 ">
+                    <div class="p-1">
+                        <label for="rating" class="text-lg font-semibold text-black">Rate Us *</label>
+                        <div class="flex items-center justify-center space-x-2">
+                            <input type="radio" value="1" name="rating" id="star5" class="hidden" />
+                            <label for="star5" class="text-2xl cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 star text-yellow-600">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.21 18.18 21.02 12 17.77 5.82 21.02 7 14.21 2 9.27 8.91 8.26 12 2">
+                                    </polygon>
+                                </svg>
+                            </label>
+                            <input type="radio" value="2" name="rating" id="star4" class="hidden" />
+                            <label for="star4" class="text-2xl cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 star text-yellow-600">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.21 18.18 21.02 12 17.77 5.82 21.02 7 14.21 2 9.27 8.91 8.26 12 2">
+                                    </polygon>
+                                </svg>
+                            </label>
+                            <input type="radio" value="3" name="rating" id="star3" class="hidden" />
+                            <label for="star3" class="text-2xl cursor-pointer">
+                                <svg xmlns="http://w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 star text-yellow-600">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.21 18.18 21.02 12 17.77 5.82 21.02 7 14.21 2 9.27 8.91 8.26 12 2">
+                                    </polygon>
+                                </svg>
+                            </label>
+                            <input type="radio" value="4" name="rating" id="star2" class="hidden" />
+                            <label for="star2" class="text-2xl cursor-pointer">
+                                <svg xmlns="http://w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 star text-yellow-600">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.21 18.18 21.02 12 17.77 5.82 21.02 7 14.21 2 9.27 8.91 8.26 12 2">
+                                    </polygon>
+                                </svg>
+                            </label>
+                            <input type="radio" value="5" name="rating" id="star1" class="hidden" />
+                            <label for="star1" class="text-2xl cursor-pointer">
+                                <svg xmlns="http://w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 star text-yellow-600">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.21 18.18 21.02 12 17.77 5.82 21.02 7 14.21 2 9.27 8.91 8.26 12 2">
+                                    </polygon>
+                                </svg>
+                            </label>
+                        </div>
+                    </div>
+                    @if($errors->has('rating'))
+            <p class="text-xs italic text-red-500 text-start">{{ $errors->first('rating') }}</p>
+            @endif
+                </div>
+                  <textarea rows="3" type="message" placeholder="Write a review..."
+                     name="review" class="block w-full px-4 mb-4 leading-tight text-gray-700 bg-gray-100 border rounded dark:placeholder-gray-400 py-7 dark:text-gray-400 dark:border-gray-800 dark:bg-gray-700 "></textarea>
+                     @if($errors->has('review'))
+                     <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('review') }}</p>
+            @endif
+                     <button
+                      class="w-full py-4 text-sm font-bold leading-normal text-white transition-all duration-300 bg-blue-600 rounded-md dark:bg-blue-500 dark:hover:bg-blue-600 hover:bg-blue-700">
+                      Send Review
+                  </button>
+              </form>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 ">
+           @foreach ($reviews as $review )
+           <div class="py-6 bg-white rounded-lg shadow-lg dark:bg-gray-900">
+            <div
+                class="flex flex-wrap items-center justify-between pb-4 mb-6 space-x-2 border-b dark:border-gray-700">
+                <div class="flex items-center px-6 mb-2 md:mb-0 ">
+                    <div class="flex mr-2 rounded-full">
+
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
+                            {{ $review->name }}</h2>
+
+                    </div>
+                </div>
+                <p class="px-6 text-base font-medium text-gray-600 dark:text-gray-400"> Date:{{ $review->date }}
+                </p>
+            </div>
+            <p class="px-6 mb-6 text-base text-gray-500 dark:text-gray-400">
+                {{ $review->review }}
+            </p>
+            <div class="flex flex-wrap justify-between pt-4 border-t dark:border-gray-700">
+                <div class="flex px-6 mb-2 md:mb-0">
+                    <ul class="flex items-center justify-start mr-4">
+                        <li>
+
+
+                            @for ($i = 1; $i <= 5; $i++)
+                            <span class="star text-2xl {{ $i <= $review->rating ? 'text-yellow-600' : '' }}">&#9733;</span>
+
+
+                        @endfor
+                        </li>
+
+                    </ul>
+                    <h2 class="text-sm text-gray-500 dark:text-gray-400">Rating:<span
+                            class="font-semibold text-gray-600 dark:text-gray-300">
+                            {{ $review->rating }}</span>
+                    </h2>
+                </div>
+
+            </div>
+        </div>
+
+           @endforeach
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+</section>
+{{-- reviews --}}
 @include('components/footer')
 </body>
 
-  
+<script>
+    const stars = document.querySelectorAll('.star');
+
+    stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+            // Remove filled-star class from all stars
+            stars.forEach((s) => s.classList.remove('filled-star'));
+
+            // Add filled-star class to the clicked star and stars before it
+            for (let i = 0; i <= index; i++) {
+                stars[i].classList.add('filled-star');
+            }
+        });
+    });
+</script>
 </html>

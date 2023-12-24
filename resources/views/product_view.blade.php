@@ -17,7 +17,7 @@
 
 
     @include('components/e_header')
-  
+
 
     {{-- feturedproducts --}}
 
@@ -28,13 +28,13 @@
                 <div class="w-full px-4 mb-8 md:w-1/2 md:mb-0">
                     <div class="sticky top-0 overflow-hidden ">
                         <div class="relative mb-6 lg:mb-10 lg:h-96">
-                           
+
                             <img class="object-contain w-full lg:h-full"
                                 src="{{ asset('shop_images/'.$data->image) }}" alt= {{ $data->p_name }}>
-                           
+
                         </div>
 
-                        
+
 
                         <div id="controls-carousel" class="relative w-full" data-carousel="static">
                             <!-- Carousel wrapper -->
@@ -42,7 +42,7 @@
                                  <!-- Item 1 -->
                                  @foreach ($gallery as $gallery )
                                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                    <img src="{{ asset('p_gallery/'.$gallery->image) }}" class="absolute h-96 px-5 block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt={{ $data->p_name }}>
+                                    <img src="{{ asset('p_gallery/'.$gallery->image) }}" class="absolute h-96 px-5 block w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt={{ $data->p_name }}>
                                 </div>
                                 <!-- Item 2 -->
                                @endforeach
@@ -65,7 +65,7 @@
                                 </span>
                             </button>
                         </div>
-                        
+
 
 
                         {{-- <div class="flex-wrap hidden -mx-2 md:flex">
@@ -79,9 +79,9 @@
                             </a>
                         </div>
                            @endforeach
-                          
-                           
-                            
+
+
+
                         </div> --}}
                     </div>
                 </div>
@@ -103,23 +103,23 @@
                             <p class="inline-block text-2xl font-semibold text-gray-700 dark:text-gray-400 ">
                                 @php
                                 $discountedPrice = $data->price;
-                            
+
                                 if (is_numeric($data->price) && is_string($data->discount)) {
                                     // Remove commas from the price
                                     $priceWithoutCommas = str_replace(',', '', $data->price);
-                                    
+
                                     // Use regular expression to extract the percentage value
                                     if (preg_match('/([0-9.]+)%/', $data->discount, $matches)) {
                                         $discountPercentage = floatval($matches[1]);
-                                        
+
                                         // Calculate the discounted price
                                         $discountedPrice = $priceWithoutCommas - ($priceWithoutCommas * ($discountPercentage / 100));
                                     }
                                 }
-                                
+
                                 // Ensure $discountedPrice is of float type
                                 $discountedPrice = is_numeric($discountedPrice) ? floatval($discountedPrice) : 0.00;
-                            
+
                                 // Format the discounted price with commas
                                 $formattedDiscountedPrice = number_format($discountedPrice, 2);
                             @endphp
@@ -137,7 +137,7 @@
                                    {{ $data->w_policy }}
                                 </span>
                             </p>
-                            
+
                         </div>
                         <div class="mb-6">
                             <h2 class="mb-2 text-lg font-bold text-gray-700 dark:text-gray-400">Description :</h2>
@@ -167,10 +167,10 @@
                                    {{ $data->m_name }}
                                 </span>
                             </p>
-                           
+
                         </div>
                         <div class="mb-6 "></div>
-                       
+
                         {{-- <div class="flex gap-4 mb-6">
                             <a href="#"
                                 class="w-full px-4 py-3 text-center text-gray-100 bg-red-600 border border-transparent dark:border-gray-700 hover:border-red-500 hover:text-red-700 hover:bg-red-100 dark:text-gray-400 dark:bg-gray-700 dark:hover:bg-gray-900 rounded-xl">
@@ -198,7 +198,7 @@
                                     class="font-bold">{{ $banner->discount }}</span></p>
                         </div>
                         <div class="md:w-1/2 mt-5 md:mt-0 flex justify-center md:justify-end">
-                            <img src="{{ asset('banner_images/' . $banner->image) }}" alt="" class="h-56" />
+                            <img src="{{ asset('banner_images/' . $banner->image) }}" alt="luthra traders , dharamshala" class="h-56" />
                         </div>
                     </div>
                 @endforeach
@@ -212,8 +212,8 @@
                                     class="font-bold">{{ $banner1->discount }}</span></p>
                         </div>
                         <div class="flex justify-end md:absolute md:bottom-4 md:right-4 lg:bottom-0 lg:right-0">
-                            <img src="{{ asset('banner_images/' . $banner1->image) }}" alt=""
-                                class="w-32 h-32 z-0" />
+                            <img src="{{ asset('banner_images/' . $banner1->image) }}" alt="luthra traders dharamshala"
+                                class="w-24 h-32 z-0" />
                         </div>
                     </div>
                 @endforeach

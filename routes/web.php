@@ -36,7 +36,7 @@ Route::get("view_category/{text}" , [homepageController::class,'view_category'])
 Route::get('/signup', function () {
     return view('auth.signup');
 });
-Route::get('signin', function () {
+Route::get('/signin', function () {
     // $user=Auth::user();
 
 if(!Auth::check()){
@@ -48,8 +48,8 @@ return view('auth.signin');
 );
 
 
-});
-Route::get("/logout" , [authController::class,'logout']);
+})->name('signin');
+Route::get("/signout" , [authController::class,'logout']);
 Route::post("signup" , [authController::class,'signup']);
 Route::post("/signin" , [authController::class,'signin']);
 
@@ -66,6 +66,7 @@ Route::get("queries_inbox" ,[adminController::class ,'get_queries'] );
 Route::get("change_q_status/{id}" , [adminController::class,'change_status']);
 Route::get("delete_querie/{id}" , [adminController::class,'delete_querie']);
 Route::get("create_user/{id}" , [adminController::class,'create_user']);
+Route::get("create_user1/{id}" , [adminController::class,'create_user1']);
 Route::get("users" , [adminController::class,'users_lists']);
 Route::get("delete_u/{id}" , [adminController::class,'delete_u']);
 Route::get("change_u_status/{id}" , [adminController::class,'change_u_status']);
@@ -106,7 +107,16 @@ Route::get("delete_banner/{id}" , [adminController::class,'delete_banner']);
 
 Route::get("cabletv_req" , [adminController::class,'cabletv_req']);
 Route::get('change_cable_req_status/{id}', [adminController::class, 'change_cable_req_status']);
-Route::get("delete_cable_req/{id}" , [adminController::class,'delete_c_req']);
+Route::get("delete_cable_req/{id}" , [adminController::class,'delete_cable_req']);
+Route::get("contact_req" , [adminController::class,'contact_req']);
+Route::get('change_contact_req_status/{id}', [adminController::class, 'change_contact_req_status']);
+Route::get("delete_contact_req/{id}" , [adminController::class,'delete_contact_req']);
+Route::get("m_review" , [adminController::class,'m_review']);
+Route::get('change_review_status/{id}', [adminController::class, 'change_review_status']);
+Route::get("delete_review/{id}" , [adminController::class,'delete_review']);
+Route::get("edit_pr/{id}" , [adminController::class,'edit_pr']);
+
+Route::post("edit_product/{id}" , [adminController::class,'edit_product']);
 // adminn routes for pg ends
 // admin routes
 // authentication
@@ -123,3 +133,18 @@ Route::get("/shop" , [homepageController::class ,'shop']);
 Route::get("/products" , [homepageController::class ,'products']);
 // user routes ends
 Route::any("search" , [HomepageController::class,'search']);
+
+Route::get('/contact_us', function () {
+    return view('contact_us');
+});
+Route::post("send_message" , [homepageController::class ,'send_message']);
+Route::get('/about_us', function () {
+    return view('about_us');
+});
+Route::post('review' , [HomepageController::class , 'review']);
+Route::get('/privacy_policy', function () {
+    return view('privacy');
+});
+Route::get('/isp', function () {
+    return view('isp');
+});

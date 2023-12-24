@@ -76,6 +76,7 @@
                   <option >Single Shared </option>
                   <option >Double Shared </option>
                   <option>Tripple Shared</option>
+                  <option>Four Shared</option>
                 </select>
                 @if($errors->has('category'))
                 <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('category') }}</p>
@@ -141,9 +142,9 @@
                  
                   <option >1 Bed</option>
                   <option >2 Beds</option>
-                  <option >3 Bed</option>
-                  <option >4 Bed</option>
-                  <option >5 Bed</option>
+                  <option >3 Beds</option>
+                  <option >4 Beds</option>
+                  <option >5 Beds</option>
                 </select>
                 @if($errors->has('total_beds'))
                 <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('total_beds') }}</p>

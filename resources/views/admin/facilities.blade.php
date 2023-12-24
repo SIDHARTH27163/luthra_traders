@@ -172,14 +172,7 @@
         <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('facility') }}</p>
 @endif
       </div>
-      <div class="mb-4">
-
-         <label for="message" class="block mb-2 text-lg font-medium text-gray-900 ">Svg </label>
-         <textarea id="message" name="svg_icon" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  " placeholder="Write your thoughts here..."></textarea>
-         @if($errors->has('svg_icon'))
-         <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('svg_icon') }}</p>
-@endif
-                       </div>
+      
       <div class="mb-4">
           <button class="w-auto px-4 py-3  font-bold text-white bg-gradient-to-r from-black to-blue-800 hover:from-black hover:to-blue-400
                               hover:rounded-full rounded-xl focus:outline-none focus:shadow-outline
@@ -214,9 +207,7 @@
            <th scope="col" class="px-3 py-3">
            Facility
          </th>
-         <th scope="col" class="px-3 py-3">
-            Svg
-          </th>
+        
          <th scope="col" class="px-3 py-3 text-center">
            Action
          </th>
@@ -246,12 +237,7 @@
                <td class="px-3 py-4">
                   {{$f_data->facility}}
                </td>
-               <td class="px-3 py-4">
-                  
-                  {!! $f_data->svg !!}
-               </td>
-
-
+             
                <td class="px-1 py-4 text-center">
                   <a href="{{url('delete_cats_facility/'.$f_data->f_id)}}" class="font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</a><br>
                   <a href="{{url('change_f_status/'.$f_data->f_id)}}" class="font-medium text-green-600 dark:text-rose-500 hover:underline">Available/Unavailable</a><br>

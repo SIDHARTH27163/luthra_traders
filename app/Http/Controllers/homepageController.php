@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Querie;
 use App\Models\Cable_request;
 use App\Models\Product;
+use App\Models\Contact;
+use App\Models\Review;
 class homepageController extends Controller
 {
     //
@@ -15,12 +17,13 @@ class homepageController extends Controller
     public  function index(){
         try{
             $service_data=  DB::table('services')->where('status' , 1)->orderBy('id' , 'desc')->get();
-                 
-            // display  blogs both uproved and un uproved 
-          
+
+            // display  blogs both uproved and un uproved
+            $reviews=  DB::table('reviews')->where('status' , 1)->orderBy('id' , 'desc')  ->limit(4)
+            ->get();
             // display emnds
-             return view('welcome', ['services'=>$service_data]);
-           
+             return view('welcome', ['services'=>$service_data , 'reviews'=>$reviews]);
+
 
         }catch(\Exception $e){
             dd($e);
@@ -28,13 +31,13 @@ class homepageController extends Controller
     }
     public function enquire($id){
         try{
-           
-                 
-            // display  blogs both uproved and un uproved 
-          
+
+
+            // display  blogs both uproved and un uproved
+
             // display emnds
              return view('enquire' , ['id'=>$id]);
-           
+
 
         }catch(\Exception $e){
             dd($e);
@@ -46,18 +49,18 @@ class homepageController extends Controller
         try{
             $data = $request->only('first_name','last_name',  'email' , 'phone','description' );
             $validator = Validator::make($data, [
-                
+
                 'first_name' => 'required|string',
                 'last_name'=>'required|string',
-               
+
                 'email' => 'required|email',
-              
+
                 'phone'=>'required',
-                
+
                  'description' => 'required'
             ]);
-    
-    
+
+
             // Send a failed response if the request is not valid
             if ($validator->fails()) {
                 $messages = $validator->messages();
@@ -70,14 +73,14 @@ class homepageController extends Controller
                     'email'=>$request->email,
                     'description'=>$request->description,
                     'service_id'=>$id
-                    
-                  
-                  
-                   
+
+
+
+
                 ]);
-                
-    
-              
+
+
+
                //dd($lid);
                return redirect()->back()->with('success', 'Query Sent Successfully');
 
@@ -90,8 +93,9 @@ class homepageController extends Controller
     public function get_pg(){
         try{
             $data=  DB::table('rooms')->orderBy('category')->get();
+            $reviews=  DB::table('reviews')->where('status' , 1)->orderBy('name')->paginate(4);
 // Return("Get pg" ['services'=>$service_data]);
-return view('pg' ,  ['data'=>$data]);
+return view('pg' ,  ['data'=>$data , 'reviews'=>$reviews]);
         }catch(\Exception $e){
             dd($e);
         }
@@ -102,13 +106,13 @@ return view('pg' ,  ['data'=>$data]);
         try{
             $data=  DB::table('rooms')->where('id' , $id)->get();
 
-           
-              
+
+
                 $g_data=  DB::table('gallery_rooms')->where('room_id' , $id)->get();
 
                 $a_data=  DB::table('facilitycategories')->where('category_id' , '3')->get();
                 $b_data=  DB::table('facilitycategories')->where('category_id' , '4')->get();
-        
+
                 $c_data=  DB::table('facilitycategories')->where('category_id' , '5')->get();
                 $d_data=  DB::table('facilitycategories')->where('category_id' , '6')->get();
             return view('pg_detail' , ['data'=>$data, 'gallery'=>$g_data , 'a'=>$a_data , 'b'=>$b_data , 'c'=>$c_data , 'd'=>$d_data]);
@@ -122,18 +126,18 @@ return view('pg' ,  ['data'=>$data]);
 
             $data = $request->only('first_name','last_name',  'email' , 'mobile_number','address' );
             $validator = Validator::make($data, [
-                
+
                 'first_name' => 'required|string',
                 'last_name'=>'required|string',
-               
+
                 'email' => 'required|email',
-              
+
                 'mobile_number'=>'required',
-                
+
                  'address' => 'required'
             ]);
-    
-    
+
+
             // Send a failed response if the request is not valid
             if ($validator->fails()) {
                 $messages = $validator->messages();
@@ -144,16 +148,16 @@ return view('pg' ,  ['data'=>$data]);
                     'lname'=>$request->last_name,
                     'mobile'=>$request->mobile_number,
                     'email'=>$request->email,
-                    'address'=>$request->address,1
-                    
-                    
-                  
-                  
-                   
+                    'address'=>$request->address,
+
+
+
+
+
                 ]);
-                
-    
-              
+
+
+
                //dd($lid);
                return redirect()->back()->with('success', 'Query Sent Successfully');
             }
@@ -168,7 +172,7 @@ return view('pg' ,  ['data'=>$data]);
             $prod=  DB::table('products')->where('status' , 1)->orderBy('p_name')->limit(9)->get();
             $catalog=  DB::table('products')->where('status' , 1)->where('catalog', 1) ->orderBy('id' , 'desc')->limit(10)->get();
            $banner=DB::table('product_banners')->where('status' , 1) ->orderBy('id' , 'desc')->limit(1)->get();
-            // display  blogs both uproved and un uproved 
+            // display  blogs both uproved and un uproved
             $banner1 = DB::table('product_banners')
             ->where('status', 1)
             ->orderBy('id', 'desc')
@@ -177,19 +181,19 @@ return view('pg' ,  ['data'=>$data]);
             ->get();
             // display emnds
              return view('luthra_shop', ['cats'=>$cat_data , 'products'=>$prod ,'catalog'=>$catalog , 'banner'=>$banner, 'banner1'=>$banner1 ]);
-           
+
 
         }catch(\Exception $e){
             dd($e);
         }
-        
+
     }
 
 public function view_product(Request $request , $id){
 try{
     $banner=DB::table('product_banners')->where('status' , 1) ->orderBy('id' , 'desc')->limit(1)->get();
 
-    // display  blogs both uproved and un uproved 
+    // display  blogs both uproved and un uproved
     $banner1 = DB::table('product_banners')
     ->where('status', 1)
     ->orderBy('id', 'desc')
@@ -208,8 +212,8 @@ return view('product_view', ['data'=>$data , 'banner'=>$banner, 'banner1'=>$bann
         try{
             $s_text=urldecode($text);
             $banner=DB::table('product_banners')->where('status' , 1) ->orderBy('id' , 'desc')->limit(1)->get();
-        
-            // display  blogs both uproved and un uproved 
+
+            // display  blogs both uproved and un uproved
             $banner1 = DB::table('product_banners')
             ->where('status', 1)
             ->orderBy('id', 'desc')
@@ -221,16 +225,16 @@ return view('product_view', ['data'=>$data , 'banner'=>$banner, 'banner1'=>$bann
         }catch(\Exception $e){
                     dd($e);
                 }
-        
+
             }
 
 
 public function products(){
     try{
-      
+
         $banner=DB::table('product_banners')->where('status' , 1) ->orderBy('id' , 'desc')->limit(1)->get();
-    
-        // display  blogs both uproved and un uproved 
+
+        // display  blogs both uproved and un uproved
         $banner1 = DB::table('product_banners')
         ->where('status', 1)
         ->orderBy('id', 'desc')
@@ -248,11 +252,11 @@ public function search(Request $request){
     try{
      $q=$request->search;
      // Share button 1
-   
+
      $filter_data = Product::where ( 'p_name', 'LIKE', '%' . $q . '%' )->orWhere ( 'b_name', 'LIKE', '%' . $q . '%' )->orWhere ( 'category', 'LIKE', '%' . $q . '%' )->orWhere ( 'm_name', 'LIKE', '%' . $q . '%' )->get();
      $banner=DB::table('product_banners')->where('status' , 1) ->orderBy('id' , 'desc')->limit(1)->get();
-    
-        // display  blogs both uproved and un uproved 
+
+        // display  blogs both uproved and un uproved
         $banner1 = DB::table('product_banners')
         ->where('status', 1)
         ->orderBy('id', 'desc')
@@ -269,9 +273,100 @@ public function search(Request $request){
          catch(\Exception $e){
              dd($e);
          }
-         
+
    // Load index view
   // return view('blogs.blogs', [ 'share1'=>$shareButtons1]);
 }
+public function send_message(Request $request){
+    try{
 
+        $data = $request->only('first_name','last_name',  'email' ,'message' );
+        $validator = Validator::make($data, [
+
+            'first_name' => 'required|string',
+            'last_name'=>'required|string',
+
+            'email' => 'required|email',
+
+
+
+             'message' => 'required'
+        ]);
+
+
+        // Send a failed response if the request is not valid
+        if ($validator->fails()) {
+            $messages = $validator->messages();
+            return redirect()->back()->withErrors($messages);
+        }else{
+            Contact::create([
+                'fname'=>$request->first_name,
+                'lname'=>$request->last_name,
+
+                'email'=>$request->email,
+                'message'=>$request->message
+
+
+
+
+
+            ]);
+
+
+
+           //dd($lid);
+           return redirect()->back()->with('success', 'Request Sent Successfully');
+        }
+    }catch(\Exception $e){
+        dd($e);
+    }
+
+}
+public function review(Request $request){
+    try{
+        $user = auth()->user();
+        $data = $request->only('review' , 'rating' , 'first_name' , 'last_name');
+        $validator = Validator::make($data, [
+
+        'review' => 'required',
+        'rating'=>'required',
+        'first_name' => 'required',
+        'last_name'=>'required'
+    ]);
+    if ($validator->fails()) {
+
+        // get the error messages from the validator
+        $messages = $validator->messages();
+
+        // redirect our user back to the form with the errors from the validator
+        // return Redirect::to('signup')
+        //     ->withErrors($messages);
+            return redirect()->back()->withErrors($messages);
+            //return ($messages);
+    }else{
+        // Tourist_location::create([
+
+        //     'location'=>$request->location,
+        // ]);
+
+            $name = $request->first_name . " " . $request->last_name;
+            $date=Review::create([
+                'name'=>$name,
+
+
+                'review'=>$request->review,
+                'rating'=>$request->rating,
+
+                'date'=>date('d-m-Y')
+
+
+            ]);
+            return redirect()->back()->with('success', 'Thankyou For Your Valuable Review|| Review will  be refelected shortly');
+
+        // return redirect()->back()->with('message', 'Location Successfully Added For Tourist Places ');
+    }
+    }catch(\Exception $e){
+        dd($e);
+ }
+ }
 }

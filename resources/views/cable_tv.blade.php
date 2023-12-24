@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   @vite('resources/css/app.css')
-  
+
   @vite('resources/js/app.js')
 </head>
 <body class="overflow-x-hidden">
@@ -18,7 +18,7 @@
         Join us Today
         </h2>
         <p class="mb-3 text-cent font-medium text-gray-300 dark:text-gray-400 md:text-lg text-justify">
-            Join us today and embark on a journey of discovery and growth. We offer a unique opportunity to be part of a vibrant community that values your contributions and encourages your development. Whether you're a seasoned professional or just starting your career, there's a place for you here
+            Cable TV service offers a wide array of television channels and programming delivered through a physical cable connection. With a diverse selection of channels ranging from news and entertainment to sports and lifestyle content, cable TV .
         </p>
         <div class="flex flex-wrap items-center justify-center">
         <button class="inline-flex items-center px-4 py-2 my-1 font-semibold text-gray-100 bg-transparent border border-white rounded-3xl hover:bg-white hover:text-black">
@@ -31,7 +31,7 @@
         </div>
         </div>
         <div class="absolute left-0 items-center justify-center hidden px-4 transform -translate-y-1/2 xl:-translate-x-1/2 lg:inline-flex top-1/2 ">
-        <img src="{{ asset('images/cabletv.png') }}" class="object-cover  w-52 h-52 xl:w-80 xl:h-80 rounded-3xl ">
+        <img src="{{ asset('images/cabletv.png') }}" class="object-fill object-center  w-52 h-52 xl:w-72 xl:h-72 rounded-3xl ">
         </div>
         <div class="absolute top-0 right-0 items-center justify-center hidden lg:inline-flex">
         <svg width="290" height="166" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -75,16 +75,59 @@
         </div>
         </div>
         </section>
+        <div class="w-full">
+            @if(session()->has('success'))
+
+
+
+            <div id="alert-1" class="flex items-center w-full p-4 mb-4 text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
+                <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <span class="sr-only">Info</span>
+                <div class="ml-3 text-sm font-medium">
+                    WOHOO <a href="#" class="font-semibold underline hover:no-underline">{{ session()->get('success') }}</a>.
+                  </div>
+                  <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-blue-50 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 p-1.5 hover:bg-blue-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-blue-400 dark:hover:bg-gray-700" data-dismiss-target="#alert-1" aria-label="Close">
+                    <span class="sr-only">Close</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                </button>
+              </div>
+             @endif
+             {{-- add message --}}
+             @if(session()->has('message'))
+
+
+            <div id="alert-1" class="flex items-center w-full p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
+                <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <span class="sr-only">Info</span>
+                <div class="ml-3 text-sm font-medium">
+                  Oops <a href="#" class="font-semibold underline hover:no-underline">{{ session()->get('message') }}</a>.
+                </div>
+                  <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-blue-50 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 p-1.5 hover:bg-blue-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-blue-400 dark:hover:bg-gray-700" data-dismiss-target="#alert-1" aria-label="Close">
+                    <span class="sr-only">Close</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                </button>
+              </div>
+
+             @endif
+        </div>
     <section class="overflow-hidden bg-white py-2 font-poppins dark:bg-gray-800">
         <div class="max-w-6xl px-4 py-4 mx-auto lg:py-2 md:px-6">
             <div class="flex flex-wrap -mx-4">
                 <div class="w-full px-4 md:w-1/2 ">
                     <div class=" relative  overflow-hidden ">
                         <div class=" mb-6 lg:mb-10 lg:h-2/4 ">
-                            <img src="{{ asset('images/cabletvbg.png') }}" alt=""
+                            <img src="{{ asset('images/abletvbg.png') }}" alt=""
                                 class="object-cover rounded-2xl shadow-lg drop-shadow-lg w-full lg:h-full ">
                         </div>
-                      
+
                     </div>
                 </div>
                 <div class="w-full px-4 md:w-1/2 ">
@@ -92,37 +135,40 @@
                         <div class="mb-8 ">
                             <span class="text-lg font-medium text-rose-500 dark:text-rose-200">Luthra</span>
                             <h2 class="max-w-xl mt-2 mb-6 text-2xl font-bold  md:text-4xl">
-                                Cable Tv Service</h2>
-                            
+                                Dharamshala Entertainment Netwrok</h2>
+
                             <p class="max-w-md mb-8 text-gray-800 font-semibold font-Raleway text-lg text-justify">
-                                We provide a supportive environment where you can thrive, learn, and collaborate. Your ideas and creativity are not just welcome; they're celebrated. We understand that diversity and inclusion are fundamental to success, and we're committed to fostering an inclusive culture where everyone has a voice.
+                                Cable TV service provides an extensive range of TV channels and programming transmitted via a physical cable link. Offering a diverse array of channels spanning from news, entertainment, sports, to lifestyle content, cable TV.
 
 
                             </p>
-                            <p class="inline-block mb-8 text-4xl font-bold text-gray-700 dark:text-gray-400 ">
-                                <span>$1000.99</span>
-                                <span
-                                    class="text-base font-normal text-gray-500 line-through dark:text-gray-400">$1500.99</span>
+                            <p class="inline-block mb-3 text-2xl font-bold text-gray-700 dark:text-gray-400 ">
+                                <span>Set Top Box Instalation: Rs.1500.00</span>
+
                             </p>
-                       
+                            <p class="inline-block mb-4 text-2xl font-bold text-gray-700 dark:text-gray-400 ">
+                                <span>Montly Rents: Rs.250.00</span>
+
+                            </p>
+
                         </div>
-                      
-                     
-                     
+
+
+
                         <div class="flex flex-wrap items-center -mx-4 ">
-                           
+
                             <div class="w-full px-4 mb-4 lg:mb-0 ">
-                                <button data-modal-target="default-modal" data-modal-toggle="default-modal" 
+                                <button data-modal-target="default-modal" data-modal-toggle="default-modal"
                                     class="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200  hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 ">
                                     Rent Cable Tv
                                 </button>
                             </div>
                         </div>
-                        <button data-modal-target="default-modal" data-modal-toggle="default-modal" 
+                        <button data-modal-target="default-modal" data-modal-toggle="default-modal"
                         class="flex my-3 items-center justify-center w-full p-4 text-orange-500 border border-orange-500 rounded-md dark:text-gray-200  hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 ">
                         Register Complaint
                     </button>
-                  
+
                     </div>
                 </div>
             </div>
@@ -137,7 +183,7 @@
             <!-- Modal header -->
             <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                    Contact Owner 
+                    Contact Owner
                 </h3>
                 <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -148,18 +194,18 @@
             </div>
             <!-- Modal body -->
             <div class="p-6 space-y-6">
-                <form action="/send_enquiry/7" method="post" class="w-full shadow-lg rounded-lg shadow-sky-200 p-2">
+                <form action="/send_enquiry/3" method="post" class="w-full shadow-lg rounded-lg shadow-sky-200 p-2">
                     @csrf
                     @method('post')
                     <div class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-2">
-                       
-                        
-                        
-                        
-                         
-                         
-                        
-                          
+
+
+
+
+
+
+
+
                         <div class="mb-4">
                             <label for="name" class="block mb-2 text-lg  text-gray-900 dark:text-white font-Roboto font-bold">Add First Name </label>
                             <input type="text" name="first_name" id="text" class="bg-blue-100 border border-blue-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="eg:john">
@@ -174,7 +220,7 @@
                         <p class="text-sm italic text-red-500 text-start font-semibold my-1">{{ $errors->first('last_name') }}</p>
                 @endif
                 </div>
-            
+
                 <div class="mb-4">
                     <label for="name" class="block mb-2 text-lg  text-gray-900 dark:text-white font-Roboto font-bold">Enter Email </label>
                     <input type="email" name="email" id="text" class="bg-blue-100 border border-blue-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="eg:johdoe@gmail.com">
@@ -189,12 +235,12 @@
                 <p class="text-sm italic text-red-500 text-start font-semibold my-1">{{ $errors->first('phone') }}</p>
             @endif
             </div>
-            
+
                     </div>
-            
-                  
+
+
                     <div class="mb-4">
-              
+
                        <label for="message" class="block mb-2 text-lg  text-gray-900 ">Add  Description </label>
                        <textarea id="message" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-blue-100 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  " placeholder="Write your thoughts here..."></textarea>
                        @if($errors->has('description'))
@@ -206,7 +252,7 @@
                                             hover:rounded-full rounded-xl focus:outline-none focus:shadow-outline
                                             hover:scale-105 duration-500 ease-in-out
                                            ">
-                                    Send Enquiry
+                                    Send
                                    </button>
                     </div>
                 </form>
@@ -214,22 +260,22 @@
             <!-- Modal footer -->
             {{-- second modal starts --}}
 
- 
-      
+
+
         </div>
     </div>
 </div>
 
    {{-- modal ends --}}
     </section>
-    <section class="py-16 bg-gray-100 font-poppins dark:bg-gray-900">
+    <section class="py-5 bg-gray-100 font-poppins dark:bg-gray-900">
         <div class="justify-center flex-1 max-w-5xl px-4 py-4 mx-auto lg:py-10 md:px-7">
             <div class="max-w-xl mx-auto">
                 <div class="text-center ">
                     <div class="relative flex flex-col items-center">
                         <div
                             class="absolute hidden md:block -top-32 left-0 text-[100px] text-gray-400 font-bold opacity-10">
-                            Send Your Details 
+                            Send Your Details
                         </div>
                         <h1 class="text-5xl font-bold dark:text-white"> Send Details<span class="text-blue-500"> For Installation
                             </span> </h1>
@@ -242,14 +288,10 @@
                             </div>
                         </div>
                     </div>
-                    <p class="mb-16 text-base text-center text-gray-500">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus magni eius eaque?
-                        Pariatur
-                        numquam, odio quod nobis ipsum ex cupiditate?
-                    </p>
+
                 </div>
             </div>
-            <div class="flex flex-wrap mb-8 -mx-4">
+            <div class="flex flex-wrap justify-center items-center mb-8 -mx-4">
                 <div class="w-full px-4 mb-4 lg:w-1/3 lg:mb-0">
                     <div
                         class="h-full py-12 text-center transition-all rounded-lg shadow dark:bg-gray-800 bg-gray-50 hover:shadow-lg">
@@ -264,8 +306,8 @@
                         </div>
                         <h2 class="mb-4 text-xl font-bold leading-9 text-gray-700 md:text-2xl dark:text-gray-400">
                             Email</h2>
-                        <a href="#"
-                            class="text-base font-medium text-gray-500 md:text-lg dark:text-gray-400">ITcompany@gmail.com</a>
+                        <a href="luthratraders@gmail.com"
+                            class="text-base font-medium text-gray-500 md:text-lg dark:text-gray-400">luthratraders@gmail.com</a>
                     </div>
                 </div>
                 <div class="w-full px-4 mb-4 lg:w-1/3 lg:mb-0">
@@ -282,8 +324,8 @@
                         </div>
                         <h2 class="mb-4 text-xl font-bold leading-9 text-gray-700 md:text-2xl dark:text-gray-400">
                             Phone</h2>
-                        <a href="#"
-                            class="text-base font-medium text-gray-500 md:text-lg dark:text-gray-400">+9876542312</a>
+                        <a href="9816041187"
+                            class="text-base font-medium text-gray-500 md:text-lg dark:text-gray-400">9816041187</a>
                     </div>
                 </div>
                 <div class="w-full px-4 mb-4 lg:w-1/3 lg:mb-0">
@@ -292,41 +334,16 @@
                         <div
                             class="inline-flex items-center justify-center w-12 h-12 mb-6 text-gray-100 bg-blue-500 rounded-full dark:bg-blue-500">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-grid-3x3" viewBox="0 0 16 16">
+                                class="bi bi-telephone" viewBox="0 0 16 16">
                                 <path
-                                    d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5V5h4V1H1.5zM5 6H1v4h4V6zm1 4h4V6H6v4zm-1 1H1v3.5a.5.5 0 0 0 .5.5H5v-4zm1 0v4h4v-4H6zm5 0v4h3.5a.5.5 0 0 0 .5-.5V11h-4zm0-1h4V6h-4v4zm0-5h4V1.5a.5.5 0 0 0-.5-.5H11v4zm-1 0V1H6v4h4z">
+                                    d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z">
                                 </path>
                             </svg>
                         </div>
                         <h2 class="mb-4 text-xl font-bold leading-9 text-gray-700 md:text-2xl dark:text-gray-400">
-                            Social</h2>
-                        <a href="#"
-                            class="inline-block mr-4 text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 hover:text-blue-700">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="w-6 h-6 bi bi-facebook" viewBox="0 0 16 16">
-                                <path
-                                    d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z">
-                                </path>
-                            </svg>
-                        </a>
-                        <a href="#"
-                            class="inline-block mr-4 text-blue-400 dark:text-blue-400 dark:hover:text-blue-300 hover:text-blue-600">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="w-6 h-6 bi bi-twitter" viewBox="0 0 16 16">
-                                <path
-                                    d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z">
-                                </path>
-                            </svg>
-                        </a>
-                        <a href="#"
-                            class="inline-block mr-4 text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="w-6 h-6 bi bi-linkedin" viewBox="0 0 16 16">
-                                <path
-                                    d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z">
-                                </path>
-                            </svg>
-                        </a>
+                            Whats App</h2>
+                        <a href="70181100907"
+                            class="text-base font-medium text-gray-500 md:text-lg dark:text-gray-400">7018100907</a>
                     </div>
                 </div>
 
@@ -369,7 +386,7 @@
                         @if($errors->has('mobile_number'))
                         <p class="text-sm italic text-red-500 text-start font-semibold my-1">{{ $errors->first('mobile_number') }}</p>
                 @endif
-                    <textarea name="address" rows="4" type="message" placeholder="Write Your Address..." 
+                    <textarea name="address" rows="4" type="message" placeholder="Write Your Address..."
                         class="block w-full px-4 mb-4 leading-tight text-gray-700 border rounded bg-gray-50 dark:placeholder-gray-400 py-7 dark:text-gray-400 dark:border-gray-800 dark:bg-gray-700 "></textarea>
                         @if($errors->has('address'))
                         <p class="text-sm italic text-red-500 text-start font-semibold my-1">{{ $errors->first('address') }}</p>
@@ -384,7 +401,7 @@
     @include('components/footer')
 </body>
 
-  
-  
+
+
 
 </html>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('fname');
             $table->string('lname');
             $table->string('email');
-            $table->string('mobile');
+        
             $table->longText('message');
             $table->timestamps();
         });

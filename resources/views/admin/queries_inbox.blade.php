@@ -242,7 +242,7 @@
                     {{$data->phone}}
                  </td>
                  <td class="px-3 py-4">
-                  {{$d_tata->desc}}
+                  {{$data->desc}}
                </td>
                 <td class="px-1 py-4 text-center">
                    <a href="{{url('delete_querie/'.$data->q_id)}}" class="font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</a><br>

@@ -1,9 +1,9 @@
 <header class="fixed w-full z-10 shadow-lg">
-    <nav class="bg-transparent border-gray-200 py-2 dark:bg-gray-900">
-        <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
+    <nav class="bg-white border-gray-200 py-2 dark:bg-gray-900">
+        <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-1 mx-auto">
             <a href="#" class="flex items-center">
-                <img src="{{ asset('images/logo.png') }}" class="h-16 mr-3 " alt="Landwind Logo" />
-                <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Luthra Traders</span>
+                <img src="{{ asset('images/logo.png') }}" class="h-12 rounded-sm mr-1 " alt="Landwind Logo" />
+               
             </a>
             <div class="flex items-center lg:order-2">
                 @if(session()->has('user'))
@@ -31,9 +31,11 @@
                         <a href="/luthra_pg" class="block font-Raleway text-lg font-semibold py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Luthra PG</a>
                     </li>
                     <li>
-                        <a href="/luthra_cabletv" class="block font-Raleway text-lg font-semibold py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Luthra Cable tv</a>
+                        <a href="/luthra_cabletv" class="block font-Raleway text-lg font-semibold py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"> Cable tv</a>
                     </li>
-                   
+                    <li>
+                        <a href="/isp" class="block font-Raleway text-lg font-semibold py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">ISP</a>
+                    </li>
                    
                    
                 </ul>

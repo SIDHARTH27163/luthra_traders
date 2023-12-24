@@ -237,6 +237,8 @@
 
                    <a href="{{url('change_cable_req_status/'.$data->id)}}" class="font-medium text-orange-400 dark:text-orange-500 hover:underline">Activate/Deactivate</a><br>
 
+                   <a href="{{url('create_user1/'.$data->id)}}" class="font-medium text-blue-400 dark:text-orange-500 hover:underline">Activate User</a><br>
+
                   
 
                 </td>

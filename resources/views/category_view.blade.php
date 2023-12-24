@@ -77,9 +77,9 @@
                     <a class="block mb-2" href="{{url('view_product/'.$product->id)}}">
                         <div class="relative overflow-hidden">
                             <div class="mb-5 overflow-hidden">
-                                <img class="object-cover w-full mx-auto transition-all rounded h-96 group-hover:scale-110"
+                                <img class="object-cover w-auto mx-auto transition-all rounded h-96 group-hover:scale-105"
                                     src="{{ asset('shop_images/'.$product->image) }}"
-                                    alt="">
+                                    alt="luthra traders">
                             </div>
                             {{-- <div class="absolute flex flex-col top-4 right-4">
                                 <a href="#" class="flex items-center">

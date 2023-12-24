@@ -17,6 +17,8 @@ use App\Models\Shop_category;
 use App\Models\Product;
 use App\Models\Product_banner;
 use App\Models\Cable_request;
+use App\Models\Contact;
+use App\Models\Review;
 use App\Models\Gallery_product;
 use App\Imports\UsersImport;
 use Image;
@@ -28,6 +30,16 @@ class adminController extends Controller
 
     public function admin(){
         try{
+            $r_data = DB::table('reviews')
+            ->where('status', 0)
+            ->orderBy('id', 'desc')
+            ->limit(5)
+            ->get();
+            $c_data = DB::table('contacts')
+                    ->where('status', 0)
+                    ->orderBy('id', 'desc')
+                    ->limit(5)
+                    ->get();
             $queries_data = DB::table('queries')
     ->join('services', 'queries.service_id', '=', 'services.id')
     ->select('services.id as service_id' , 'queries.id as q_id', 'service_name' , 'fname' , 'lname' , 'email' , 'queries.description as desc' , 'phone' ,'queries.status as q_status',)
@@ -58,7 +70,7 @@ class adminController extends Controller
     
                 //
             // resppinse time ends
-             return view('admin.index' , ['queries_data'=>$data , 'data'=>$data1 , 'p_data'=>$data2]);
+             return view('admin.index' , ['queries_data'=>$data , 'data'=>$data1 , 'p_data'=>$data2 , 'c_data'=>$c_data , 'r_data'=>$r_data]);
 
         }catch(\Exception $e){
             dd($e);
@@ -185,8 +197,48 @@ if ($data) {
         $user->email = $data->email;
         $user->last_name = $data->lname;
         $user->password = $data->phone;
-        $user->service=$data->service_id;
-        $user->role=$data->service_id;
+        $user->service=$id;
+        $user->role=$id;
+        // Set other user attributes as needed
+        $user->save();
+
+        // Update the status of the query
+        $user->status = 1;
+        $data->save();
+
+        return redirect()->back()->with('success', 'User Activated and User Created');
+    } else {
+        // User with this email already exists
+        return redirect()->back()->with('message', 'User Rejected. User with the same email already exists');
+    }
+} else {
+    return redirect()->back()->with('message', 'Query not found');
+}
+
+              }catch(\Exception $e){
+            dd($e);
+        }
+
+            }
+
+            public function create_user1($id , Request $request){
+                try{
+                    $data = Cable_request::find($id);
+
+if ($data) {
+    // Check if a user with the same email exists
+    $existingUser = User::where('email', $data->email)->first();
+
+    if (!$existingUser) {
+        // User with this email doesn't exist, create a new user
+        $user = new User();
+        $user->first_name = $data->fname;
+         // Assuming 'name' is a field in your User model
+        $user->email = $data->email;
+        $user->last_name = $data->lname;
+        $user->password = $data->mobile;
+        $user->service=$id;
+        $user->role=$id;
         // Set other user attributes as needed
         $user->save();
 
@@ -262,7 +314,7 @@ if ($data) {
 
                     $f_data = DB::table('facilitycategories')
                     ->join('categories', 'facilitycategories.category_id', '=', 'categories.id')
-                    ->select('categories.id as cat_id' , 'facilitycategories.id as f_id', 'facility' , 'category' ,'svg' ,'status'  )
+                    ->select('categories.id as cat_id' , 'facilitycategories.id as f_id', 'facility' , 'category'  ,'status'  )
                     ->orderBy('facilitycategories.facility')
 
                     ->get();
@@ -322,9 +374,9 @@ if ($data) {
 
             public function add_facility_cat(Request $request){
                 try{
-                    $data = $request->only('category_name','facility' , 'svg_icon');
+                    $data = $request->only('category_name','facility' );
             $validator = Validator::make($data, [
-                'svg_icon' => 'required|string',
+               
                 'category_name' => 'required|string',
                 'facility' => 'required|string|unique:facilitycategories',
 
@@ -346,7 +398,7 @@ if ($data) {
                     'category_id'=>$request->category_name,
                     'facility'=>$request->facility,
 
-                    'svg'=>$request->svg_icon,
+                  
 
                 ]);
 
@@ -439,7 +491,7 @@ public function add_rooms(Request $request){
             'maintenance_charges' => 'required|string',
             'electricity_charges' => 'required|string',
             'deposite_amount' => 'required|string',
-            'description' => 'required|max:500'
+            'description' => 'required'
                    ]);
         if ($validator->fails()) {
             $messages = $validator->messages();
@@ -912,7 +964,33 @@ public function change_pr_status($id , Request  $req){
                 dd($e);
             }
         }
+public function edit_pr($id , Request $req){
+    try{
+        $u_data=  Product::find($id);
+return view('admin.edit_product',['udata'=>$u_data]);
+    }catch(\Exception $e){
+        dd($e);
+    }
+}
 
+public function edit_product($id , Request $request){
+    try{
+        $data = $request->only('original_price',  'discount',);
+        DB::table('products')
+        ->where('id', $id)
+        ->update([
+            'price' => $request->original_price,
+            'discount' => $request->discount,
+
+        ]);
+    
+    $lid = $id;
+    
+    return Redirect::to('manage_shop_products/')->with('message', 'Product Updated Successfully ');
+    }catch(\Exception $e){
+        dd($e);
+    }
+}
         public function change_c_status($id , Request  $req){
             try{
                 $data=Product::find($id);
@@ -1054,6 +1132,109 @@ public function add_banner(Request $request ){
     
 
 
-
+            public function contact_req(){
+                try{
+                    $data = DB::table('contacts')
+                    ->where('status', 0)
+                    ->orderBy('id', 'desc')
+                    ->get();
+        
+                    $data1 = DB::table('contacts')
+                    ->where('status', 1)
+                    ->orderBy('id', 'desc')
+                    ->get();
+        
+                    return view('admin.contact' , ['data'=>$data , 'data1'=>$data1]);
+                }catch(\Exception $e){
+                    dd($e);
+                }
+              }
+        
+        
+        
+              public function change_contact_req_status($id , Request  $req){
+                try{
+                    $data=Contact::find($id);
+            
+                    if ($data) {
+                        if ($data->status == 0) {
+                            $data->status = 1;
+                            $data->save();
+            
+                            return redirect()->back()->with('success', 'Contact Marked Available');
+                        } else {
+                            $data->status = 0;
+                            $data->save();
+                            return redirect()->back()->with('message', 'Contact Marked Not Available');
+                        }
+                    } else {
+                        return redirect()->back()->with('message', 'Contact not found');
+                    }
+                 }catch(\Exception $e){
+                            dd($e);
+                        }
+                    }
+                    public function delete_contact_req($id , Request $request){
+                        try{
+                            DB::table('contacts')->where('id', $id)->delete();
+            
+                            return redirect()->back()->with('message', 'Conntact Request Deleted');
+            
+                                // return redirect()->back()->with('message', 'Tourist Place Status Apprved');
+                        }catch(\Exception $e){
+                            dd($e);
+                        }
+                    }
+        
+                    public function m_review(){
+                        try{
+                            $data = DB::table('reviews')
+                            ->where('status', 0)
+                            ->orderBy('id', 'desc')
+                            ->get();
+                
+                            $data1 = DB::table('reviews')
+                            ->where('status', 1)
+                            ->orderBy('id', 'desc')
+                            ->get();
+                
+                            return view('admin.reviews' , ['data'=>$data , 'data1'=>$data1]);
+                        }catch(\Exception $e){
+                            dd($e);
+                        }
+                      }
+                      public function change_review_status($id , Request  $req){
+                        try{
+                            $data=Review::find($id);
+                    
+                            if ($data) {
+                                if ($data->status == 0) {
+                                    $data->status = 1;
+                                    $data->save();
+                    
+                                    return redirect()->back()->with('success', 'Review Marked Available');
+                                } else {
+                                    $data->status = 0;
+                                    $data->save();
+                                    return redirect()->back()->with('message', 'Review Marked Not Available');
+                                }
+                            } else {
+                                return redirect()->back()->with('message', 'Review not found');
+                            }
+                         }catch(\Exception $e){
+                                    dd($e);
+                                }
+                            }
+                            public function delete_review($id , Request $request){
+                                try{
+                                    DB::table('reviews')->where('id', $id)->delete();
+                    
+                                    return redirect()->back()->with('message', 'Review Request Deleted');
+                    
+                                        // return redirect()->back()->with('message', 'Tourist Place Status Apprved');
+                                }catch(\Exception $e){
+                                    dd($e);
+                                }
+                            }
 
 }

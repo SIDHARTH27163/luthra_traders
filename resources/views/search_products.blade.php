@@ -17,7 +17,7 @@
 
 
     @include('components/e_header')
-  
+
 
     {{-- feturedproducts --}}
 
@@ -53,7 +53,7 @@
                         </div>
                         <div class="flex justify-end md:absolute md:bottom-4 md:right-4 lg:bottom-0 lg:right-0">
                             <img src="{{ asset('banner_images/' . $banner1->image) }}" alt=""
-                                class="w-32 h-32 z-0" />
+                                class="w-24 h-32 z-0" />
                         </div>
                     </div>
                 @endforeach
@@ -61,7 +61,7 @@
         </div>
 
     </section>
-    
+
   <section class="flex items-center py-16 font-Roboto bg-white">
     <div class="px-4 mx-auto max-w-7xl">
       <h1 class="relative mb-4 font-black leading-tight text-black sm:text-4xl xl:mb-8">Explore The Next Great Products For Luthra Traders</h1>
@@ -70,16 +70,16 @@
           <div class="w-full p-1 text-xl text-center text-rose-500 font-bold mt-1"> {{ $message }}</div>
         <div class="grid grid-cols-1 gap-4 lg:gap-8 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:py-12 md:py-12 sm:py-6 py-6">
             @foreach ($products as $product )
-                
-           
+
+
             <div class="w-full">
                 <div class="p-6 bg-white rounded-lg shadow-xl  dark:bg-gray-700 group">
                     <a class="block mb-2" href="{{url('view_product/'.$product->id)}}">
                         <div class="relative overflow-hidden">
                             <div class="mb-5 overflow-hidden">
-                                <img class="object-cover w-full mx-auto transition-all rounded h-96 group-hover:scale-110"
+                                <img class="object-cover w-auto mx-auto transition-all rounded h-96 group-hover:scale-105"
                                     src="{{ asset('shop_images/'.$product->image) }}"
-                                    alt="">
+                                    alt="luthra traders">
                             </div>
                             {{-- <div class="absolute flex flex-col top-4 right-4">
                                 <a href="#" class="flex items-center">
@@ -108,38 +108,38 @@
                             <h3 class="mb-2 text-2xl font-bold dark:text-white text-center">{{ $product->m_name }}</h3>
                         </a>
                         <p class="text-lg font-bold text-slate-900 dark:text-red-300 ">
-                            
+
                             @php
                             $discountedPrice = $product->price;
-                        
+
                             if (is_numeric($product->price) && is_string($product->discount)) {
                                 // Remove commas from the price
                                 $priceWithoutCommas = str_replace(',', '', $product->price);
-                                
+
                                 // Use regular expression to extract the percentage value
                                 if (preg_match('/([0-9.]+)%/', $product->discount, $matches)) {
                                     $discountPercentage = floatval($matches[1]);
-                                    
+
                                     // Calculate the discounted price
                                     $discountedPrice = $priceWithoutCommas - ($priceWithoutCommas * ($discountPercentage / 100));
                                 }
                             }
-                            
+
                             // Ensure $discountedPrice is of float type
                             $discountedPrice = is_numeric($discountedPrice) ? floatval($discountedPrice) : 0.00;
-                        
+
                             // Format the discounted price with commas
                             $formattedDiscountedPrice = number_format($discountedPrice, 2);
                         @endphp
-                        
+
                         <span class="flex flex-row justify-center"> Price:<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                             <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM9 7.5A.75.75 0 009 9h1.5c.98 0 1.813.626 2.122 1.5H9A.75.75 0 009 12h3.622a2.251 2.251 0 01-2.122 1.5H9a.75.75 0 00-.53 1.28l3 3a.75.75 0 101.06-1.06L10.8 14.988A3.752 3.752 0 0014.175 12H15a.75.75 0 000-1.5h-.825A3.733 3.733 0 0013.5 9H15a.75.75 0 000-1.5H9z" clip-rule="evenodd" />
                         </svg>
                         {{ $formattedDiscountedPrice }}
                         </span>
-                        
-                            
-                            
+
+
+
 
                            <div class="flex  flex-row justify-between">
                             <span class="text-md font-semibold text-red-400 line-through flex flex-row"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6">
@@ -154,12 +154,12 @@
                 </div>
             </div>
             @endforeach
-           
+
         </div>
     </div>
 
 
-    
+
 </section>
     {{-- products ends --}}
     @include('components/footer')
