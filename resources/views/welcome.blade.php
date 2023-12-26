@@ -3,6 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="title" content="Luthra Traders">
+<meta name="description" content="Established in 1970, Luthra Traders has gained immense expertise in Retail and Wholesale trading of Watches, Mobiles, computers, laptops and other Electronic Devices and related Services such as Airtel Jio and Vodafone.">
+<meta name="keywords" content="Luthra Traders , luthra Pg , cable tv in dharmshala , jio fiber in dharamshala">
+<meta name="robots" content="index, follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="language" content="English">
+<meta name="author" content="Luthra Traders">
+<!-- Open Graph / Facebook -->
+
+
+<meta property="og:title" content="Luthra Traders" />
+<meta property="og:description" content="Established in 1970, Luthra Traders has gained immense expertise in Retail and Wholesale trading of Watches, Mobiles, computers, laptops and other Electronic Devices and related Services such as Airtel Jio and Vodafone." />
+<meta property="og:image" content="../images/favicon.ico" />
+<link rel="canonical" href={{ request()->url() }} />
+<!-- Twitter -->
+<meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Luthra traders: Luthra traders, Luthra traders , pg in dharamshala , cavble tv in dharamshala , jio dharamshala" />
+    <meta property="og:type" content="website" />
+
+    <meta property="og:description" content="Established in 1970, Luthra Traders has gained immense expertise in Retail and Wholesale trading of Watches, Mobiles, computers, laptops and other Electronic Devices and related Services such as Airtel Jio and Vodafone." />
+    <meta property="og:url" content={{ request()->url() }} />
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
   @vite('resources/css/main.css')
   @vite('resources/css/app.css')
   @vite('resources/js/app.js')
@@ -39,7 +61,7 @@
             <p class="pr-0 mb-8 text-base text-gray-600 sm:text-lg xl:text-xl lg:pr-20 z-10">Are you ready to start your
                 your journey with luthra traders</p>
             <a href="#explore"
-                class="relative z-10 self-start inline-block w-auto px-8 py-4 mx-auto mt-0 text-base font-bold text-white bg-sky-600 border-t border-gray-200 rounded-md shadow-xl sm:mt-1 fold-bold lg:mx-0">Start Exploring</a>
+                class="relative z-10 self-start inline-block w-auto px-8 py-4 mx-auto mt-0 text-base font-bold text-white bg-purple-600 border-t border-gray-200 rounded-md shadow-xl sm:mt-1 fold-bold lg:mx-0">Start Exploring</a>
 
             <svg class="absolute left-0 max-w-md mt-24 -ml-64 left-svg z-0" viewBox="0 0 423 423"
                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -76,6 +98,43 @@
         </div>
     </div>
 </div>
+{{-- about section  --}}
+<!-- ====== About Section Start -->
+<section class="flex items-center bg-stone-100 xl:h-screen font-poppins dark:bg-gray-800 ">
+    <div class="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
+        <div class="flex flex-wrap ">
+            <div class="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
+                <span class="text-2xl font-bold text-cyan-400 uppercase">
+                    About Us</span>
+                <h2 class="mt-2 mb-6 text-xl text-justify font-bold dark:text-gray-300">
+                    Established in 1970, Luthra Traders has gained immense expertise in Retail and Wholesale trading of Watches, Mobiles, computers, laptops and other Electronic Devices and related Services such as Airtel Jio and Vodafone.</h2>
+                <p class="mb-10 text-gray-600 dark:text-gray-400 ">
+                    Luthra Traders is one of the leading sellers of listed products. You can buy Mobiles, computers, laptops, Sim Cards from us for the best quality products and service. You can also contact us for Internet Services and Cable TV Services of JIO & Fastway in and around Dharamshala.</p>
+                {{-- <a href="#"
+                    class="px-4 py-3 text-gray-100 uppercase transition-all transform bg-cyan-400 rounded hover:bg-cyan-500 dark:hover:bg-cyan-500 dark:hover:text-gray-50 dark:text-gray-100 hover:text-gray-100">
+                    About Us
+                </a> --}}
+            </div>
+            <div class="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
+                <div class="relative">
+                    <img src="{{ asset('images/collage.png') }}" alt="luthra traders dhramshala"
+                        class="relative z-10 object-cover w-full h-full rounded">
+                    <div
+                        class="absolute bottom-0 right-0 z-10 p-4 bg-white shadow sm:p-8 dark:text-gray-300 dark:bg-gray-800 ">
+                        <p class="text-sm font-semibold">
+                            Providing services since 1970
+                        </p>
+                    </div>
+                    <div class="absolute hidden w-full h-full bg-cyan-400 rounded -bottom-6 left-6 lg:block">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ====== About Section End -->
+
+
 <section class="bg-white dark:bg-gray-800">
   <div class="max-w-screen-xl px-4 py-6 mx-auto space-y-2 lg:space-y-20 lg:py-12 lg:px-6">
       <!-- Row -->
@@ -103,7 +162,7 @@
               </ul>
               <p class="mb-8 font-light lg:text-xl font-Roboto">Sustainability and Social Responsibility</p>
           </div>
-          <img class="hidden w-full mb-4 rounded-lg lg:mb-0  shadow-xl lg:flex" src="{{ asset('images/lbg1.png') }}" alt="Luthra rounded feature image">
+          <img class="hidden w-full mb-4 rounded-lg lg:mb-0   lg:flex" src="{{ asset('images/lbg1.png') }}" alt="Luthra rounded feature image">
       </div>
 
   </div>
@@ -145,10 +204,10 @@
         @foreach ($services as $services)
 
 
-         <a href="{{'enquire_service/'.$services->id}}" class="w-full px-5 ">
+         <a href="{{'enquire_service/'.$services->id}}" class="w-full px-5 py-2">
             <div
                class=" cursor-pointer
-               p-5 md:px-7 xl:px-10 rounded-[20px]
+               p-5 md:px-7 xl:px-10 px-2 rounded-[20px]
                bg-purple-600
                shadow-lg
                shadow-sky-100
@@ -159,6 +218,7 @@
                hover:scale-105
                transition duration-500
                mb-8
+               py-4
                "
                >
 
@@ -181,7 +241,7 @@
 <!-- ====== Services Section End -->
 <section class="py-6 px-2">
     <div class="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16 max-w-7xl mx-auto">
-        <img class="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex shadow-lg" src="{{ asset('images/lbg2.png') }}" alt="feature image 2">
+        <img class="hidden w-full mb-4 rounded-t-lg lg:mb-0 lg:flex " src="{{ asset('images/lbg2.png') }}" alt="feature image 2">
         <div class="text-gray-500 sm:text-lg dark:text-gray-400">
             <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">What features we provide with our services</h2>
             <p class="mb-8 font-light lg:text-xl font-Raleway">We take pride in offering a comprehensive range of features and benefits with our services, all designed to enhance your experience and meet your specific needs. </p>
@@ -388,7 +448,7 @@
 
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 ">
            @foreach ($reviews as $review )
-           <div class="py-6 bg-white rounded-lg shadow-lg dark:bg-gray-900">
+           <div class="py-6 bg-white rounded-lg shadow-lg ">
             <div
                 class="flex flex-wrap items-center justify-between pb-4 mb-6 space-x-2 border-b dark:border-gray-700">
                 <div class="flex items-center px-6 mb-2 md:mb-0 ">

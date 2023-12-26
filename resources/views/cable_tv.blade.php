@@ -1,12 +1,39 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Luthra Traders">
+  <meta name="description" content="Established in 1970, Luthra Traders has gained immense expertise in Retail and Wholesale trading of Watches, Mobiles, computers, laptops and other Electronic Devices and related Services such as Airtel Jio and Vodafone.">
+  <meta name="keywords" content="cable tv in dharamshala, Luthra Traders , luthra Pg , cable tv in dharmshala , jio fiber in dharamshala">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <meta name="author" content="Luthra Traders">
+  <!-- Open Graph / Facebook -->
+  
+  
+  <meta property="og:title" content="Luthra Traders" />
+  <meta property="og:description" content="Established in 1970, Luthra Traders has gained immense expertise in Retail and Wholesale trading of Watches, Mobiles, computers, laptops and other Electronic Devices and related Services such as Airtel Jio and Vodafone." />
+  <meta property="og:image" content="../images/favicon.ico" />
+  <link rel="canonical" href={{ request()->url() }} />
+  <!-- Twitter -->
+  <meta property="og:locale" content="en_US" />
+      <meta property="og:site_name" content="Luthra traders: Luthra traders, Luthra traders , pg in dharamshala , cavble tv in dharamshala , jio dharamshala" />
+      <meta property="og:type" content="website" />
+  
+      <meta property="og:description" content="Established in 1970, Luthra Traders has gained immense expertise in Retail and Wholesale trading of Watches, Mobiles, computers, laptops and other Electronic Devices and related Services such as Airtel Jio and Vodafone." />
+      <meta property="og:url" content={{ request()->url() }} />
+      <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 
-  @vite('resources/css/app.css')
 
-  @vite('resources/js/app.js')
+
+      @vite('resources/css/app.css')
+
+
+
+      @vite('resources/css/main.css')
+      @vite('resources/js/app.js')
 </head>
 <body class="overflow-x-hidden">
     @include('components/header')
@@ -31,7 +58,7 @@
         </div>
         </div>
         <div class="absolute left-0 items-center justify-center hidden px-4 transform -translate-y-1/2 xl:-translate-x-1/2 lg:inline-flex top-1/2 ">
-        <img src="{{ asset('images/cabletv.png') }}" class="object-fill object-center  w-52 h-52 xl:w-72 xl:h-72 rounded-3xl ">
+        <img src="{{ asset('images/cabletvbg.png') }}" class="object-center w-64 h-52 xl:w-96 xl:h-72 rounded-3xl ">
         </div>
         <div class="absolute top-0 right-0 items-center justify-center hidden lg:inline-flex">
         <svg width="290" height="166" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -124,8 +151,10 @@
                 <div class="w-full px-4 md:w-1/2 ">
                     <div class=" relative  overflow-hidden ">
                         <div class=" mb-6 lg:mb-10 lg:h-2/4 ">
-                            <img src="{{ asset('images/abletvbg.png') }}" alt=""
-                                class="object-cover rounded-2xl shadow-lg drop-shadow-lg w-full lg:h-full ">
+                            <img src="{{ asset('images/abletvbg.png') }}" alt="dharamshala entertainment network"
+                                class="object-cover rounded-2xl shadow-lg drop-shadow-lg w-full lg:h-full hidden lg:block md:block">
+                                <img src="{{ asset('images/cabletvbg.png') }}" alt=""
+                                class="object-cover rounded-2xl shadow-lg drop-shadow-lg w-full lg:h-full  lg:hidden md:hidden block">
                         </div>
 
                     </div>
@@ -133,7 +162,7 @@
                 <div class="w-full px-4 md:w-1/2 ">
                     <div class="lg:pl-20">
                         <div class="mb-8 ">
-                            <span class="text-lg font-medium text-rose-500 dark:text-rose-200">Luthra</span>
+                            <span class="text-lg font-medium text-rose-500 dark:text-rose-200">Dharamshala Entertainment Network <p class="text-blue-600">FASTWAY</p></span>
                             <h2 class="max-w-xl mt-2 mb-6 text-2xl font-bold  md:text-4xl">
                                 Dharamshala Entertainment Netwrok</h2>
 
@@ -143,11 +172,11 @@
 
                             </p>
                             <p class="inline-block mb-3 text-2xl font-bold text-gray-700 dark:text-gray-400 ">
-                                <span>Set Top Box Instalation: Rs.1500.00</span>
+                                <span>Set Top Box Instalation: Rs.1500/-</span>
 
                             </p>
                             <p class="inline-block mb-4 text-2xl font-bold text-gray-700 dark:text-gray-400 ">
-                                <span>Montly Rents: Rs.250.00</span>
+                                <span>Monthly Rental Starts from: Rs.250/-</span>
 
                             </p>
 

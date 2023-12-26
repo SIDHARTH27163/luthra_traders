@@ -1,8 +1,30 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Luthra Traders">
+  <meta name="description" content="Established in 1970, Luthra Traders has gained immense expertise in Retail and Wholesale trading of Watches, Mobiles, computers, laptops and other Electronic Devices and related Services such as Airtel Jio and Vodafone.">
+  <meta name="keywords" content="Luthra Traders , luthra Pg , cable tv in dharmshala , jio fiber in dharamshala">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <meta name="author" content="Luthra Traders">
+  <!-- Open Graph / Facebook -->
+  
+  
+  <meta property="og:title" content="Luthra Traders" />
+  <meta property="og:description" content="Established in 1970, Luthra Traders has gained immense expertise in Retail and Wholesale trading of Watches, Mobiles, computers, laptops and other Electronic Devices and related Services such as Airtel Jio and Vodafone." />
+  <meta property="og:image" content="../images/favicon.ico" />
+  <link rel="canonical" href={{ request()->url() }} />
+  <!-- Twitter -->
+  <meta property="og:locale" content="en_US" />
+      <meta property="og:site_name" content="Luthra traders: Luthra traders, Luthra traders , pg in dharamshala , cavble tv in dharamshala , jio dharamshala" />
+      <meta property="og:type" content="website" />
+  
+      <meta property="og:description" content="Established in 1970, Luthra Traders has gained immense expertise in Retail and Wholesale trading of Watches, Mobiles, computers, laptops and other Electronic Devices and related Services such as Airtel Jio and Vodafone." />
+      <meta property="og:url" content={{ request()->url() }} />
+      <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 
   @vite('resources/css/app.css')
 

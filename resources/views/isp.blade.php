@@ -3,6 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="title" content="Luthra Traders">
+<meta name="description" content="Established in 1970, Luthra Traders has gained immense expertise in Retail and Wholesale trading of Watches, Mobiles, computers, laptops and other Electronic Devices and related Services such as Airtel Jio and Vodafone.">
+<meta name="keywords" content="isp dharamshala , internet in dharamshala, Luthra Traders , luthra Pg , cable tv in dharmshala , jio fiber in dharamshala">
+<meta name="robots" content="index, follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="language" content="English">
+<meta name="author" content="Luthra Traders">
+<!-- Open Graph / Facebook -->
+
+
+<meta property="og:title" content="Luthra Traders" />
+<meta property="og:description" content="Established in 1970, Luthra Traders has gained immense expertise in Retail and Wholesale trading of Watches, Mobiles, computers, laptops and other Electronic Devices and related Services such as Airtel Jio and Vodafone." />
+<meta property="og:image" content="../images/favicon.ico" />
+<link rel="canonical" href={{ request()->url() }} />
+<!-- Twitter -->
+<meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Luthra traders: Luthra traders , pg in dharamshala , cavble tv in dharamshala , jio dharamshala" />
+    <meta property="og:type" content="website" />
+
+    <meta property="og:description" content="Established in 1970, Luthra Traders has gained immense expertise in Retail and Wholesale trading of Watches, Mobiles, computers, laptops and other Electronic Devices and related Services such as Airtel Jio and Vodafone." />
+    <meta property="og:url" content={{ request()->url() }} />
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+
   @vite('resources/css/main.css')
   @vite('resources/css/app.css')
   @vite('resources/js/app.js')
@@ -111,7 +134,7 @@
   </div>
 <section class="cards pb-1 max-w-7xl mx-auto container">
   <div data-aos="flip-up" class="max-w-xl mx-auto text-center mt-1">
-    <h1 class="font-bold text-darken my-3 text-2xl">Luthra Traders <span class="text-yellow-500">Jio Fiber Conectivity PRovider.</span></h1>
+    <h1 class="font-bold text-darken my-3 text-2xl">Luthra Traders <span class="text-yellow-500">Jio Fiber Conectivity Provider.</span></h1>
     <p class="leading-relaxed text-gray-500">We are excited to have you on board and look forward to providing you with unparalleled service, top-notch connectivity, and a seamless installation process. Get ready to unlock the power of the internet with JioFiber!</p>
   </div>
 
@@ -122,7 +145,7 @@
           <path d="M24.75 23H8.25V28.75H24.75V23ZM32.3984 9.43359L23.9852 0.628906C23.5984 0.224609 23.0742 0 22.5242 0H22V11.5H33V10.952C33 10.3859 32.7852 9.83789 32.3984 9.43359ZM19.25 12.2188V0H2.0625C0.919531 0 0 0.961328 0 2.15625V43.8438C0 45.0387 0.919531 46 2.0625 46H30.9375C32.0805 46 33 45.0387 33 43.8438V14.375H21.3125C20.1781 14.375 19.25 13.4047 19.25 12.2188ZM5.5 6.46875C5.5 6.07164 5.80766 5.75 6.1875 5.75H13.0625C13.4423 5.75 13.75 6.07164 13.75 6.46875V7.90625C13.75 8.30336 13.4423 8.625 13.0625 8.625H6.1875C5.80766 8.625 5.5 8.30336 5.5 7.90625V6.46875ZM5.5 12.2188C5.5 11.8216 5.80766 11.5 6.1875 11.5H13.0625C13.4423 11.5 13.75 11.8216 13.75 12.2188V13.6562C13.75 14.0534 13.4423 14.375 13.0625 14.375H6.1875C5.80766 14.375 5.5 14.0534 5.5 13.6562V12.2188ZM27.5 39.5312C27.5 39.9284 27.1923 40.25 26.8125 40.25H19.9375C19.5577 40.25 19.25 39.9284 19.25 39.5312V38.0938C19.25 37.6966 19.5577 37.375 19.9375 37.375H26.8125C27.1923 37.375 27.5 37.6966 27.5 38.0938V39.5312ZM27.5 21.5625V30.1875C27.5 30.9817 26.8847 31.625 26.125 31.625H6.875C6.11531 31.625 5.5 30.9817 5.5 30.1875V21.5625C5.5 20.7683 6.11531 20.125 6.875 20.125H26.125C26.8847 20.125 27.5 20.7683 27.5 21.5625Z" fill="white"/>
         </svg>
       </div>
-      <h1 class="font-medium text-xl mb-3 lg:px-14 text-darken">Online Contract , and installation request</h1>
+      <h1 class="font-medium text-xl mb-3 lg:px-14 text-darken">Online Contact , and installation request</h1>
       <p class="px-4 text-gray-500">At JioFiber, our installation services are meticulously designed to ensure a hassle-free and swift setup process. Our team of skilled professionals is dedicated to providing you with an effortless installation experience. From the moment you choose JioFiber, we take the wheel to make sure your transition to our high-speed network is smooth and efficient.</p>
     </div>
     <div data-aos="fade-up" data-aos-delay="150" class="bg-white shadow-xl p-6 text-center rounded-xl">
