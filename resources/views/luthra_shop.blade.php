@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Luthra Traders">
   <meta name="description" content="Established in 1970, Luthra Traders has gained immense expertise in Retail and Wholesale trading of Watches, Mobiles, computers, laptops and other Electronic Devices and related Services such as Airtel Jio and Vodafone.">
-  <meta name="keywords" content="Luthra Traders , luthra Pg , cable tv in dharmshala , jio fiber in dharamshala">
+  <meta name="keywords" content="Luthra Traders , luthra girls pg , mobile shop in dharamshala , dharamshala mobile repair">
   <meta name="robots" content="index, follow">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="language" content="English">
@@ -37,13 +37,13 @@
 
 
     @include('components/e_header')
-    <section class="lg:py-5 md:py-5 sm:py-1 py-1  ">
+    <section class="lg:py-2 md:py-2 sm:py-1 py-1  ">
 
 
-        <div class=" max-w-7xl mx-auto container lg:py-8 md:py-8 sm:py-6 py-4   px-4 md:px-6 ">
+        <div class=" max-w-7xl mx-auto container py-2  px-4 md:px-6 ">
             <div class="shadow-xl rounded-xl flex items-strech justify-center flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 lg:space-x-8">
               @foreach ($banner as $banner )
-              <div class="bg-white flex flex-col md:flex-row items-strech justify-between  dark:bg-gray-800 py-6 px-6 md:py-12 lg:px-12 md:w-8/12 lg:w-7/12 xl:w-8/12 2xl:w-9/12">
+              <div class="bg-white flex flex-col md:flex-row items-strech justify-between  dark:bg-gray-800 py-8 px-6  md:w-8/12 lg:w-7/12 xl:w-8/12 2xl:w-9/12">
                 <div class="flex flex-col justify-center md:w-1/2">
                     <h1 class="text-xl lg:text-2xl font-semibold text-gray-800 dark:text-white">Best Deal in {{ $banner->p_name }}</h1>
                     <p class="text-base lg:text-xl text-gray-800 dark:text-white mt-2">Save upto <span class="font-bold">{{ $banner->discount }}</span></p>
@@ -60,7 +60,7 @@
                         <p class="text-base lg:text-xl text-gray-800 dark:text-white">Save Upto <span class="font-bold">{{ $banner1->discount }}</span></p>
                     </div>
                     <div class="flex justify-end md:absolute md:bottom-4 md:right-4 lg:bottom-0 lg:right-0">
-                        <img src="{{ asset('banner_images/'.$banner1->image) }}" alt="" class="w-24 h-32 z-0 object-center" />
+                        <img src="{{ asset('banner_images/'.$banner1->image) }}" alt="" class="w-20 h-24 z-0 object-center" />
                     </div>
                 </div>
                 @endforeach
@@ -72,30 +72,35 @@
 {{-- feturedproducts --}}
 
 
-<section class="lg:py-6 md:py-6 sm:py-1  py-1 " >
+<section class="lg:py-2 md:py-2 sm:py-1  py-1 " >
 
+    @foreach ($about as $data )
     <div class=" max-w-7xl mx-auto container lg:py-6 md:py-6 sm:py-1  py-1 px-4">
         <div class="lg:flex items-center justify-between">
 
             <div class="lg:w-7/12 lg:mt-0 mt-2 ">
 
-                <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 lg:gap-8 gap-6 lg:mt-8 md:mt-6 mt-4">
-                    <img src="{{ asset('images/lbg2.png') }}" class="w-full h-96 " alt="luthra traders" />
-                    <img src="{{ asset('images/bg p asse.png') }}" class="w-full h-96" alt="luthra traders" />
-                </div>
+               
+                    <img src="{{ asset('traders/'.$data->image) }}" class="w-full h-96 object-contain " alt="luthra traders" />
+                  
+               
             </div>
             <div class="lg:w-1/3">
-                <h1 class="text-4xl font-semibold leading-9 text-gray-800 dark:text-white">Luthra Traders</h1>
-                <p class="text-base leading-6 mt-4 text-gray-600 dark:text-gray-100">Our mission is clear: to make a positive impact, create lasting change, and leave a legacy. Join us today, and be a part of something bigger than yourself. Together, we can achieve remarkable things and shape a brighter future for all.</p>
-                <a href="#catelog" aria-label="view catalogue" class="focus:ring-2 focus:ring-offset-2 focus:ring-gray-700 focus:outline-none mt-6 md:mt-8 text-base font-semibold leading-none text-gray-800 dark:text-white flex items-center hover:underline">
-                    View Catalogue
-                    <img class="ml-2 mt-1 dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/feature-VI-svg1.svg" alt="arrow">
-                    <img class="ml-2 mt-1 hidden dark:block" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/feature-VI-svg1dark.svg" alt="arrow">
-                </a>
+                <h1 class="text-4xl font-semibold leading-9 text-gray-800 dark:text-white">{{$data->heading}}</h1>
+                <p class="text-lg font-Raleway font-semibold leading-6 mt-4 text-gray-600 dark:text-gray-100">{{$data->description}}</p>
+              
+                    <a href="#catelog" aria-label="view catalogue" class="relative mt-5 inline-flex items-center px-12 py-3 overflow-hidden text-lg font-medium text-indigo-600 border-2 border-indigo-600 rounded-xl hover:text-white group hover:bg-gray-50">
+                        <span class="absolute left-0 block w-full h-0 transition-all bg-indigo-600 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+                        <span class="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </span>
+                        <span class="relative">View Catalog</span>
+                        </a>
+             
             </div>
         </div>
     </div>
-
+@endforeach
 </section>
 
 

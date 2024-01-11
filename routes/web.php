@@ -25,10 +25,10 @@ Route::get('/test', function () {
 Route::get('/' , [homepageController::class,'index']);
 Route::get('/luthra_pg' , [homepageController::class,'get_pg']);
 Route::get("luthra_pg/{id}" , [homepageController::class,'room_detail']);
-
-Route::get('/luthra_cabletv', function () {
-    return view('cable_tv');
-});
+Route::get("/luthra_cabletv" , [homepageController::class,'luthra_cabletv']);
+// Route::get('/luthra_cabletv', function () {
+//     return view('cable_tv');
+// });
 
 Route::post("/send_request" , [homepageController::class ,'send_request']);
 Route::get("view_product/{id}" , [homepageController::class,'view_product']);
@@ -50,7 +50,7 @@ return view('auth.signin');
 
 })->name('signin');
 Route::get("/signout" , [authController::class,'logout']);
-Route::post("signup" , [authController::class,'signup']);
+Route::post("signup_new" , [authController::class,'signup']);
 Route::post("/signin" , [authController::class,'signin']);
 
 // admin routes
@@ -62,6 +62,8 @@ Route::get("manage_services" , [serviceController::class,'services']);
 Route::post("add_service" , [serviceController::class,'add_service']);
 Route::get("change_service_status/{id}" , [serviceController::class,'change_service_status']);
 Route::get("delete_service/{id}" , [serviceController::class,'delete_service']);
+Route::get("edit_service/{id}" , [serviceController::class,'edit_service']);
+Route::post("edit_services/{id}" , [serviceController::class,'edit_services']);
 Route::get("queries_inbox" ,[adminController::class ,'get_queries'] );
 Route::get("change_q_status/{id}" , [adminController::class,'change_status']);
 Route::get("delete_querie/{id}" , [adminController::class,'delete_querie']);
@@ -73,6 +75,8 @@ Route::get("change_u_status/{id}" , [adminController::class,'change_u_status']);
 // admin routes for pg
 Route::get("manage_facilities" , [adminController::class,'add_facilities']);
 Route::post("add_category" , [adminController::class,'add_category']);
+Route::get("edit_cat/{id}",[adminController::class, 'edit_cat']);
+Route::post("edit_cats/{id}",[adminController::class, 'edit_cats']);
 Route::post("add_facility_cat" , [adminController::class,'add_facility_cat']);
 
 Route::get("delete_cats/{id}" , [adminController::class,'delete_cats']);
@@ -80,12 +84,16 @@ Route::get("delete_cats_facility/{id}" , [adminController::class,'delete_cats_fa
 Route::get("change_f_status/{id}" , [adminController::class,'change_f_status']);
 Route::get("manage_rooms" , [adminController::class,'add_room']);
 Route::post("add_rooms" , [adminController::class,'add_rooms']);
+Route::get("edit_room/{id}",[adminController::class, 'edit_room']);
+Route::post("edit_rooms/{id}",[adminController::class, 'edit_rooms']);
 Route::get("delete_r/{id}" , [adminController::class,'delete_r']);
 Route::get("change_r_status/{id}" , [adminController::class,'change_r_status']);
 Route::get("get_pg_data" , [adminController::class,'get_pg_data']);
 Route::get('/import_data', function () {
     return view('admin.import_data');
 });
+Route::get("edit_fac_pg/{id}" , [adminController::class,'edit_fac_pg']);
+Route::post("edit_pg_fac/{id}" , [adminController::class,'edit_pg_fac']);
 Route::get("upload_gallery/{id}" , [adminController::class,'upload_gallery']);
 Route::post("upload_room_gallery/{id}" , [adminController::class,'upload_room_gallery']);
 Route::post("import_users" , [adminController::class,'uploadUsers']);
@@ -104,7 +112,9 @@ Route::get('/manage_shop_banner' , [adminController::class , 'manage_shop_banner
 Route::post("/add_banner" , [adminController::class ,'add_banner']);
 Route::get('change_banner_status/{id}', [adminController::class, 'change_banner_status']);
 Route::get("delete_banner/{id}" , [adminController::class,'delete_banner']);
-
+Route::get("manage_about" , [adminController::class,'about']);
+Route::get("edit_about/{id}" , [adminController::class,'edit_about']);
+Route::post("edit_abouts/{id}" , [adminController::class,'edit_abouts']);
 Route::get("cabletv_req" , [adminController::class,'cabletv_req']);
 Route::get('change_cable_req_status/{id}', [adminController::class, 'change_cable_req_status']);
 Route::get("delete_cable_req/{id}" , [adminController::class,'delete_cable_req']);
@@ -113,10 +123,17 @@ Route::get('change_contact_req_status/{id}', [adminController::class, 'change_co
 Route::get("delete_contact_req/{id}" , [adminController::class,'delete_contact_req']);
 Route::get("m_review" , [adminController::class,'m_review']);
 Route::get('change_review_status/{id}', [adminController::class, 'change_review_status']);
+Route::get('change_review_priority/{id}', [adminController::class, 'change_review_priority']);
 Route::get("delete_review/{id}" , [adminController::class,'delete_review']);
 Route::get("edit_pr/{id}" , [adminController::class,'edit_pr']);
 
 Route::post("edit_product/{id}" , [adminController::class,'edit_product']);
+Route::get("manage_packs" , [adminController::class,'manage_packs']);
+Route::post("add_pack" , [adminController::class,'add_pack']);
+Route::get('change_pack_status/{id}', [adminController::class, 'change_packs_status']);
+Route::get("delete_pack/{id}" , [adminController::class,'delete_pack']);
+Route::get("edit_pack/{id}" , [adminController::class,'edit_pack']);
+Route::post("edit_packs/{id}" , [adminController::class,'edit_packs']);
 // adminn routes for pg ends
 // admin routes
 // authentication

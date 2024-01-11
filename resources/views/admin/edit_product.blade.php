@@ -61,7 +61,43 @@
         <div class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-2">
           
             
+          <div class="mb-2">
+            <label for="countries" class="block mb-2 text-lg font-bold text-gray-900 ">Select a Product Category</label>
+            <select id="countries" name="category" class="bg-blue-100 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option selected >{{ $udata->category }}</option>
+             @foreach ($data as $data )
+             <option >{{ $data->category }}</option>
+             @endforeach
+              
              
+            </select>
+            @if($errors->has('category'))
+            <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('category') }}</p>
+    @endif
+          </div>
+ 
+         
+          <div class="mb-4">
+  
+            <label for="message" class="block mb-2 text-lg font-medium text-gray-900 ">Description </label>
+            <textarea id="message" type="text" name="product_name" value="{{ $udata->p_name }}" rows="3" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  " placeholder="Write your thoughts here...">{{ $udata->p_name }}</textarea>
+           
+                          </div>
+          <div class="mb-2">
+            <label for="name" class="block mb-2 text-lg font-semibold text-gray-900 dark:text-white">Add Brand Name</label>
+            <input type="text" name="brand_name" id="text"  value="{{ $udata->b_name }}" class="bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="eg:Apple , Samsung , Oppo , Vivo , etc">
+            @if($errors->has('brand_name'))
+            <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('brand_name') }}</p>
+@endif
+          </div>
+
+          <div class="mb-2">
+            <label for="name" class="block mb-2 text-lg font-semibold text-gray-900 dark:text-white">Add Model Name</label>
+            <input type="text" name="model_name" value="{{ $udata->m_name }}" id="text" class="bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="eg:Apple Iphone , Realme Narzo , etc">
+            @if($errors->has('model_name'))
+            <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('model_name') }}</p>
+@endif
+          </div>
            
              
               <div class="mb-2">
@@ -79,11 +115,44 @@
     @endif
               </div>
             
-             
-             
+              <div class="mb-2">
+                <label for="name" class="block mb-2 text-lg font-semibold text-gray-900 dark:text-white">Warranty Policy</label>
+                <select id="countries" name="warranty_policy" class="bg-blue-100 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected>{{ $udata->w_policy }}</option>
+                   
+                    <option >Available</option>
+                    <option >Not Available</option>
+                  
+                  
+                  </select>
+                @if($errors->has('warranty_policy'))
+                <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('warranty_policy') }}</p>
+    @endif
+              </div>
+              <div class="mb-2">
+                <label for="name" class="block mb-2 text-lg font-semibold text-gray-900 dark:text-white">Emi Cost</label>
+                <input type="text" name="emi_cost" value="{{ $udata->emi_cost }}" id="text" class="bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="eg:2700/month, etc">
+                @if($errors->has('emi_cost'))
+                <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('emi_cost') }}</p>
+    @endif
+              </div>
+              <div class="mb-2">
+                <label for="name" class="block mb-2 text-lg font-semibold text-gray-900 dark:text-white">Replacement Time</label>
+                <input type="text" name="replacement_time" value="{{ $udata->r_time }}" id="text" class="bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="eg:1Month ,  1 week">
+                @if($errors->has('replacement_time'))
+                <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('replacement_time') }}</p>
+    @endif
+              </div>
              
         </div>
-
+        <div class="mb-4">
+  
+          <label for="message" class="block mb-2 text-lg font-medium text-gray-900 ">Description </label>
+          <textarea id="message" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  " placeholder="Write your thoughts here...">{{ $udata->desc }}</textarea>
+          @if($errors->has('description'))
+          <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('description') }}</p>
+ @endif
+                        </div>
       
         <div class="mb-4">
             <button class="w-auto px-4 py-3  font-bold text-white bg-gradient-to-r from-black to-blue-800 hover:from-black hover:to-blue-400

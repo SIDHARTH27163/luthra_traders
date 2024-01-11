@@ -1,7 +1,35 @@
 @extends('admin.layouts.master')
 @section('content')
-<div class="p-4  rounded-lg  border-2 border-slate-900 border-dashed h-auto">
+<div class="p-1  rounded-lg  border-2 border-slate-900 border-dashed h-auto">
+   <div class="grid  grid-cols-2 gap-4 mb-4">
+      <a   target="_blank" href="/shop" class="flex items-center justify-center h-24 rounded  bg-rose-600">
+         <p  class="text-xl text-gray-100 p-1 text-center">
+            View Retail Shop
+         </p>
+      </a>
+      <a  target="_blank" href="/luthra_pg" class="flex items-center justify-center h-24 rounded  bg-orange-600">
+         <p  class="text-xl text-gray-100 ">
+           View Pg Page
+         </p>
+      </a>
+      <a  target="_blank"  href="/luthra_cabletv" class="flex items-center justify-center h-24 rounded  bg-green-600">
+         <p  class="text-xl text-gray-100 text-center">
+          View Cable Tv Page
+         </p>
+      </a>
+      <a target="_blank" href="/isp" class="flex items-center justify-center h-24 rounded  bg-green-600">
+        <p  class="text-xl text-gray-100 text-center">
+         View Isp Page
+        </p>
+     </a>
   
+  
+  
+  
+  
+  
+  
+   </div>
    {{-- form starts --}}
 
    <div class="w-full p-4 ">
@@ -84,7 +112,7 @@
 
 
 
-<div class="w-full p-4 ">
+<div class="w-full p-1 ">
 
     <p class="toggleColour text-gray-900 text-2xl  font-bold underline py-2">Categories List</p>
     <div class="relative overflow-auto shadow-md sm:rounded-lg">
@@ -130,6 +158,8 @@
 
                 <td class="px-1 py-4 text-center">
                    <a href="{{url('delete_cats/'.$data->id)}}" class="font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</a><br>
+
+                   <a href="{{url('edit_cat/'.$data->id)}}" class="font-medium text-yellow-400 dark:text-rose-500 hover:underline">Edit</a><br>
 
 
 
@@ -240,8 +270,8 @@
              
                <td class="px-1 py-4 text-center">
                   <a href="{{url('delete_cats_facility/'.$f_data->f_id)}}" class="font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</a><br>
-                  <a href="{{url('change_f_status/'.$f_data->f_id)}}" class="font-medium text-green-600 dark:text-rose-500 hover:underline">Available/Unavailable</a><br>
-
+                  <a href="{{url('change_f_status/'.$f_data->f_id)}}" class="font-medium text-green-500  hover:underline">Available/Unavailable</a><br>
+                  <a href="{{url('edit_fac_pg/'.$f_data->f_id)}}" class="font-medium text-yellow-500  hover:underline">Edit</a><br>
 
 
 

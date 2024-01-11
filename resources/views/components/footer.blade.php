@@ -60,7 +60,10 @@
             <a href="/contact_us" class="inline-block text-base font-normal text-gray-100">9816041187</a>
             </li>
             <li class="mb-4">
-            <a href="luthratraders@gmail.com " class="inline-block text-base font-normal text-gray-100">luthratraders@gmail.com
+                <a href="/contact_us" class="inline-block text-base font-normal text-gray-100">01892222947</a>
+                </li>
+            <li class="mb-4">
+            <a href="mailto:luthratraders@gmail.com " class="inline-block text-base font-normal text-gray-100">luthratraders@gmail.com
             </a>
             </li>
             <li class="mb-4">

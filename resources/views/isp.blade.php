@@ -185,16 +185,22 @@
 
   <div class="sm:flex items-center sm:space-x-8 mt-36">
     <div data-aos="fade-right" class="sm:w-1/2 relative">
-      <div class="bg-yellow-500 rounded-full absolute w-12 h-12 z-0 -left-4 -top-3 animate-pulse"></div>
+      <div class="bg-yellow-500 rounded-full absolute w-12 h-12 z-0 -left-4 -top-3 animate-pulse">
+      
+      </div>
       <h1 class="font-semibold text-2xl relative z-10 text-darken lg:pr-10">Why to choose Luthra Traders, <span class="text-yellow-500">for fiber instalation</span></h1>
       <p class="py-5 lg:pr-32">We understand the significance of a stable internet connection in today's fast-paced world. That's why we guarantee a seamless installation, bringing you into the digital age with ease. Whether it's for work, entertainment, or staying connected with loved ones, JioFiber is your gateway to a world of endless possibilities.</p>
-      <a data-modal-target="default-modal" data-modal-toggle="default-modal"  class="underline cursor-pointer">Contact Owner Now</a>
+      <a data-modal-target="default-modal" data-modal-toggle="default-modal"  class="underline cursor-pointer">Contact Us Now</a>
     </div>
     <div data-aos="fade-left" class="sm:w-1/2 relative mt-10 sm:mt-0">
-      <div style="background: #23BDEE;" class="floating w-24 h-24 absolute rounded-lg z-0 -top-3 -left-3"></div>
+      <div style="background: #23BDEE;" class="floating w-24 h-24 p-2 absolute rounded-lg z-0 -top-3 -left-3">
+        <img class=" z-10 h-full w-full relative" src="{{ asset('images/jio.jpg') }}" alt="">
+      </div>
       <img class="rounded-xl z-10 relative" src="{{ asset('images/bg.png') }}" alt="">
 
-      <div class="bg-yellow-500 w-40 h-40 floating absolute rounded-lg z-10 -bottom-3 -right-3"></div>
+      <div class="bg-yellow-500 w-40 h-28 p-1 floating absolute rounded-lg z-10 -bottom-3 -right-3">
+        <img class=" z-10 h-full w-full relative" src="{{ asset('images/Jio.png') }}" alt="">
+      </div>
     </div>
   </div>
 

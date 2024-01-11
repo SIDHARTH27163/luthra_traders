@@ -1,11 +1,39 @@
 @extends('admin.layouts.master')
 @section('content')
-<div class="p-4  rounded-lg  border-2 border-slate-900 border-dashed h-auto">
-    
+<div class="p-1 rounded-lg  border-2 border-slate-900 border-dashed h-auto">
+   <div class="grid  grid-cols-2 gap-4 mb-4">
+      <a   target="_blank" href="/shop" class="flex items-center justify-center h-24 rounded  bg-rose-600">
+         <p  class="text-xl text-gray-100 p-1 text-center">
+            View Retail Shop
+         </p>
+      </a>
+      <a  target="_blank" href="/luthra_pg" class="flex items-center justify-center h-24 rounded  bg-orange-600">
+         <p  class="text-xl text-gray-100 ">
+           View Pg Page
+         </p>
+      </a>
+      <a  target="_blank"  href="/luthra_cabletv" class="flex items-center justify-center h-24 rounded  bg-green-600">
+         <p  class="text-xl text-gray-100 text-center">
+          View Cable Tv Page
+         </p>
+      </a>
+      <a target="_blank" href="/isp" class="flex items-center justify-center h-24 rounded  bg-green-600">
+        <p  class="text-xl text-gray-100 text-center">
+         View Isp Page
+        </p>
+     </a>
+  
+  
+  
+  
+  
+  
+  
+   </div>
 
    {{-- form starts --}}
 
-   <div class="w-full p-4 ">
+   <div class="w-full p-1">
 
       <p class="toggleColour text-gray-900 text-2xl  font-bold underline py-2">Manage Cable Requests</p>
       <div class="h-full  w-full  flex flex-col  items-center justify-center ">
@@ -16,7 +44,7 @@
 
 
 
-        <div id="alert-1" class="flex items-center w-full p-4 mb-4 text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
+        <div id="alert-1" class="flex items-center w-full p-1mb-4 text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
             <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
               <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
             </svg>
@@ -36,7 +64,7 @@
          @if(session()->has('message'))
 
 
-        <div id="alert-1" class="flex items-center w-full p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
+        <div id="alert-1" class="flex items-center w-full p-1mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
             <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
               <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
             </svg>
@@ -66,7 +94,7 @@
    {{-- form ends --}}
 
 
- <div class="w-full p-4 ">
+ <div class="w-full p-1">
 
     <p class="toggleColour text-gray-900 text-2xl  font-bold underline py-2"> Cable Request Waiting For Approvals</p>
     <div class="relative overflow-auto shadow-md sm:rounded-lg">
@@ -159,7 +187,7 @@
     </div>
 </div>
 
-<div class="w-full p-4 ">
+<div class="w-full p-1">
 
     <p class="toggleColour text-gray-900 text-2xl  font-bold underline py-2"> Approved Cable Requests</p>
     <div class="relative overflow-auto shadow-md sm:rounded-lg">

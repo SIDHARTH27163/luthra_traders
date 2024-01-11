@@ -23,7 +23,7 @@
 </head>
 
 <body class="leading-normal tracking-normal bg-gray-900 font-Roboto font-bold" >
-    <nav class="fixed top-0 z-50 w-full   ">
+    <nav class=" top-0 fixed z-50 w-full bg-gray-900  ">
         <div class="px-3 py-3 lg:px-5 lg:pl-3">
           <div class="flex items-center justify-between">
             <div class="flex items-center justify-start">
@@ -34,39 +34,40 @@
                   </svg>
                </button>
               <a href="/" class="flex ml-2 md:mr-24">
-                <img src="{{ asset('images/logo.png') }}" class="h-16 mr-3" alt="FlowBite Logo" />
+                <img src="{{ asset('images/logo.png') }}" class="h-12 mr-3 rounded-xl" alt="Luthra  Logo" />
                 <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-white">Luthra Traders</span>
               </a>
             </div>
             <div class="flex items-center">
                 <div class="flex items-center ml-3">
                   <div>
-                    {{-- <button type="button" class="flex text-sm  rounded-full focus:ring-4  focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                    <button type="button" class="flex text-sm  rounded-full focus:ring-4  focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                       <span class="sr-only">Open user menu</span>
-                      <img class="w-12 h-12 rounded-full" src="{{ asset('images/logo.png') }}" alt="user photo">
-                    </button> --}}
+                      <img class="w-10 h-10 rounded-full" src="{{ asset('images/logo.png') }}" alt="user photo">
+                    </button>
                   </div>
                   <div class="z-50 hidden my-4 text-base list-none  divide-y rounded shadow bg-gray-700 divide-gray-600" id="dropdown-user">
                     <div class="px-4 py-3" role="none">
-                      <p class="text-sm  text-white" role="none">
-                        Neil Sims
-                      </p>
-                      <p class="text-sm font-medium  truncate text-gray-300" role="none">
-                        neil.sims@flowbite.com
-                      </p>
+                     
                     </div>
                     <ul class="py-1" role="none">
                       <li>
-                        <a href="#" class="block px-4 py-2 text-sm   text-gray-300 hover:bg-gray-600 hover:text-white" role="menuitem">Dashboard</a>
+                        <a href="/" class="block px-4 py-2 text-sm   text-gray-300 hover:bg-gray-600 hover:text-white" role="menuitem">Home</a>
                       </li>
                       <li>
-                        <a href="#" class="block px-4 py-2 text-sm   text-gray-300 hover:bg-gray-600 hover:text-white" role="menuitem">Settings</a>
+                        <a href="/shop" class="block px-4 py-2 text-sm   text-gray-300 hover:bg-gray-600 hover:text-white" role="menuitem">Shop</a>
                       </li>
                       <li>
-                        <a href="#" class="block px-4 py-2 text-sm   text-gray-300 hover:bg-gray-600 hover:text-white" role="menuitem">Earnings</a>
+                        <a href="/luthra_pg" class="block px-4 py-2 text-sm   text-gray-300 hover:bg-gray-600 hover:text-white" role="menuitem">Pg</a>
                       </li>
                       <li>
-                        <a href="#" class="block px-4 py-2 text-sm   text-gray-300 hover:bg-gray-600 hover:text-white" role="menuitem">Sign out</a>
+                        <a href="/isp" class="block px-4 py-2 text-sm   text-gray-300 hover:bg-gray-600 hover:text-white" role="menuitem">Isp</a>
+                      </li>
+                      <li>
+                        <a href="/luthra_cabletv" class="block px-4 py-2 text-sm   text-gray-300 hover:bg-gray-600 hover:text-white" role="menuitem">Cavle Tv</a>
+                      </li>
+                      <li>
+                        <a href="/signout" class="block px-4 py-2 text-sm   text-gray-300 hover:bg-gray-600 hover:text-white" role="menuitem">Sign out</a>
                       </li>
                     </ul>
                   </div>
@@ -76,16 +77,25 @@
         </div>
       </nav>
 
-      <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full  border-r border-gray-200 sm:translate-x-0  " aria-label="Sidebar">
+      <aside id="logo-sidebar" class=" bg-gray-900 fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full  border-r border-gray-200 sm:translate-x-0  " aria-label="Sidebar">
          <div class="h-full px-3 pb-4 overflow-y-auto  ">
             <ul class="space-y-2 font-medium">
+               <li>
+                  <a href="/" class="flex items-center p-2  rounded-lg text-blue-600 bg-gray-200 font-bold  hover:bg-gray-700 group">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                      </svg>
+                      
+                     <span class="ml-3">View Webpage Home</span>
+                  </a>
+               </li>
                <li>
                   <a href="/admin" class="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700 group">
                      <svg class="w-5 h-5  transition duration-75 text-gray-400 group-hover: group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                         <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
                         <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
                      </svg>
-                     <span class="ml-3">Dashboard</span>
+                     <span class="ml-3">Dashboard Home</span>
                   </a>
                </li>
                <li>
@@ -156,6 +166,29 @@
                      <li>
                         <a href="/manage_shop_banner" class="flex items-center w-full p-2 text-gray-100 transition duration-75 rounded-lg pl-11 group hover:bg-gray-800 ">Manage Shop Banner</a>
                      </li>
+                     <li>
+                        <a href="/manage_about" class="flex items-center w-full p-2 text-gray-100 transition duration-75 rounded-lg pl-11 group hover:bg-gray-800 ">Manage Shop About</a>
+                     </li>
+               </ul>
+            </li>
+            <li>
+               <button type="button" class="flex items-center w-full p-2 text-base text-gray-100 transition duration-75 rounded-lg group hover:bg-gray-800 " aria-controls="dropdown-example2" data-collapse-toggle="dropdown-example2">
+                     <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-50 dark:text-gray-100 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                        <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                     </svg>
+                     <span class="flex-1 ml-3 text-left whitespace-nowrap">Manage Cable tv</span>
+                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                     </svg>
+               </button>
+               <ul id="dropdown-example2" class="hidden py-2 space-y-2">
+                     <li>
+                        <a href="/cabletv_req" class="flex items-center w-full p-2 text-gray-100 transition duration-75 rounded-lg pl-11 group hover:bg-gray-800 ">cabletv requests</a>
+                     </li>
+                     <li>
+                        <a href="/manage_packs" class="flex items-center w-full p-2 text-gray-100 transition duration-75 rounded-lg pl-11 group hover:bg-gray-800 ">manage package</a>
+                     </li>
+                    
                    
                </ul>
             </li>
@@ -168,7 +201,7 @@
                   <span class="flex-1 ml-3 whitespace-nowrap">Manage Reviews</span>
                </a>
             </li>
-               <li>
+               {{-- <li>
                   <a href="/cabletv_req" class="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700 group">
                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="flex-shrink-0 w-5 h-5  transition duration-75 text-gray-400 group-hover: group-hover:text-white">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.068.157 2.148.279 3.238.364.466.037.893.281 1.153.671L12 21l2.652-3.978c.26-.39.687-.634 1.153-.67 1.09-.086 2.17-.208 3.238-.365 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
@@ -176,7 +209,7 @@
                       
                      <span class="flex-1 ml-3 whitespace-nowrap">cabletv requests</span>
                   </a>
-               </li>
+               </li> --}}
                <li>
                   <a href="/contact_req" class="flex items-center p-2  rounded-lg text-white  hover:bg-gray-700 group">
                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="flex-shrink-0 w-5 h-5  transition duration-75 text-gray-400 group-hover: group-hover:text-white">
@@ -200,8 +233,8 @@
          </div>
       </aside>
 
-      <div class="p-4 sm:ml-64">
-         <div class="p-4 border-2 border-gray-200 border-dashed bg-white rounded-lg  mt-14">
+      <div class="p-2 sm:ml-64">
+         <div class="p-1 border-2 border-gray-200 border-dashed bg-white rounded-lg  mt-20">
 
 
 

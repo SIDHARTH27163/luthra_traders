@@ -46,8 +46,9 @@ class authController extends Controller
                     'first_name'=>$request->first_name,
                   
                     'last_name'=>$request->last_name,
-                    'role'=>1,
+                    'role'=>0,
                     'status'=>0,
+                    'service'=>0,
                     'email'=>$request->email,
                                        
                     'password'=> bcrypt($request->password),

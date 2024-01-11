@@ -1,22 +1,22 @@
 @extends('admin.layouts.master')
 @section('content')
-<div class="p-4  rounded-lg  border-2 border-slate-900 border-dashed h-auto">
+<div class="p-2  rounded-lg  border-2 border-slate-900 border-dashed h-auto">
     <div class="grid grid-cols-3 gap-4 mb-4">
-       <div class="flex items-center justify-center h-24 rounded  bg-rose-600">
-          <p class="text-2xl text-gray-400 ">
-             Luthra Traders
+       <a href="manage_shop_products" class="flex items-center justify-center h-24 rounded  bg-rose-600">
+          <p  class="text-2xl text-gray-400 ">
+            Shop
           </p>
-       </div>
-       <div class="flex items-center justify-center h-24 rounded  bg-orange-600">
-          <p class="text-2xl text-gray-400 ">
-             Luthra Traders
+       </a>
+       <a href="manage_rooms" class="flex items-center justify-center h-24 rounded  bg-orange-600">
+          <p  class="text-2xl text-gray-400 ">
+            Pg
           </p>
-       </div>
-       <div class="flex items-center justify-center h-24 rounded  bg-green-600">
-          <p class="text-2xl text-gray-400 ">
-             Luthra Traders
+       </a>
+       <a href="cabletv_req" class="flex items-center justify-center h-24 rounded  bg-green-600">
+          <p  class="text-2xl text-gray-400 ">
+            Cable Tv
           </p>
-       </div>
+       </a>
 
 
 

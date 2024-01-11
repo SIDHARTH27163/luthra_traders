@@ -1,7 +1,35 @@
 @extends('admin.layouts.master')
 @section('content')
-    <div class="p-4  rounded-lg  border-2 border-slate-900 border-dashed h-auto">
-
+    <div class="p-2  rounded-lg  border-2 border-slate-900 border-dashed h-auto">
+        <div class="grid  grid-cols-2 gap-4 mb-4">
+            <a   target="_blank" href="/shop" class="flex items-center justify-center h-24 rounded  bg-rose-600">
+               <p  class="text-xl text-gray-100 p-1 text-center">
+                 View Retail Shop
+               </p>
+            </a>
+            <a  target="_blank" href="/luthra_pg" class="flex items-center justify-center h-24 rounded  bg-orange-600">
+               <p  class="text-xl text-gray-100 ">
+                 View Pg Page
+               </p>
+            </a>
+            <a  target="_blank"  href="/luthra_cabletv" class="flex items-center justify-center h-24 rounded  bg-green-600">
+               <p  class="text-xl text-gray-100 text-center">
+                View Cable Tv Page
+               </p>
+            </a>
+            <a target="_blank" href="/isp" class="flex items-center justify-center h-24 rounded  bg-green-600">
+              <p  class="text-xl text-gray-100 text-center">
+               View Isp Page
+              </p>
+           </a>
+        
+        
+        
+        
+        
+        
+        
+         </div>
         {{-- form starts --}}
 
         <div class="w-full p-4 ">

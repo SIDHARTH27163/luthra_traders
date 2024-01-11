@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="title" content="Luthra Traders">
 <meta name="description" content="Established in 1970, Luthra Traders has gained immense expertise in Retail and Wholesale trading of Watches, Mobiles, computers, laptops and other Electronic Devices and related Services such as Airtel Jio and Vodafone.">
-<meta name="keywords" content="Luthra Traders , luthra Pg , cable tv in dharmshala , jio fiber in dharamshala">
+<meta name="keywords" content="Luthra Traders , luthra Pg , cable tv in dharmshala , jio fiber in dharamshala , luthra traders , pg in dharamshala ">
 <meta name="robots" content="index, follow">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="language" content="English">
@@ -100,7 +100,7 @@
 </div>
 {{-- about section  --}}
 <!-- ====== About Section Start -->
-<section class="flex items-center bg-stone-100 xl:h-screen font-poppins dark:bg-gray-800 ">
+<section class="flex items-center  xl:h-screen font-poppins dark:bg-gray-800 ">
     <div class="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
         <div class="flex flex-wrap ">
             <div class="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
@@ -118,14 +118,14 @@
             <div class="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
                 <div class="relative">
                     <img src="{{ asset('images/collage.png') }}" alt="luthra traders dhramshala"
-                        class="relative z-10 object-cover w-full h-full rounded">
+                        class="relative z-0 object-cover w-full h-full rounded">
                     <div
-                        class="absolute bottom-0 right-0 z-10 p-4 bg-white shadow sm:p-8 dark:text-gray-300 dark:bg-gray-800 ">
+                        class="absolute bottom-0 right-0 bg-white z-10 p-4  shadow sm:p-8 dark:text-gray-300 dark:bg-gray-800 ">
                         <p class="text-sm font-semibold">
                             Providing services since 1970
                         </p>
                     </div>
-                    <div class="absolute hidden w-full h-full bg-cyan-400 rounded -bottom-6 left-6 lg:block">
+                    <div class="absolute hidden w-full h-full  rounded -bottom-6 left-6 lg:block">
                     </div>
                 </div>
             </div>
@@ -204,7 +204,7 @@
         @foreach ($services as $services)
 
 
-         <a href="{{'enquire_service/'.$services->id}}" class="w-full px-5 py-2">
+         <a href="{{$services->page_link}}" class="w-full px-5 py-2">
             <div
                class=" cursor-pointer
                p-5 md:px-7 xl:px-10 px-2 rounded-[20px]
@@ -446,9 +446,9 @@
               </form>
         </div>
 
-        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 ">
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mt-8">
            @foreach ($reviews as $review )
-           <div class="py-6 bg-white rounded-lg shadow-lg ">
+           <div class="py-6 bg-white rounded-lg shadow-lg h-72 overflow-y-auto ">
             <div
                 class="flex flex-wrap items-center justify-between pb-4 mb-6 space-x-2 border-b dark:border-gray-700">
                 <div class="flex items-center px-6 mb-2 md:mb-0 ">

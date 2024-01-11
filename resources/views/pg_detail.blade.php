@@ -102,19 +102,20 @@
         <p class="mb-2 text-sm leading-5 text-gray-600 font-Roboto font-bold dark:text-gray-400 ">
         Status: </p>
         <p class="text-base font-semibold leading-4 font-Roboto text-gray-800 dark:text-gray-400">
-       {{ $data->status }}</p>
+            @if(  $data->status == 1)
+            <p class="text-green-500"> Available</p>
+           @else
+           <p class="text-red-500"> Not-Available</p>
+
+
+            @endif</p>
         </div>
-        <div class="w-full px-4 mb-4 ">
-        <p class="mb-2 text-sm leading-5 text-gray-600 font-Roboto font-bold dark:text-gray-400 ">
-        Price: </p>
-        <p class="text-base font-semibold leading-4 font-Roboto text-gray-800 dark:text-gray-400">
-       Rs.{{ $data->amount }}</p>
-        </div>
+       
         <div class="w-full px-4 mb-4 ">
         <p class="mb-2 text-sm font-medium leading-5 text-gray-800 dark:text-gray-400 ">
         Total Beds: </p>
         <p class="text-base font-semibold leading-4 font-Roboto text-red-600 dark:text-gray-400">
-            {{ $data->beds }} Beds
+            {{ $data->beds }} 
         </p>
         </div>
         <div class="w-full px-4 mb-4 ">
@@ -136,9 +137,13 @@
         <h2 class="mb-2 text-xl font-semibold text-gray-700 dark:text-gray-400">Other details</h2>
         <div class="flex flex-col items-center justify-center w-full pb-4 space-y-4 border-b border-gray-200 dark:border-gray-700">
         <div class="flex justify-between w-full">
-        <p class="text-base leading-4 text-gray-800 dark:text-gray-400">Tenants Type</p>
+        <p class="text-base leading-4 text-gray-800 dark:text-gray-400">Tenants Type /Proffesion</p>
         <p class="text-base leading-4 text-rose-600  font-Roboto font-semibold">{{ $data->tenants }}</p>
         </div>
+        <div class="flex justify-between w-full">
+            <p class="text-base leading-4 text-gray-800 dark:text-gray-400">Price Per Person</p>
+            <p class="text-base leading-4 text-rose-600  font-Roboto font-semibold">{{ $data->price }}</p>
+            </div>
         <div class="flex items-center justify-between w-full">
         <p class="text-base leading-4 text-gray-800 ">Notice Peiod
         </p>

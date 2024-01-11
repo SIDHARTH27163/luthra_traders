@@ -45,45 +45,37 @@
     {{-- feturedproducts --}}
 
 
-    <section class="lg:py-5 md:py-5 sm:py-1 py-1  ">
+    <section class="lg:py-2 md:py-2 sm:py-1 py-1  ">
 
 
-        <div class=" max-w-7xl mx-auto container lg:py-4 md:py-4 sm:py-2 py-2   px-4 md:px-6 ">
-            <div
-                class="shadow-xl rounded-xl flex items-strech justify-center flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 lg:space-x-8">
-                @foreach ($banner as $banner)
-                    <div
-                        class="bg-white flex flex-col md:flex-row items-strech justify-between  dark:bg-gray-800 py-6 px-6 md:py-12 lg:px-12 md:w-8/12 lg:w-7/12 xl:w-8/12 2xl:w-9/12">
-                        <div class="flex flex-col justify-center md:w-1/2">
-                            <h1 class="text-xl lg:text-2xl font-semibold text-gray-800 dark:text-white">Best Deal in
-                                {{ $banner->p_name }}</h1>
-                            <p class="text-base lg:text-xl text-gray-800 dark:text-white mt-2">Save upto <span
-                                    class="font-bold">{{ $banner->discount }}</span></p>
-                        </div>
-                        <div class="md:w-1/2 mt-5 md:mt-0 flex justify-center md:justify-end">
-                            <img src="{{ asset('banner_images/' . $banner->image) }}" alt="" class="h-56" />
-                        </div>
+        <div class=" max-w-7xl mx-auto container py-2  px-4 md:px-6 ">
+            <div class="shadow-xl rounded-xl flex items-strech justify-center flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 lg:space-x-8">
+              @foreach ($banner as $banner )
+              <div class="bg-white flex flex-col md:flex-row items-strech justify-between  dark:bg-gray-800 py-8 px-6  md:w-8/12 lg:w-7/12 xl:w-8/12 2xl:w-9/12">
+                <div class="flex flex-col justify-center md:w-1/2">
+                    <h1 class="text-xl lg:text-2xl font-semibold text-gray-800 dark:text-white">Best Deal in {{ $banner->p_name }}</h1>
+                    <p class="text-base lg:text-xl text-gray-800 dark:text-white mt-2">Save upto <span class="font-bold">{{ $banner->discount }}</span></p>
+                </div>
+                <div class="md:w-1/2 mt-5 md:mt-0 flex justify-center md:justify-end">
+                    <img src="{{ asset('banner_images/'.$banner->image) }}" alt="" class="h-56" />
+                </div>
+            </div>
+              @endforeach
+              @foreach ($banner1 as $banner1 )
+                <div class="md:w-4/12 lg:w-5/12 xl:w-4/12 2xl:w-3/12 bg-white  dark:bg-gray-800 z-0 py-6 px-6 md:py-0 md:px-4 lg:px-6 flex flex-col justify-center relative">
+                    <div class="flex flex-col justify-center">
+                        <h1 class="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white text-justify">{{ $banner1->p_name }}</h1>
+                        <p class="text-base lg:text-xl text-gray-800 dark:text-white">Save Upto <span class="font-bold">{{ $banner1->discount }}</span></p>
                     </div>
-                @endforeach
-                @foreach ($banner1 as $banner1)
-                    <div
-                        class="md:w-4/12 lg:w-5/12 xl:w-4/12 2xl:w-3/12 bg-white  dark:bg-gray-800 py-6 px-6 md:py-0 md:px-4 lg:px-6 flex flex-col justify-center relative">
-                        <div class="flex flex-col justify-center">
-                            <h1 class="text-lg lg:text-xl font-semibold text-gray-800 dark:text-white text-justify">
-                                {{ $banner1->p_name }}</h1>
-                            <p class="text-base lg:text-xl text-gray-800 dark:text-white">Save Upto <span
-                                    class="font-bold">{{ $banner1->discount }}</span></p>
-                        </div>
-                        <div class="flex justify-end md:absolute md:bottom-4 md:right-4 lg:bottom-0 lg:right-0">
-                            <img src="{{ asset('banner_images/' . $banner1->image) }}" alt=""
-                                class="w-24 h-32 z-0" />
-                        </div>
+                    <div class="flex justify-end md:absolute md:bottom-4 md:right-4 lg:bottom-0 lg:right-0">
+                        <img src="{{ asset('banner_images/'.$banner1->image) }}" alt="" class="w-20 h-24 z-0 object-center" />
                     </div>
+                </div>
                 @endforeach
             </div>
         </div>
 
-    </section>
+  </section>
 
   <section class="flex items-center py-16 font-Roboto bg-white">
     <div class="px-4 mx-auto max-w-7xl">

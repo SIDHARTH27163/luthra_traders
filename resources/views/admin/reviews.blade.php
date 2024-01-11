@@ -1,8 +1,36 @@
 @extends('admin.layouts.master')
 @section('content')
-<div class="p-4  rounded-lg  border-2 border-slate-900 border-dashed h-auto">
+<div class="p-2  rounded-lg  border-2 border-slate-900 border-dashed h-auto">
     
+  <div class="grid  grid-cols-2 gap-4 mb-4">
+    <a   target="_blank" href="/shop" class="flex items-center justify-center h-24 rounded  bg-rose-600">
+       <p  class="text-xl text-gray-100 p-1 text-center">
+        View Retail Shop
+       </p>
+    </a>
+    <a  target="_blank" href="/luthra_pg" class="flex items-center justify-center h-24 rounded  bg-orange-600">
+       <p  class="text-xl text-gray-100 ">
+         View Pg Page
+       </p>
+    </a>
+    <a  target="_blank"  href="/luthra_cabletv" class="flex items-center justify-center h-24 rounded  bg-green-600">
+       <p  class="text-xl text-gray-100 text-center">
+        View Cable Tv Page
+       </p>
+    </a>
+    <a target="_blank" href="/isp" class="flex items-center justify-center h-24 rounded  bg-green-600">
+      <p  class="text-xl text-gray-100 text-center">
+       View Isp Page
+      </p>
+   </a>
 
+
+
+
+
+
+
+ </div>
    {{-- form starts --}}
 
    <div class="w-full p-4 ">
@@ -161,7 +189,9 @@
                    <th scope="col" class="px-3 py-3">
                       Status
                     </th>
-
+                    <th scope="col" class="px-3 py-3">
+                    Priority
+                   </th>
                   
                    <th scope="col" class="px-3 py-3">
                     Name
@@ -196,7 +226,17 @@
 
                   @endif
                 </td>
+                <td class="px-3 py-4">
+                  @if(  $data->priority == 1)
+                  <p class="text-green-500">Top</p>
+                 @else
+                 <p class="text-red-500">Not Defined</p>
 
+
+                  @endif
+                </td>
+
+              
               
                 <td class="px-3 py-4">
                     {{$data->name}}
@@ -210,6 +250,8 @@
                    <a href="{{url('delete_review/'.$data->id)}}" class="font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</a><br>
 
                    <a href="{{url('change_review_status/'.$data->id)}}" class="font-medium text-orange-400 dark:text-orange-500 hover:underline">Activate/Deactivate</a><br>
+
+                   <a href="{{url('change_review_priority/'.$data->id)}}" class="font-medium text-blue-400 dark:text-blue-500 hover:underline">Change Priority</a><br>
 
                   
 

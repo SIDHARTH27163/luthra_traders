@@ -1,8 +1,36 @@
 @extends('admin.layouts.master')
 @section('content')
-<div class="p-4  rounded-lg  border-2 border-slate-900 border-dashed h-auto">
+<div class="p-2 rounded-lg  border-2 border-slate-900 border-dashed h-auto">
     
+  <div class="grid  grid-cols-2 gap-4 mb-4">
+    <a   target="_blank" href="/shop" class="flex items-center justify-center h-24 rounded  bg-rose-600">
+       <p  class="text-xl text-gray-100 p-1 text-center">
+        View Retail Shop
+       </p>
+    </a>
+    <a  target="_blank" href="/luthra_pg" class="flex items-center justify-center h-24 rounded  bg-orange-600">
+       <p  class="text-xl text-gray-100 ">
+         View Pg Page
+       </p>
+    </a>
+    <a  target="_blank"  href="/luthra_cabletv" class="flex items-center justify-center h-24 rounded  bg-green-600">
+       <p  class="text-xl text-gray-100 text-center">
+        View Cable Tv Page
+       </p>
+    </a>
+    <a target="_blank" href="/isp" class="flex items-center justify-center h-24 rounded  bg-green-600">
+      <p  class="text-xl text-gray-100 text-center">
+       View Isp Page
+      </p>
+   </a>
 
+
+
+
+
+
+
+ </div>
 
 
    <div class="w-full p-4 ">
@@ -170,8 +198,8 @@
                 <select id="countries" name="maintenance_charges" class="bg-blue-100 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option selected value="">Choose one</option>
                  
-                  <option >Available</option>
-                  <option >Not Available</option>
+                  <option >Included</option>
+                  <option >Not Included</option>
                 
                 
                 </select>
@@ -184,8 +212,8 @@
                 <select id="countries" name="electricity_charges" class="bg-blue-100 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option selected value="">Choose one</option>
                  
-                  <option >Available</option>
-                  <option >Not Available</option>
+                  <option >Included</option>
+                  <option >Not Included</option>
                 
                 
                 </select>
@@ -219,6 +247,19 @@
            <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('description') }}</p>
   @endif
                          </div>
+                         <div class="mb-4">
+  
+                          <label for="message" class="block mb-2 text-lg font-medium text-gray-900 ">Price Per Person </label>
+                          <input  type="text" name="price" id="text" class="bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="eg:1500 , 2000 , 4000 /- person">
+                          @if($errors->has('price'))
+                          <p class="text-sm italic text-red-500 text-start font-semibold">{{ $errors->first('price') }}</p>
+                      @else
+                          <!-- Handle the else condition here -->
+                          <!-- This could be additional markup or any other code you want to execute -->
+                          <p class="text-sm italic text-rose-500 text-start font-semibold">Dont user Rs or -/ type price  like '1500 , 2000'</p>
+                      @endif
+                      
+                                        </div>
         <div class="mb-4">
             <button class="w-auto px-4 py-3  font-bold text-white bg-gradient-to-r from-black to-blue-800 hover:from-black hover:to-blue-400
                                 hover:rounded-full rounded-xl focus:outline-none focus:shadow-outline
@@ -333,6 +374,7 @@
                     <a href="{{url('change_r_status/'.$data->id)}}" class="font-medium text-orange-400 dark:text-orange-500 hover:underline">Activate/Deactivate</a><br>
                     
                     <a href="{{url('upload_gallery/'.$data->id)}}" class="font-medium text-blue-400 dark:text-blue-500 hover:underline">Upload galllery</a><br>
+                    <a href="{{url('edit_room/'.$data->id)}}" class="font-medium text-yellow-400 dark:text-blue-500 hover:underline">edit room</a><br>
                     
 
 

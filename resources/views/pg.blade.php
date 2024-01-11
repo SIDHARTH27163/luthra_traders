@@ -9,7 +9,7 @@
     <meta name="title" content="Luthra Pg">
     <meta name="description"
         content="Established in 1970, Luthra Traders has gained immense expertise in Retail and Wholesale trading of Watches, Mobiles, computers, laptops and other Electronic Devices and related Services such as Airtel Jio and Vodafone.">
-    <meta name="keywords" content="pg in dharamshala . pg for girls in dharamshala , dharamshala pg , luthra pg">
+    <meta name="keywords" content="pg in dharamshala . pg for girls in dharamshala , dharamshala pg , luthra pg ,luthra girls pg ">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
@@ -66,69 +66,17 @@
             </div>
             <!--Right Col-->
             <div class="w-full lg:w-6/12 lg:-mt-10 relative" id="girl">
-                <img data-aos="fade-up" data-aos-once="true" class="w-full mx-auto mt-12"
-                    src="{{ asset('images/ph_home.png') }}" alt="luthra pg" />
+                <img data-aos="fade-up" data-aos-once="true" class="w-full mx-auto mt-12 rounded-2xl"
+                    src="{{ asset('images/main_pg.jpg') }}" alt="luthra pg" />
                 <!-- calendar -->
-                <div data-aos="fade-up" data-aos-delay="300" data-aos-once="true"
-                    class="absolute top-20 -left-6 sm:top-32 sm:left-10 md:top-40 md:left-16 lg:-left-0 lg:top-52 floating-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-20 text-amber-600  bg-opacity-80 rounded-lg h-20 sm:h-28">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
-                    </svg>
-
+               
                 </div>
                 <!-- red -->
-                <div data-aos="fade-up" data-aos-delay="400" data-aos-once="true"
-                    class="absolute top-20 right-10 sm:right-24 sm:top-28 md:top-36 md:right-32 lg:top-32 lg:right-16 floating">
-                    <svg class="h-16 sm:h-24" viewBox="0 0 149 149" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g filter="url(#filter0_d)">
-                            <rect x="40" y="32" width="69" height="69" rx="14" fill="#F3627C" />
-                        </g>
-                        <rect x="51.35" y="44.075" width="47.3" height="44.85" rx="8" fill="white" />
-                        <path d="M74.5 54.425V78.575" stroke="#F25471" stroke-width="4" stroke-linecap="round" />
-                        <path d="M65.875 58.7375L65.875 78.575" stroke="#F25471" stroke-width="4"
-                            stroke-linecap="round" />
-                        <path d="M83.125 63.9125V78.575" stroke="#F25471" stroke-width="4" stroke-linecap="round" />
-                        <defs>
-                            <filter id="filter0_d" x="0" y="0" width="149" height="149"
-                                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                <feColorMatrix in="SourceAlpha" type="matrix"
-                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-                                <feOffset dy="8" />
-                                <feGaussianBlur stdDeviation="20" />
-                                <feColorMatrix type="matrix"
-                                    values="0 0 0 0 0.825 0 0 0 0 0.300438 0 0 0 0 0.396718 0 0 0 0.26 0" />
-                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow"
-                                    result="shape" />
-                            </filter>
-                        </defs>
-                    </svg>
-                </div>
+                
                 <!-- ux class -->
-                <div data-aos="fade-up" data-aos-delay="500" data-aos-once="true"
-                    class="absolute bottom-14 -left-4 sm:left-2 sm:bottom-20 lg:bottom-5 lg:-left-4 floating">
-                    {{-- <img class="bg-white bg-opacity-80 rounded-lg h-20 sm:h-28" src="img/ux-class.svg" alt=""> --}}
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                        class="w-20 text-rose-600  bg-opacity-80 rounded-lg h-20 sm:h-28">
-                        <path fill-rule="evenodd"
-                            d="M1.371 8.143c5.858-5.857 15.356-5.857 21.213 0a.75.75 0 010 1.061l-.53.53a.75.75 0 01-1.06 0c-4.98-4.979-13.053-4.979-18.032 0a.75.75 0 01-1.06 0l-.53-.53a.75.75 0 010-1.06zm3.182 3.182c4.1-4.1 10.749-4.1 14.85 0a.75.75 0 010 1.061l-.53.53a.75.75 0 01-1.062 0 8.25 8.25 0 00-11.667 0 .75.75 0 01-1.06 0l-.53-.53a.75.75 0 010-1.06zm3.204 3.182a6 6 0 018.486 0 .75.75 0 010 1.061l-.53.53a.75.75 0 01-1.061 0 3.75 3.75 0 00-5.304 0 .75.75 0 01-1.06 0l-.53-.53a.75.75 0 010-1.06zm3.182 3.182a1.5 1.5 0 012.122 0 .75.75 0 010 1.061l-.53.53a.75.75 0 01-1.061 0l-.53-.53a.75.75 0 010-1.06z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </div>
+               
                 <!-- congrats -->
-                <div data-aos="fade-up" data-aos-delay="600" data-aos-once="true"
-                    class="absolute bottom-20 md:bottom-48 lg:bottom-52 -right-6 lg:right-8 floating-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                        class="w-20 text-teal-600  bg-opacity-80 rounded-lg h-20 sm:h-28">
-                        <path fill-rule="evenodd"
-                            d="M20.03 3.97a.75.75 0 010 1.06L6.31 18.75h9.44a.75.75 0 010 1.5H4.5a.75.75 0 01-.75-.75V8.25a.75.75 0 011.5 0v9.44L18.97 3.97a.75.75 0 011.06 0z"
-                            clip-rule="evenodd" />
-                    </svg>
-
-                </div>
+               
             </div>
         </div>
         <div class="text-white -mt-14 sm:-mt-24 lg:-mt-36 z-40 relative">
@@ -143,7 +91,7 @@
 
     <section class="flex flex-col py-5 items-center bg-gray-50  font-poppins  ">
         <h2 class="pb-2 text-xl font-bold my-5 text-center text-gray-800 md:text-3xl ">
-            Pg Collection
+           Rooms Category
         </h2>
         <div class="justify-center container px-6 max-w-7xl  py-4 mx-auto lg:py-0" id="room">
             <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2  grid-cols-1  -mx-3 gap-5 px-2 py-4">
@@ -154,8 +102,14 @@
                             <div class="p-4">
                                 <div class="flex items-center justify-between mb-3">
                                     <span
-                                        class="inline-block px-2 py-1 text-sm text-rose-500 rounded-full dark:bg-gray-700  bg-blue-50">
-                                        Available For :{{ $data->tenants }}
+                                        class="inline-block px-2 py-1 font-bold text-sm text-rose-500 rounded-full dark:bg-gray-700  bg-blue-50">
+                                        @if(  $data->status == 1)
+            <p class="text-green-500"> Available</p>
+           @else
+           <p class="text-red-500"> Not-Available</p>
+
+
+            @endif
                                     </span>
                                     <h2 class="text-sm font-medium "> Parking: {{ $data->parking }}</h2>
                                 </div>
@@ -165,14 +119,7 @@
                                 <h2 class="text-sm font-semibold font-Roboto mb-2"> {{ Str::limit($data->desc, 150) }}
                                 </h2>
                                 <div class="flex items-center justify-between mb-3">
-                                    <h2 class="text-lg font-medium flex flex-row gap-x-1 ">{{ $data->amount }} <svg
-                                            xmlns="http://www.w3.org/2000/svg" class="text-green-500 w-6 h-6"
-                                            fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                            stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M15 8.25H9m6 3H9m3 6l-3-3h1.5a3 3 0 100-6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
-                                    </h2>
+                                    
 
                                 </div>
 
@@ -423,60 +370,119 @@
                 </form>
             </div>
 
-            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 ">
-                @foreach ($reviews as $review)
-                    <div class="py-6 bg-white rounded-lg shadow-lg dark:bg-gray-900">
-                        <div
-                            class="flex flex-wrap items-center justify-between pb-4 mb-6 space-x-2 border-b dark:border-gray-700">
-                            <div class="flex items-center px-6 mb-2 md:mb-0 ">
-                                <div class="flex mr-2 rounded-full">
-
-                                </div>
-                                <div>
-                                    <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
-                                        {{ $review->name }}</h2>
-
-                                </div>
-                            </div>
-                            <p class="px-6 text-base font-medium text-gray-600 dark:text-gray-400">
-                                Date:{{ $review->date }}
-                            </p>
-                        </div>
-                        <p class="px-6 mb-6 text-base text-gray-500 dark:text-gray-400">
-                            {{ $review->review }}
-                        </p>
-                        <div class="flex flex-wrap justify-between pt-4 border-t dark:border-gray-700">
-                            <div class="flex px-6 mb-2 md:mb-0">
-                                <ul class="flex items-center justify-start mr-4">
-                                    <li>
-
-
-                                        @for ($i = 1; $i <= 5; $i++)
-                                            <span
-                                                class="star text-2xl {{ $i <= $review->rating ? 'text-yellow-600' : '' }}">&#9733;</span>
-                                        @endfor
-                                    </li>
-
-                                </ul>
-                                <h2 class="text-sm text-gray-500 dark:text-gray-400">Rating:<span
-                                        class="font-semibold text-gray-600 dark:text-gray-300">
-                                        {{ $review->rating }}</span>
-                                </h2>
-                            </div>
-
-                        </div>
-                    </div>
+            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mt-8">
+                @foreach ($priority_reviews as $review )
+                <div class="py-6 bg-white rounded-lg shadow-lg h-72 overflow-y-auto ">
+                 <div
+                     class="flex flex-wrap items-center justify-between pb-4 mb-6 space-x-2 border-b dark:border-gray-700">
+                     <div class="flex items-center px-6 mb-2 md:mb-0 ">
+                         <div class="flex mr-2 rounded-full">
+     
+                         </div>
+                         <div>
+                             <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
+                                 {{ $review->name }}</h2>
+     
+                         </div>
+                     </div>
+                     <p class="px-6 text-base font-medium text-gray-600 dark:text-gray-400"> Date:{{ $review->date }}
+                     </p>
+                 </div>
+                 <p class="px-6 mb-6 text-base text-gray-500 dark:text-gray-400">
+                     {{ $review->review }}
+                 </p>
+                 <div class="flex flex-wrap justify-between pt-4 border-t dark:border-gray-700">
+                     <div class="flex px-6 mb-2 md:mb-0">
+                         <ul class="flex items-center justify-start mr-4">
+                             <li>
+     
+     
+                                 @for ($i = 1; $i <= 5; $i++)
+                                 <span class="star text-2xl {{ $i <= $review->rating ? 'text-yellow-600' : '' }}">&#9733;</span>
+     
+     
+                             @endfor
+                             </li>
+     
+                         </ul>
+                         <h2 class="text-sm text-gray-500 dark:text-gray-400">Rating:<span
+                                 class="font-semibold text-gray-600 dark:text-gray-300">
+                                 {{ $review->rating }}</span>
+                         </h2>
+                     </div>
+     
+                 </div>
+             </div>
+     
                 @endforeach
-
-
-
-
+     
+     
+     
+             
+             </div>
+             <div class="p-2 flex w-full items-center justify-center mt-5  ">
+                {{$priority_reviews->links()}}
 
             </div>
-            <div class="p-2 flex w-full items-center justify-center mt-5  ">
-                {!! $reviews->links() !!}
+ {{-- other reviews --}}
 
-            </div>
+
+ <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mt-8">
+    @foreach ($other_reviews as $review )
+    <div class="py-6 bg-white rounded-lg shadow-lg h-72 overflow-y-auto ">
+     <div
+         class="flex flex-wrap items-center justify-between pb-4 mb-6 space-x-2 border-b dark:border-gray-700">
+         <div class="flex items-center px-6 mb-2 md:mb-0 ">
+             <div class="flex mr-2 rounded-full">
+
+             </div>
+             <div>
+                 <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
+                     {{ $review->name }}</h2>
+
+             </div>
+         </div>
+         <p class="px-6 text-base font-medium text-gray-600 dark:text-gray-400"> Date:{{ $review->date }}
+         </p>
+     </div>
+     <p class="px-6 mb-6 text-base text-gray-500 dark:text-gray-400">
+         {{ $review->review }}
+     </p>
+     <div class="flex flex-wrap justify-between pt-4 border-t dark:border-gray-700">
+         <div class="flex px-6 mb-2 md:mb-0">
+             <ul class="flex items-center justify-start mr-4">
+                 <li>
+
+
+                     @for ($i = 1; $i <= 5; $i++)
+                     <span class="star text-2xl {{ $i <= $review->rating ? 'text-yellow-600' : '' }}">&#9733;</span>
+
+
+                 @endfor
+                 </li>
+
+             </ul>
+             <h2 class="text-sm text-gray-500 dark:text-gray-400">Rating:<span
+                     class="font-semibold text-gray-600 dark:text-gray-300">
+                     {{ $review->rating }}</span>
+             </h2>
+         </div>
+
+     </div>
+ </div>
+
+    @endforeach
+
+
+
+ 
+ </div>
+ <div class="p-2 flex w-full items-center justify-center mt-5  ">
+    {{$other_reviews->links()}}
+
+</div>
+
+ {{-- other reviews ends --}}
         </div>
 
 
@@ -548,6 +554,20 @@
 
     @include('components/footer')
 </body>
+<script>
+    const stars = document.querySelectorAll('.star');
 
+    stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+            // Remove filled-star class from all stars
+            stars.forEach((s) => s.classList.remove('filled-star'));
+
+            // Add filled-star class to the clicked star and stars before it
+            for (let i = 0; i <= index; i++) {
+                stars[i].classList.add('filled-star');
+            }
+        });
+    });
+</script>
 
 </html>

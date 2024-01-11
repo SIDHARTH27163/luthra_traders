@@ -20,10 +20,11 @@ use App\Models\Cable_request;
 use App\Models\Contact;
 use App\Models\Review;
 use App\Models\Gallery_product;
+use App\Models\About_trader;
 use App\Imports\UsersImport;
 use Image;
 use Excel;
-
+use App\Models\Pack;
 
 class adminController extends Controller
 {
@@ -371,7 +372,36 @@ if ($data) {
                     dd($e);
              }
             }
-
+public function edit_cat($id){
+    try{
+        $u_data=  Category::find($id);
+return view('admin.edit_cat',['udata'=>$u_data]);
+    }catch(\Exception $e){
+        dd($e);
+    }
+}
+public function edit_cats($id , Request $request){
+    try{
+        try{
+            $data = $request->only('category');
+            DB::table('categories')
+            ->where('id', $id)
+            ->update([
+                'category' => $request->category,
+              
+    
+            ]);
+        
+        $lid = $id;
+        
+        return Redirect::to('manage_facilities')->with('success', 'Category Updated Successfully ');
+        }catch(\Exception $e){
+            dd($e);
+        }
+    }catch(\Exception $e){
+        dd($e);
+    }
+}
             public function add_facility_cat(Request $request){
                 try{
                     $data = $request->only('category_name','facility' );
@@ -443,20 +473,68 @@ if ($data) {
                             $data->status = 1;
                             $data->save();
 
-                            return redirect()->back()->with('success', 'Facilitycategory Marked Available');
+                            return redirect()->back()->with('success', 'Facility category Marked Available');
                         } else {
                             $data->status = 0;
                             $data->save();
-                            return redirect()->back()->with('message', 'Facilitycategory Marked Un-Available');
+                            return redirect()->back()->with('message', 'Facility category Marked Un-Available');
                         }
                     } else {
-                        return redirect()->back()->with('message', 'Facilitycategory not found');
+                        return redirect()->back()->with('message', 'Facility category not found');
                     }
                  }catch(\Exception $e){
                             dd($e);
                         }
                     }
-
+                    public function edit_fac_pg($id , Request $req){
+                        try{
+                            $cat=  DB::table('categories')->orderBy('category')->get();
+                            $u_data=  Facilitycategory::find($id);
+                    return view('admin.edit_facility',['udata'=>$u_data ,'cats'=>$cat]);
+                    // return view("admin.facilities" ,  [ 'cats'=>$cat , 'facility'=>$data ]);
+                        }catch(\Exception $e){
+                            dd($e);
+                        }
+                    }
+                    public function edit_pg_fac($id , Request $request){
+                        try{
+                            $data = $request->only('category_name','facility' );
+                            $validator = Validator::make($data, [
+                               
+                                'category_name' => 'required|string',
+                                'facility' => 'required|string|unique:facilitycategories',
+                
+                            ]);
+                
+                            //Send failed response if request is not valid
+                            if ($validator->fails()) {
+                
+                                // get the error messages from the validator
+                                $messages = $validator->messages();
+                
+                                // redirect our user back to the form with the errors from the validator
+                                // return Redirect::to('signup')
+                                //     ->withErrors($messages);
+                                return redirect()->back()->withErrors($messages);
+                                //return ($messages);
+                            }else{
+                            $data = $request->only('category_name',  'facility',);
+                            DB::table('facilitycategories')
+                            ->where('id', $id)
+                            ->update([
+                                'category_id' => $request->category_name,
+                                'facility' => $request->facility,
+                    
+                            ]);
+                        
+                        $lid = $id;
+                        
+                        return Redirect::to('manage_facilities/')->with('success', 'Facility Category Updated Successfully ');
+                      }
+                      }catch(\Exception $e){
+                            dd($e);
+                        }
+                    }
 public function add_room(Request $request){
     try{
         $r_data = DB::table('rooms')
@@ -473,15 +551,61 @@ public function add_room(Request $request){
                         }
 }
 
+public function edit_room(Request $request , $id){
+    try{
+        $u_data= Room::find($id);
+
+        // return view("admin.facilities" ,  [ 'cat'=>$cat , 'facility'=>$f_data ]);
+
+        return view("admin.edit_room" ,  [ 'udata'=>$u_data]);
+     }catch(\Exception $e){
+                            dd($e);
+                        }
+}
+public function edit_rooms($id , Request $request){
+    try{
+        try{
+            $data = $request->only('category','available_for' ,'food_availability' , 'price',
+            'parking' , 'tenants_types' ,'total_beds' ,
+            'notice_period', 'maintenance_charges', 'electricity_charges' , 'deposite_amount' ,'description' );
+            DB::table('rooms')
+            ->where('id', $id)
+            ->update([
+                'price'=>$request->price .''.'Rs /-person',
+                'category'=>$request->category,
+                 'available'=>$request->available_for,
+                   'food'=>$request->food_availability,
+                        'parking'=>$request->parking,
+                          'tenants'=>$request->tenants_types,
+                            'beds'=>$request->total_beds,
+                           'period'=>$request->notice_period,
+                          'maintenance'=> $request->maintenance_charges,
+                           'electrcity'=>$request->electricity_charges,
+                          'amount'=>$request->deposite_amount,
+                'desc'=>$request->description,
+    
+            ]);
+        
+        $lid = $id;
+        
+        return Redirect::to('manage_rooms/')->with('success', 'Service Updated Successfully ');
+        }catch(\Exception $e){
+            dd($e);
+        }
+    }catch(\Exception $e){
+        dd($e);
+    }
+}
 public function add_rooms(Request $request){
     try{
 
 
-        $data = $request->only('category','available_for' ,'food_availability' ,
+        $data = $request->only('category','available_for' ,'food_availability' ,'price',
          'parking' , 'tenants_types' ,'total_beds' ,
          'notice_period', 'maintenance_charges', 'electricity_charges' , 'deposite_amount' ,'description' );
         $validator = Validator::make($data, [
             'available_for' => 'required|string',
+            'price' => 'required|string',
             'category' => 'required|string',
             'parking' => 'required|string',
             'food_availability' => 'required|string',
@@ -499,6 +623,7 @@ public function add_rooms(Request $request){
             //return ($messages);
         }else{
             Room::create([
+                'price'=>$request->price .''.'Rs /-person',
                 'category'=>$request->category,
                  'available'=>$request->available_for,
                    'food'=>$request->food_availability,
@@ -673,6 +798,13 @@ public function change_r_status($id , Request  $req){
                 dd($e);
             }
         }
+    
+        
+
+
+
+
+
         public function uploadUsers(Request $request)
 {
     $file = $request->file('file');
@@ -811,7 +943,7 @@ public function manage_shop_products(){
 public function add_products(Request $request ){
 try{
     $data = $request->only('category' , 'product_name' , 'brand_name' ,
-     'model_name' , 'original_price' , 'discount' , 'emi_cost' , 'replacement_time' , 'warranty_policy' , 'description' , 'image');
+     'model_name' , 'original_price'  , 'warranty_policy' , 'description' , 'image');
     $validator = Validator::make($data, [
 
         'category' => 'required|string',
@@ -822,9 +954,9 @@ try{
         // 'operating_system'=>'required|string',
         // 'cellular_technology'=>'required|string',
         'original_price'=>'required|string',
-        'discount'=>['required', 'regex:/^\d+(\.\d{1,2})?%$/'],
-        'emi_cost'=>'required|string',
-        'replacement_time'=>'required|string',
+        // 'discount'=>['required', 'regex:/^\d+(\.\d{1,2})?%$/'],
+        // 'emi_cost'=>'required|string',
+        // 'replacement_time'=>'required|string',
         'warranty_policy'=>'required|string',
         'description'=>'required|string',
         'image' => 'required|image|mimes:png,jpg,jpeg|max:5000'
@@ -966,8 +1098,13 @@ public function change_pr_status($id , Request  $req){
         }
 public function edit_pr($id , Request $req){
     try{
+        $data = DB::table('shop_categories')
+
+      
+        ->orderBy('id', 'desc')
+        ->get();
         $u_data=  Product::find($id);
-return view('admin.edit_product',['udata'=>$u_data]);
+return view('admin.edit_product',['udata'=>$u_data , 'data'=>$data]);
     }catch(\Exception $e){
         dd($e);
     }
@@ -975,18 +1112,30 @@ return view('admin.edit_product',['udata'=>$u_data]);
 
 public function edit_product($id , Request $request){
     try{
-        $data = $request->only('original_price',  'discount',);
+        $data = $request->only('category' , 'product_name' , 'brand_name' ,
+        'model_name' , 'original_price' , 'discount' , 'emi_cost' , 'replacement_time' , 'warranty_policy' , 'description' );
         DB::table('products')
         ->where('id', $id)
         ->update([
-            'price' => $request->original_price,
-            'discount' => $request->discount,
+            'category'=>$request->category,
+            'p_name'=>$request->product_name,
+            'b_name'=>$request->brand_name,
+            'm_name'=>$request->model_name,
+           
+            // 'os'=>$request->operating_system,
+            // 'cellular'=>$request->cellular_technology,
+            'price'=>$request->original_price,
+            'discount'=>$request->discount,
+            'emi_cost'=>$request->emi_cost,
+            'r_time'=>$request->replacement_time,
+            'w_policy'=>$request->warranty_policy,
+            'desc'=>$request->description
 
         ]);
     
     $lid = $id;
     
-    return Redirect::to('manage_shop_products/')->with('message', 'Product Updated Successfully ');
+    return Redirect::to('manage_shop_products/')->with('success', 'Product Updated Successfully ');
     }catch(\Exception $e){
         dd($e);
     }
@@ -1130,7 +1279,70 @@ public function add_banner(Request $request ){
                 }
             }
     
+// manage shop about us
+public function about(){
+try{
+    $data = DB::table('about_traders')
 
+      
+   
+    ->get();
+    // , ['data'=>$data , 'p_data' =>$data1]
+    return view('admin.manage_about', ['data'=>$data]  );
+}catch(\Exception $e){
+    dd($e);
+}
+}
+
+public function edit_about($id , Request $req){
+    try{
+      
+        $u_data=  About_trader::find($id);
+return view('admin.edit_about' , ['udata'=>$u_data]);
+    }catch(\Exception $e){
+        dd($e);
+    }
+}
+public function edit_abouts($id , Request $request){
+    try {
+        $data = $request->only('heading', 'description', 'image');
+        
+        // Handle the file upload separately
+        if ($request->file('image')) {
+            $image = $request->file('image');
+        $input = time().'.'.$image->getClientOriginalExtension();
+        //your directory to upload
+        $destinationPath = public_path('/traders');
+        //save and resize image
+        $img = Image::make($image->getRealPath());
+        $img->resize(300,300, function ($constraint) {
+          $constraint->aspectRatio();
+          })->save($destinationPath.'/'.$input);
+            // Update database record with new PDF file name
+            DB::table('about_traders')
+                ->where('id', $id)
+                ->update([
+                    'heading' => $request->heading,
+                    'description' => $request->description,
+                   
+                    'image' => $input,
+                ]);
+        } else {
+            // Update database record without changing the PDF file
+            DB::table('about_traders')
+                ->where('id', $id)
+                ->update([
+                   'heading' => $request->heading,
+                    'description' => $request->description,
+                ]);
+        }
+        
+        return redirect('manage_about')->with('success', 'About Updated Successfully');
+    } catch (\Exception $e) {
+        dd($e); // Handle or log the exception as needed
+    }
+}
+// end about us
 
             public function contact_req(){
                 try{
@@ -1225,6 +1437,28 @@ public function add_banner(Request $request ){
                                     dd($e);
                                 }
                             }
+                            public function change_review_priority($id , Request $req){  try{
+                                $data=Review::find($id);
+                        
+                                if ($data) {
+                                    if ($data->priority == 0) {
+                                        $data->priority = 1;
+                                        $data->save();
+                        
+                                        return redirect()->back()->with('success', 'Review  Available to Top');
+                                    } else {
+                                        $data->priority = 0;
+                                        $data->save();
+                                        return redirect()->back()->with('message', 'Review  Removed from Top');
+                                    }
+                                } else {
+                                    return redirect()->back()->with('message', 'Review not found');
+                                }
+                             }catch(\Exception $e){
+                                        dd($e);
+                                    }
+
+                            }
                             public function delete_review($id , Request $request){
                                 try{
                                     DB::table('reviews')->where('id', $id)->delete();
@@ -1236,5 +1470,156 @@ public function add_banner(Request $request ){
                                     dd($e);
                                 }
                             }
+
+
+                            public function manage_packs(){
+                                try{
+                                    $data = DB::table('packs')
+                             
+                                    ->orderBy('id', 'desc')
+                                    ->get();
+                                    return view('admin.manage_packs' ,['packs'=>$data]);
+                                }catch(\Exception $e){
+                                    dd($e);
+                                }
+                            }
+                            public function add_pack(Request $request){
+                                try {
+                                    $data = $request->only('pack_name' , 'total_channels' ,'category' ,'pack_price',
+        'pdf');
+       $validator = Validator::make($data, [
+   
+           'pack_name' => ['required'],
+           'total_channels' => 'required|string',
+           'pack_price' => 'required|string',
+           'category' => 'required|string',
+        
+           'pdf' => 'required|mimes:pdf'
+   
+           
+       ]);
+   
+       //Send failed response if request is not valid
+       if ($validator->fails()) {
+   
+           // get the error messages from the validator
+           $messages = $validator->messages();
+   
+           // redirect our user back to the form with the errors from the validator
+           // return Redirect::to('signup')
+           //     ->withErrors($messages);
+           return redirect()->back()->withErrors($messages);
+           //return ($messages);
+       }else{
+                            
+                                    $pdf = $request->file('pdf');
+                                    $fileName = time() . '.' . $pdf->getClientOriginalExtension();
+                                    // Your directory to upload
+                                    $destinationPath = public_path('/pdfs'); // Change 'pdfs' to the desired directory name
+                                    // Move the uploaded PDF file to the destination path
+                                    $pdf->move($destinationPath, $fileName);
+
+                                    Pack::create([
+                                        'name' => $request->pack_name,
+                                        'category' => $request->category,
+                                        // Other fields you want to save
+                                        'channels'=>$request->total_channels,
+                                        'price'=>$request->pack_price,
+                                        'pdf' => $fileName 
+                                    ]);
+                        
+                                    return redirect()->back()->with('success', 'Pack Added');
+                                }
+                                } catch (\Exception $e) {
+                                    // Handle any exceptions or errors
+                                    dd($e);
+                                }
+
+                            }
+
+                            public function change_packs_status($id , Request $req){
+                                try{
+                                    $data=Pack::find($id);
+                            
+                                    if ($data) {
+                                        if ($data->status == 0) {
+                                            $data->status = 1;
+                                            $data->save();
+                            
+                                            return redirect()->back()->with('success', 'Pack  Activated');
+                                        } else {
+                                            $data->status = 0;
+                                            $data->save();
+                                            return redirect()->back()->with('message', 'Pack  Deactivated');
+                                        }
+                                    } else {
+                                        return redirect()->back()->with('message', 'Pack not found');
+                                    }
+                                 }catch(\Exception $e){
+                                            dd($e);
+                                        }
+                            }
+
+
+                            public function delete_pack($id , Request $request){
+                                try{
+                                    DB::table('packs')->where('id', $id)->delete();
+                    
+                                    return redirect()->back()->with('message', 'pack  Deleted');
+                    
+                                        // return redirect()->back()->with('message', 'Tourist Place Status Apprved');
+                                }catch(\Exception $e){
+                                    dd($e);
+                                }
+                            }
+
+                            public function edit_pack($id , Request $req){
+                                try{
+                                  
+                                    $u_data=  Pack::find($id);
+                            return view('admin.edit_pack' , ['udata'=>$u_data]);
+                                }catch(\Exception $e){
+                                    dd($e);
+                                }
+                            }
+                            
+                            public function edit_packs($id , Request $request){
+                                try {
+                                    $data = $request->only('pack_name', 'total_channels', 'pack_price', 'pdf' , 'category');
+                                    
+                                    // Handle the file upload separately
+                                    if ($request->hasFile('pdf')) {
+                                        $pdfFile = $request->file('pdf');
+                                        $fileName = time() . '.' . $pdfFile->getClientOriginalExtension();
+                                        $filePath = $pdfFile->storeAs('pdfs', $fileName, 'public');
+                                        
+                                        // Update database record with new PDF file name
+                                        DB::table('packs')
+                                            ->where('id', $id)
+                                            ->update([
+                                                'name' => $request->pack_name,
+                                                'channels' => $request->total_channels,
+                                                'price' => $request->pack_price,
+                                                'category' => $request->category,
+                                                'pdf' => $fileName,
+                                            ]);
+                                    } else {
+                                        // Update database record without changing the PDF file
+                                        DB::table('packs')
+                                            ->where('id', $id)
+                                            ->update([
+                                                'name' => $request->pack_name,
+                                                'channels' => $request->total_channels,
+                                                'price' => $request->pack_price,
+                                                'category' => $request->category,
+                                            ]);
+                                    }
+                                    
+                                    return redirect('manage_packs')->with('success', 'Pack Updated Successfully');
+                                } catch (\Exception $e) {
+                                    dd($e); // Handle or log the exception as needed
+                                }
+                            }
+
 
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use App\Mail\WelcomeEmail;
 class serviceController extends Controller
 {
     //
@@ -24,11 +25,12 @@ class serviceController extends Controller
     }
     public function add_service(Request $request){
         try{
-            $credentials = $request->only('service_name', 'description');
+            $credentials = $request->only('service_name', 'description' , 'page_link');
         //valid credential
         $validator = Validator::make($credentials, [
             'service_name' => 'required|string|unique:services',
-            'description' => 'required|max:500'
+            'description' => 'required|max:500',
+            'page_link'=>'required'
         ]);
         if ($validator->fails()) {
             $messages = $validator->messages();
@@ -39,7 +41,7 @@ class serviceController extends Controller
 
 
                 'description'=>$request->description,
-
+                'page_link'=>$request->page_link,
 
 
             ]);
@@ -79,6 +81,36 @@ class serviceController extends Controller
             return redirect()->back()->with('message', 'Service Deleted');
 
                 // return redirect()->back()->with('message', 'Tourist Place Status Apprved');
+        }catch(\Exception $e){
+            dd($e);
+        }
+    }
+    public function edit_service($id){
+        try{
+            $u_data=  Service::find($id);
+    return view('admin.edit_service',['udata'=>$u_data]);
+        }catch(\Exception $e){
+            dd($e);
+        }
+    }
+    public function edit_services($id , Request $request){
+        try{
+            try{
+                $data = $request->only('service_name',  'description','page_link');
+                DB::table('services')
+                ->where('id', $id)
+                ->update([
+                    'service_name' => $request->service_name,
+                    'description' => $request->description,
+                    'page_link'=>$request->page_link,
+                ]);
+            
+            $lid = $id;
+            
+            return Redirect::to('manage_services/')->with('success', 'Service Updated Successfully ');
+            }catch(\Exception $e){
+                dd($e);
+            }
         }catch(\Exception $e){
             dd($e);
         }

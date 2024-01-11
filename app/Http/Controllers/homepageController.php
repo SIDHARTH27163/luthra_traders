@@ -9,23 +9,28 @@ use App\Models\Querie;
 use App\Models\Cable_request;
 use App\Models\Product;
 use App\Models\Contact;
+use Mail;
+use App\Mail\WelcomeEmail;
 use App\Models\Review;
+use Illuminate\Pagination\Paginator;
+
 class homepageController extends Controller
 {
     //
 
     public  function index(){
-        try{
-            $service_data=  DB::table('services')->where('status' , 1)->orderBy('id' , 'desc')->get();
-
-            // display  blogs both uproved and un uproved
-            $reviews=  DB::table('reviews')->where('status' , 1)->orderBy('id' , 'desc')  ->limit(4)
-            ->get();
-            // display emnds
-             return view('welcome', ['services'=>$service_data , 'reviews'=>$reviews]);
-
-
-        }catch(\Exception $e){
+        try {
+            $serviceData = DB::table('services')->where('status', 1)->orderBy('id')->get();
+    
+            $selectedReviews = Review::where('priority', 1)->where('status', 1)->get(); // Fetch selected reviews with priority 1 and status = 1
+            $otherReviews = Review::where('priority', '!=', 1)->where('status', 1)->get(); // Fetch other reviews with status = 1
+    
+            $reviews = $selectedReviews->merge($otherReviews); // Merge selected and other reviews
+    
+            $limitedReviews = $reviews->take(4); // Limit to 4 reviews
+    
+            return view('welcome', ['services' => $serviceData, 'reviews' => $limitedReviews]);
+        } catch (\Exception $e) {
             dd($e);
         }
     }
@@ -83,7 +88,7 @@ class homepageController extends Controller
 
                //dd($lid);
                return redirect()->back()->with('success', 'Query Sent Successfully');
-
+               Mail::to("luthratraders@gmail.com")->send(new WelcomeEmail());
             }
         }catch(\Exception $e){
             dd($e);
@@ -91,12 +96,30 @@ class homepageController extends Controller
     }
 
     public function get_pg(){
-        try{
-            $data=  DB::table('rooms')->orderBy('category')->get();
-            $reviews=  DB::table('reviews')->where('status' , 1)->orderBy('name')->paginate(4);
-// Return("Get pg" ['services'=>$service_data]);
-return view('pg' ,  ['data'=>$data , 'reviews'=>$reviews]);
-        }catch(\Exception $e){
+        try {
+            $data = DB::table('rooms')->orderBy('category')->get();
+    
+            $priorityReviews = DB::table('reviews')
+                ->where('status', 1)
+                ->where('priority', 1)
+                
+                ->paginate(4, ['*'], 'priority_reviews');
+    
+            $otherReviews = DB::table('reviews')
+                ->where('status', 1)
+                ->where('priority', '!=', 1)
+                
+                ->paginate(4, ['*'], 'other_reviews');
+    
+     
+    
+            return view('pg', [
+                'data' => $data,
+                'priority_reviews' => $priorityReviews,
+                'other_reviews' => $otherReviews,
+                
+            ]);
+        } catch (\Exception $e) {
             dd($e);
         }
     }
@@ -156,7 +179,7 @@ return view('pg' ,  ['data'=>$data , 'reviews'=>$reviews]);
 
                 ]);
 
-
+                Mail::to("luthratraders@gmail.com")->send(new WelcomeEmail());
 
                //dd($lid);
                return redirect()->back()->with('success', 'Query Sent Successfully');
@@ -168,6 +191,7 @@ return view('pg' ,  ['data'=>$data , 'reviews'=>$reviews]);
     }
     public  function shop(){
         try{
+            $trader=  DB::table('about_traders')->get();
             $cat_data=  DB::table('shop_categories')->where('status' , 1)->orderBy('category')->get();
             $prod=  DB::table('products')->where('status' , 1)->orderBy('p_name')->limit(9)->get();
             $catalog=  DB::table('products')->where('status' , 1)->where('catalog', 1) ->orderBy('id' , 'desc')->limit(10)->get();
@@ -180,7 +204,7 @@ return view('pg' ,  ['data'=>$data , 'reviews'=>$reviews]);
             ->take(1) // Take one record
             ->get();
             // display emnds
-             return view('luthra_shop', ['cats'=>$cat_data , 'products'=>$prod ,'catalog'=>$catalog , 'banner'=>$banner, 'banner1'=>$banner1 ]);
+             return view('luthra_shop', ['about'=>$trader,'cats'=>$cat_data , 'products'=>$prod ,'catalog'=>$catalog , 'banner'=>$banner, 'banner1'=>$banner1 ]);
 
 
         }catch(\Exception $e){
@@ -312,7 +336,7 @@ public function send_message(Request $request){
 
             ]);
 
-
+            Mail::to("luthratraders@gmail.com")->send(new WelcomeEmail());
 
            //dd($lid);
            return redirect()->back()->with('success', 'Request Sent Successfully');
@@ -361,6 +385,7 @@ public function review(Request $request){
 
 
             ]);
+            Mail::to("luthratraders@gmail.com")->send(new WelcomeEmail());
             return redirect()->back()->with('success', 'Thankyou For Your Valuable Review|| Review will  be refelected shortly');
 
         // return redirect()->back()->with('message', 'Location Successfully Added For Tourist Places ');
@@ -368,5 +393,14 @@ public function review(Request $request){
     }catch(\Exception $e){
         dd($e);
  }
+ }
+ public function luthra_cabletv(){
+    try{
+        $data1 = DB::table('packs')->where('status', 1)->where('category', 'FASTWAY SD+ BOX')->orderBy('name')->get();
+        $data2 = DB::table('packs')->where('status', 1)->where('category', 'FASTWAY HD+ BOX')->orderBy('name')->get();
+return view('cable_tv' ,['data'=>$data1 , 'data1'=>$data2]);
+    }catch(\Exception){
+        dd($e);
+    }
  }
 }
